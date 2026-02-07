@@ -5,20 +5,20 @@ import java.time.Instant;
 import java.util.UUID;
 
 public class StockPriceHistory {
-    private final UUID stockPriceHisId;
-    private String symbolId;
+    private final UUID stockPriceHistId;
+    private String stockSymbolId;
     private final BigDecimal price;
     private final Instant timestamp;
 
-//lad databasen stå for UUID, derfor ikke hav den med i konstructoren. overload constructor.
+    //Hvis databasen skal stå for UUID, skal der være 2 constructors og constructoren skal overloades.
 
+    public StockPriceHistory(UUID stockPriceHistId, String stockSymbolId,
+                             BigDecimal price, Instant timestamp) {
 
-    public StockPriceHistory(UUID stockPriceHisId, BigDecimal price,
-                             Instant timestamp, String symbolId) {
+        this.stockPriceHistId = stockPriceHistId;
+        this.stockSymbolId    = stockSymbolId;
+        this.price            = price;
+        this.timestamp        = timestamp;
 
-        this.stockPriceHisId = stockPriceHisId;
-        this.price           = price;
-        this.timestamp       = timestamp;
-        this.symbolId        = symbolId;
     }
 }

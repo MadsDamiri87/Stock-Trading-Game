@@ -1,4 +1,4 @@
-package presentation;
+package presentation.core;
 
 public class ViewManager {
 
