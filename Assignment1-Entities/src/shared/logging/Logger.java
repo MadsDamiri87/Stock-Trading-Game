@@ -5,7 +5,8 @@ public class Logger {
     private static Logger instance;
     private LogOutput output;
 
-    private Logger(){
+    private Logger()
+    {
         output = new ConsoleLogOutput();
     }
 
