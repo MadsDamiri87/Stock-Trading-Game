@@ -1,6 +1,7 @@
 package shared.logging;
 
-public interface LogOutput {
+public interface LogOutput
+{
 
-    void log(String level, String message);
+  void log(String level, String message);
 }

@@ -6,8 +6,7 @@ public class RunAppTEST
   {
     Logger logger = Logger.getInstance();
 
-
-    // Linje 12+13 er ikke nødvendige da jeg allerede har
+    // Linje 13+14 er ikke nødvendige da jeg allerede har
     // output sat til newConsoleLogOutput inde i Logger.
     // De er kun med for at demonstrere at setOutput virker.
     LogOutput consoleOutPut = new ConsoleLogOutput();
@@ -16,9 +15,12 @@ public class RunAppTEST
     logger.log("INFO", "Application started");
     logger.log("WARNING", "Stock not found in database");
 
-    try {
+    try
+    {
       throw new RuntimeException("Database connection failed");
-    } catch (Exception e){
+    }
+    catch (Exception e)
+    {
       logger.log("ERROR", "Failed to save data: " + e.getMessage());
     }
 
