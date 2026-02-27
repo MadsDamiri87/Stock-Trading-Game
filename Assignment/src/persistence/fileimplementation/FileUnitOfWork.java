@@ -4,6 +4,7 @@ import entities.OwnedStock;
 import entities.Portfolio;
 import entities.Stock;
 import persistence.interfaces.UnitOfWork;
+import shared.logging.Logger;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -17,12 +18,12 @@ import java.util.UUID;
 public class FileUnitOfWork implements UnitOfWork
 
 {
-
   private final String directoryPath;
 
   private List<Portfolio> portfolios;
   private List<Stock> stocks;
   private List<OwnedStock> ownedStocks;
+  private final Logger logger = Logger.getInstance();
 
   private static final String PORTFOLIO_FILE = "portfolios.psv";
   private static final String STOCK_FILE = "stocks.psv";
@@ -36,6 +37,7 @@ public class FileUnitOfWork implements UnitOfWork
 
   @Override public void beginTransaction()
   {
+    logger.log("Info", "Transaction started");
     resetLists();
   }
 
@@ -56,6 +58,12 @@ public class FileUnitOfWork implements UnitOfWork
     resetLists();
   }
 
+  @Override public void rollback()
+  {
+    logger.log("INFO", "Transaction rolled back");
+    resetLists();
+  }
+
   private void writePortfoliosToFile()
   {
     Path filePath = Paths.get(directoryPath, PORTFOLIO_FILE);
@@ -69,9 +77,11 @@ public class FileUnitOfWork implements UnitOfWork
     try
     {
       Files.write(filePath, lines);
+      logger.log("Info", "Portfolio blev skrevet til fil");
     }
     catch (IOException e)
     {
+      logger.log("Error", "Fejl i writePortfoliosToFile " + filePath);
       throw new RuntimeException("Fejl ved skrivningen af portfolios: ", e);
     }
   }
@@ -89,9 +99,11 @@ public class FileUnitOfWork implements UnitOfWork
     try
     {
       Files.write(filePath, lines);
+      logger.log("Info", "Stock blev skrevet til fil");
     }
     catch (IOException e)
     {
+      logger.log("Error", "Fejl i writeStocksToFIle " + filePath);
       throw new RuntimeException("Fejl ved skrivningen af stocks: ", e);
     }
   }
@@ -109,16 +121,13 @@ public class FileUnitOfWork implements UnitOfWork
     try
     {
       Files.write(filePath, lines);
+      logger.log("Info", "OwnedStock blev skrevet til fil " + filePath);
     }
     catch (IOException e)
     {
+      logger.log("Error", "Fejl i writeOwnedStocksToFile " + e.getMessage());
       throw new RuntimeException("Fejl ved skrivningen af ownedstocks: ", e);
     }
-  }
-
-  @Override public void rollback()
-  {
-    resetLists();
   }
 
   private void ensureFilesExist()
@@ -137,6 +146,7 @@ public class FileUnitOfWork implements UnitOfWork
     }
     catch (IOException e)
     {
+      logger.log("Error", "Fejl i ensureFilesExist: " + e.getMessage());
       throw new RuntimeException(
           "Noget gik galt i persistence-files: " + directoryPath, e);
     }
@@ -146,6 +156,7 @@ public class FileUnitOfWork implements UnitOfWork
   {
     if (!Files.exists(path))
     {
+      logger.log("Info", "File at: " + path + " wasn't found. New file was created in createIfMissing" );
       Files.createFile(path);
     }
   }
@@ -176,6 +187,7 @@ public class FileUnitOfWork implements UnitOfWork
     }
     catch (IOException e)
     {
+      logger.log("Error", "Fejl under indlæsningen af portfolio i loadPortfoliosFromFile");
       throw new RuntimeException("Fejl ved indlæsningen af portfolios ", e);
     }
     return list;
@@ -186,7 +198,6 @@ public class FileUnitOfWork implements UnitOfWork
     if (stocks == null)
     {
       stocks = loadStocksFromFile();
-
     }
     return stocks;
   }
@@ -219,6 +230,7 @@ public class FileUnitOfWork implements UnitOfWork
     if (ownedStocks == null)
     {
       ownedStocks = loadOwnedStocksFromFile();
+      logger.log("Info", "Ownedstocks blev indlæst fra fil");
     }
     return ownedStocks;
   }
