@@ -11,6 +11,9 @@ public interface OwnedStockDAO
 
   Optional<OwnedStock> getById(UUID ownedStockId);
 
+  Optional<OwnedStock> getByPortfolioIdAndStockSymbol(UUID portfolioId, String stockSymbol);
+
+
   void create(OwnedStock ownedStock);
   void update(OwnedStock update);
   void delete(UUID uuid);

@@ -19,13 +19,22 @@ public class OwnedStockFileDAO implements OwnedStockDAO
 
   @Override public void create(OwnedStock ownedStock)
   {
-    if ((ownedStock.getOwnedStockId()).isPresent())
+    uow.getOwnedStocks().add(ownedStock);
+  }
+
+  @Override public Optional<OwnedStock> getByPortfolioIdAndStockSymbol(
+      UUID portfolioId, String stockSymbol)
+  {
+    for (OwnedStock ownedStock : uow.getOwnedStocks())
     {
+      if (ownedStock.getPortfolioId().equals(portfolioId)
+          && ownedStock.getStockSymbol().equals(stockSymbol))
+      {
+        return Optional.of(ownedStock);
+      }
 
     }
-    else {
-    uow.getOwnedStocks().add(ownedStock);
-}
+    return Optional.empty();
   }
 
   @Override public void update(OwnedStock update)

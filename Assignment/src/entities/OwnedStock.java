@@ -39,4 +39,19 @@ public class OwnedStock
   {
     return numberOfShares;
   }
+
+  public void setPortfolioId(UUID portfolioId)
+  {
+    this.portfolioId = portfolioId;
+  }
+
+  public void setStockSymbol(String stockSymbol)
+  {
+    this.stockSymbol = stockSymbol;
+  }
+
+  public void setNumberOfShares(int numberOfShares)
+  {
+    this.numberOfShares = numberOfShares;
+  }
 }
