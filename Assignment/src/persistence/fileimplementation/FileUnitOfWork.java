@@ -175,10 +175,8 @@ public class FileUnitOfWork implements UnitOfWork
   {
     List<Stock> stocks = new ArrayList<>();
 
-    List<String> lines = readLinesFromFile(
-        STOCK_FILE,
-        "Fejl ved indlæsningen af stocks"
-    );
+    List<String> lines = readLinesFromFile(STOCK_FILE,
+                                           "Fejl ved indlæsningen af stocks");
 
     for (String line : lines)
     {
@@ -200,14 +198,13 @@ public class FileUnitOfWork implements UnitOfWork
     }
     return ownedStocks;
   }
+
   private List<OwnedStock> loadOwnedStocksFromFile()
   {
     List<OwnedStock> ownedStocks = new ArrayList<>();
 
-    List<String> lines = readLinesFromFile(
-        OWNEDSTOCK_FILE,
-        "Fejl ved indlæsningen af ownedstocks"
-    );
+    List<String> lines = readLinesFromFile(OWNEDSTOCK_FILE,
+                                           "Fejl ved indlæsningen af ownedstocks");
 
     for (String line : lines)
     {
@@ -216,7 +213,6 @@ public class FileUnitOfWork implements UnitOfWork
         ownedStocks.add(ownedStockFromPSV(line));
       }
     }
-
     return ownedStocks;
   }
 
