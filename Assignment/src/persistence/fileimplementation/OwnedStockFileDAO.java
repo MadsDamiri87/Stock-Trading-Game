@@ -1,6 +1,7 @@
 package persistence.fileimplementation;
 
 import entities.OwnedStock;
+import entities.Portfolio;
 import persistence.interfaces.OwnedStockDAO;
 
 import java.util.List;
@@ -18,13 +19,13 @@ public class OwnedStockFileDAO implements OwnedStockDAO
 
   @Override public void create(OwnedStock ownedStock)
   {
-    if (getById(ownedStock.getOwnedStockId()).isPresent())
+    if ((ownedStock.getOwnedStockId()).isPresent())
     {
-      throw new RuntimeException(
-          "Ownedstock med id: " + ownedStock.getOwnedStockId()
-              + " findes allerede");
+
     }
+    else {
     uow.getOwnedStocks().add(ownedStock);
+}
   }
 
   @Override public void update(OwnedStock update)

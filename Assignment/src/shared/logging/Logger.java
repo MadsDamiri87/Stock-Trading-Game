@@ -25,7 +25,7 @@ public class Logger
     output.log(level, message);
   }
 
-  public synchronized void setOutput(LogOutput output)
+  public void setOutput(LogOutput output)
   {
     this.output = output;
   }
