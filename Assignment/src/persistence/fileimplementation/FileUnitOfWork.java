@@ -146,26 +146,20 @@ public class FileUnitOfWork implements UnitOfWork
 
   private List<Portfolio> loadPortfoliosFromFile()
   {
-    List<Portfolio> list = new ArrayList<>();
-    Path filePath = Paths.get(directoryPath, PORTFOLIO_FILE);
-    try
+    List<Portfolio> portfolios = new ArrayList<>();
+
+    List<String> lines = readLinesFromFile(PORTFOLIO_FILE,
+                                           "Fejl ved indlæsningen af portfolios");
+
+    for (String line : lines)
     {
-      List<String> lines = Files.readAllLines(filePath);
-      for (String line : lines)
+      if (!line.isBlank())
       {
-        if (!line.isBlank())
-        {
-          list.add(portfolioFromPSV(line));
-        }
+        portfolios.add(portfolioFromPSV(line));
       }
     }
-    catch (IOException e)
-    {
-      logger.log("Error",
-                 "Fejl under indlæsningen af portfolio i loadPortfoliosFromFile");
-      throw new RuntimeException("Fejl ved indlæsningen af portfolios ", e);
-    }
-    return list;
+
+    return portfolios;
   }
 
   public List<Stock> getStocks()
@@ -179,25 +173,22 @@ public class FileUnitOfWork implements UnitOfWork
 
   private List<Stock> loadStocksFromFile()
   {
-    List<Stock> list = new ArrayList<>();
-    Path filePath = Paths.get(directoryPath, STOCK_FILE);
-    try
-    {
-      List<String> lines = Files.readAllLines(filePath);
+    List<Stock> stocks = new ArrayList<>();
 
-      for (String line : lines)
+    List<String> lines = readLinesFromFile(
+        STOCK_FILE,
+        "Fejl ved indlæsningen af stocks"
+    );
+
+    for (String line : lines)
+    {
+      if (!line.isBlank())
       {
-        if (!line.isBlank())
-        {
-          list.add(stockFromPSV(line));
-        }
+        stocks.add(stockFromPSV(line));
       }
     }
-    catch (IOException e)
-    {
-      throw new RuntimeException("Fejl ved indlæsningen af stocks ", e);
-    }
-    return list;
+
+    return stocks;
   }
 
   public List<OwnedStock> getOwnedStocks()
@@ -209,28 +200,24 @@ public class FileUnitOfWork implements UnitOfWork
     }
     return ownedStocks;
   }
-
   private List<OwnedStock> loadOwnedStocksFromFile()
   {
-    List<OwnedStock> list = new ArrayList<>();
-    Path filePath = Paths.get(directoryPath, OWNEDSTOCK_FILE);
+    List<OwnedStock> ownedStocks = new ArrayList<>();
 
-    try
+    List<String> lines = readLinesFromFile(
+        OWNEDSTOCK_FILE,
+        "Fejl ved indlæsningen af ownedstocks"
+    );
+
+    for (String line : lines)
     {
-      List<String> lines = Files.readAllLines(filePath);
-      for (String line : lines)
+      if (!line.isBlank())
       {
-        if (!line.isBlank())
-        {
-          list.add(ownedStockFromPSV(line));
-        }
+        ownedStocks.add(ownedStockFromPSV(line));
       }
     }
-    catch (IOException e)
-    {
-      throw new RuntimeException("Fejl ved indlæsningen af ownedstocks", e);
-    }
-    return list;
+
+    return ownedStocks;
   }
 
   private Portfolio portfolioFromPSV(String line)
@@ -303,7 +290,6 @@ public class FileUnitOfWork implements UnitOfWork
     ownedStocks = null;
   }
 
-
   private void writeLinesToFile(String fileName, List<String> lines,
                                 String successMessage, String errorMessage)
   {
@@ -313,6 +299,21 @@ public class FileUnitOfWork implements UnitOfWork
     {
       Files.write(filePath, lines);
       logger.log("Info", successMessage + " " + filePath);
+    }
+    catch (IOException e)
+    {
+      logger.log("Error", errorMessage + " " + e.getMessage());
+      throw new RuntimeException(errorMessage, e);
+    }
+  }
+
+  private List<String> readLinesFromFile(String fileName, String errorMessage)
+  {
+    Path filePath = Paths.get(directoryPath, fileName);
+
+    try
+    {
+      return Files.readAllLines(filePath);
     }
     catch (IOException e)
     {
