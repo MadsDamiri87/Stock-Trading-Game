@@ -66,68 +66,41 @@ public class FileUnitOfWork implements UnitOfWork
 
   private void writePortfoliosToFile()
   {
-    Path filePath = Paths.get(directoryPath, PORTFOLIO_FILE);
-
     List<String> lines = new ArrayList<>();
 
-    for (Portfolio p : portfolios)
+    for (Portfolio portfolio : portfolios)
     {
-      lines.add(toPSV(p));
+      lines.add(toPSV(portfolio));
     }
-    try
-    {
-      Files.write(filePath, lines);
-      logger.log("Info", "Portfolio blev skrevet til fil");
-    }
-    catch (IOException e)
-    {
-      logger.log("Error", "Fejl i writePortfoliosToFile " + filePath);
-      throw new RuntimeException("Fejl ved skrivningen af portfolios: ", e);
-    }
+
+    writeLinesToFile(PORTFOLIO_FILE, lines, "Portfolio blev skrevet til fil",
+                     "Fejl i writePortfoliosToFile");
   }
 
   private void writeStocksToFile()
   {
-    Path filePath = Paths.get(directoryPath, STOCK_FILE);
-
     List<String> lines = new ArrayList<>();
 
-    for (Stock s : stocks)
+    for (Stock stock : stocks)
     {
-      lines.add(toPSV(s));
+      lines.add(toPSV(stock));
     }
-    try
-    {
-      Files.write(filePath, lines);
-      logger.log("Info", "Stock blev skrevet til fil");
-    }
-    catch (IOException e)
-    {
-      logger.log("Error", "Fejl i writeStocksToFIle " + filePath);
-      throw new RuntimeException("Fejl ved skrivningen af stocks: ", e);
-    }
+
+    writeLinesToFile(STOCK_FILE, lines, "Stock blev skrevet til fil",
+                     "Fejl i writeStocksToFile");
   }
 
   private void writeOwnedStocksToFile()
   {
-    Path filePath = Paths.get(directoryPath, OWNEDSTOCK_FILE);
-
     List<String> lines = new ArrayList<>();
 
-    for (OwnedStock o : ownedStocks)
+    for (OwnedStock ownedStock : ownedStocks)
     {
-      lines.add(toPSV(o));
+      lines.add(toPSV(ownedStock));
     }
-    try
-    {
-      Files.write(filePath, lines);
-      logger.log("Info", "OwnedStock blev skrevet til fil " + filePath);
-    }
-    catch (IOException e)
-    {
-      logger.log("Error", "Fejl i writeOwnedStocksToFile " + e.getMessage());
-      throw new RuntimeException("Fejl ved skrivningen af ownedstocks: ", e);
-    }
+
+    writeLinesToFile(OWNEDSTOCK_FILE, lines, "OwnedStock blev skrevet til fil",
+                     "Fejl i writeOwnedStocksToFile");
   }
 
   private void ensureFilesExist()
@@ -156,7 +129,8 @@ public class FileUnitOfWork implements UnitOfWork
   {
     if (!Files.exists(path))
     {
-      logger.log("Info", "File at: " + path + " wasn't found. New file was created in createIfMissing" );
+      logger.log("Info", "File at: " + path
+          + " wasn't found. New file was created in createIfMissing");
       Files.createFile(path);
     }
   }
@@ -187,7 +161,8 @@ public class FileUnitOfWork implements UnitOfWork
     }
     catch (IOException e)
     {
-      logger.log("Error", "Fejl under indlæsningen af portfolio i loadPortfoliosFromFile");
+      logger.log("Error",
+                 "Fejl under indlæsningen af portfolio i loadPortfoliosFromFile");
       throw new RuntimeException("Fejl ved indlæsningen af portfolios ", e);
     }
     return list;
@@ -326,6 +301,24 @@ public class FileUnitOfWork implements UnitOfWork
     portfolios  = null;
     stocks      = null;
     ownedStocks = null;
+  }
+
+
+  private void writeLinesToFile(String fileName, List<String> lines,
+                                String successMessage, String errorMessage)
+  {
+    Path filePath = Paths.get(directoryPath, fileName);
+
+    try
+    {
+      Files.write(filePath, lines);
+      logger.log("Info", successMessage + " " + filePath);
+    }
+    catch (IOException e)
+    {
+      logger.log("Error", errorMessage + " " + e.getMessage());
+      throw new RuntimeException(errorMessage, e);
+    }
   }
 
 }
