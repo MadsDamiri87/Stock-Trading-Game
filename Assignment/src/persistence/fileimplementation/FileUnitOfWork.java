@@ -147,10 +147,8 @@ public class FileUnitOfWork implements UnitOfWork
   private List<Portfolio> loadPortfoliosFromFile()
   {
     List<Portfolio> portfolios = new ArrayList<>();
-
     List<String> lines = readLinesFromFile(PORTFOLIO_FILE,
                                            "Fejl ved indlæsningen af portfolios");
-
     for (String line : lines)
     {
       if (!line.isBlank())
@@ -158,18 +156,9 @@ public class FileUnitOfWork implements UnitOfWork
         portfolios.add(portfolioFromPSV(line));
       }
     }
-
     return portfolios;
   }
 
-  public List<Stock> getStocks()
-  {
-    if (stocks == null)
-    {
-      stocks = loadStocksFromFile();
-    }
-    return stocks;
-  }
 
   private List<Stock> loadStocksFromFile()
   {
@@ -186,6 +175,15 @@ public class FileUnitOfWork implements UnitOfWork
       }
     }
 
+    return stocks;
+  }
+
+  public List<Stock> getStocks()
+  {
+    if (stocks == null)
+    {
+      stocks = loadStocksFromFile();
+    }
     return stocks;
   }
 
@@ -317,5 +315,32 @@ public class FileUnitOfWork implements UnitOfWork
       throw new RuntimeException(errorMessage, e);
     }
   }
+
+
+
+  // TODO
+//  Forenkel udgaven af hvordan der skrives og loades fra filer med generics.
+//  se filmen om det på:
+//  https://www.youtube.com/watch?v=K1iu1kXkVoA
+//  https://www.youtube.com/watch?v=FXAUXvPNKi8
+//  https://www.youtube.com/watch?si=2xVbYeAgRmYb0nPw&v=vqjA6dqugq8&feature=youtu.be
+//
+//  private <T> List<T> loadData(String filePath, Function<String, T> mapper)
+//  {
+//    List<String> lines = readAllLines(filePath);
+//    List<T> result = new ArrayList<>();
+//    for (String line : lines)
+//    {
+//      if (!line.trim().isEmpty())
+//      {
+//        result.add(mapper.apply(line));
+//      }
+//    }
+//    return result;
+//  }
+//
+//  private List<Transaction> loadTransactionsFromFile() {
+//    return loadData(getTransactionFilePath(), this::transactionFromPSV);
+//  }
 
 }
