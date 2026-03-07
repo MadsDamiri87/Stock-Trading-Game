@@ -3,6 +3,6 @@ package business.stockmarket.simulation;
 public interface LiveStockState
 {
 
-  double calculatePriceXhange(LiveStock liveStock);
+  double calculatePriceChange(LiveStock liveStock);
   String getStateName();
 }
