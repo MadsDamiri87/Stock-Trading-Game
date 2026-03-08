@@ -1,6 +1,7 @@
 package business.stockmarket.simulation;
 
 import shared.configuration.AppConfig;
+import shared.logging.Logger;
 
 public class LiveStock
 {
@@ -30,7 +31,7 @@ public class LiveStock
 
     currentPrice += priceChange;
 
-    if (currentPrice <= 0 && !(currentState instanceof BankruptState) )
+    if (currentPrice <= 0 && !(currentState instanceof BankruptState))
     {
       currentPrice = 0;
       setState(new BankruptState());
@@ -39,7 +40,14 @@ public class LiveStock
 
   public void setState(LiveStockState currentState)
   {
+    String oldState =
+        this.currentState == null ? "none" : this.currentState.getStateName();
     this.currentState = currentState;
+
+    Logger.getInstance().log("Info",
+                             "LiveStock " + stockSymbol + " changed state from "
+                                 + oldState + " to: "
+                                 + currentState.getStateName());
   }
 
   public String getStockSymbol()

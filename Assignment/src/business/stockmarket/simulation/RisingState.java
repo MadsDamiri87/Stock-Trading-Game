@@ -6,8 +6,7 @@ public class RisingState implements LiveStockState
 {
   private static final Random random = new Random();
 
-  @Override
-  public double calculatePriceChange(LiveStock liveStock)
+  @Override public double calculatePriceChange(LiveStock liveStock)
   {
     double change;
 
@@ -34,8 +33,7 @@ public class RisingState implements LiveStockState
     return change;
   }
 
-  @Override
-  public String getStateName()
+  @Override public String getStateName()
   {
     return "Rising";
   }

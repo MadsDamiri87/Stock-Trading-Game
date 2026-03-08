@@ -27,7 +27,8 @@ public class StockMarket
     this.stockPriceHistoryDAO = stockPriceHistoryDAO;
   }
 
-  public static StockMarket getInstance(StockPriceHistoryDAO stockPriceHistoryDAO)
+  public static StockMarket getInstance(
+      StockPriceHistoryDAO stockPriceHistoryDAO)
   {
     if (instance == null)
     {
@@ -58,21 +59,18 @@ public class StockMarket
     {
       liveStock.updatePrice();
 
-      String logMessage = String.format(
-          "Stock: %s | Price: %.2f | State: %s",
-          liveStock.getStockSymbol(),
-          liveStock.getCurrentPrice(),
-          liveStock.getCurrentStateName()
-      );
+      String logMessage = String.format("Stock: %s | Price: %.2f | State: %s",
+                                        liveStock.getStockSymbol(),
+                                        liveStock.getCurrentPrice(),
+                                        liveStock.getCurrentStateName());
 
       logger.log("Info", logMessage);
 
-      StockPriceHistory history = new StockPriceHistory(
-          UUID.randomUUID(),
-          liveStock.getStockSymbol(),
-          BigDecimal.valueOf(liveStock.getCurrentPrice()),
-          Instant.now()
-      );
+      StockPriceHistory history = new StockPriceHistory(UUID.randomUUID(),
+                                                        liveStock.getStockSymbol(),
+                                                        BigDecimal.valueOf(
+                                                            liveStock.getCurrentPrice()),
+                                                        Instant.now());
 
       stockPriceHistoryDAO.create(history);
     }

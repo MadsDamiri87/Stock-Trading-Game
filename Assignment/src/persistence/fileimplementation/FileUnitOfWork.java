@@ -281,8 +281,8 @@ public class FileUnitOfWork implements UnitOfWork
   private String stockPriceHistoryToPSV(Stock s)
   {
     return s.getSymbol() + " | " + s.getName() + " | " + s.getCurrentPrice()
-                                                      .toPlainString() + " | "
-        + s.getCurrentState();
+                                                          .toPlainString()
+        + " | " + s.getCurrentState();
   }
 
   private String stockPriceHistoryToPSV(OwnedStock o)
@@ -343,8 +343,8 @@ public class FileUnitOfWork implements UnitOfWork
 
   private String stockPriceHistoryToPSV(Transaction transaction)
   {
-    return transaction.transactionId() + " | " + transaction.portfolioId() + " | "
-        + transaction.stockSymbol() + " | " + transaction.type() + " | "
+    return transaction.transactionId() + " | " + transaction.portfolioId()
+        + " | " + transaction.stockSymbol() + " | " + transaction.type() + " | "
         + transaction.quantity() + " | " + transaction.pricePerShare() + " | "
         + transaction.totalAmount() + " | " + transaction.fee() + " | "
         + transaction.timestamp();

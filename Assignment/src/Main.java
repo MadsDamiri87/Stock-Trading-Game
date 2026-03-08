@@ -1,7 +1,6 @@
-public class Main {
+public class Main
+{
 
-
-//    Runs application.
-
+  //    Runs application.
 
 }

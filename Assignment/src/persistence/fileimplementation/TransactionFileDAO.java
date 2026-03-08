@@ -17,8 +17,7 @@ public class TransactionFileDAO implements TransactionDAO
     this.uow = uow;
   }
 
-  @Override
-  public Optional<Transaction> getById(UUID transactionId)
+  @Override public Optional<Transaction> getById(UUID transactionId)
   {
     for (Transaction transaction : uow.getTransactions())
     {
@@ -30,20 +29,17 @@ public class TransactionFileDAO implements TransactionDAO
     return Optional.empty();
   }
 
-  @Override
-  public void create(Transaction transaction)
+  @Override public void create(Transaction transaction)
   {
     uow.getTransactions().add(transaction);
   }
 
-  @Override
-  public List<Transaction> getAll()
+  @Override public List<Transaction> getAll()
   {
     return uow.getTransactions();
   }
 
-  @Override
-  public List<Transaction> getByPortfolioId(UUID portfolioId)
+  @Override public List<Transaction> getByPortfolioId(UUID portfolioId)
   {
     List<Transaction> result = new ArrayList<>();
 
@@ -58,8 +54,7 @@ public class TransactionFileDAO implements TransactionDAO
     return result;
   }
 
-  @Override
-  public List<Transaction> getByStockSymbol(String stockSymbol)
+  @Override public List<Transaction> getByStockSymbol(String stockSymbol)
   {
     List<Transaction> result = new ArrayList<>();
 

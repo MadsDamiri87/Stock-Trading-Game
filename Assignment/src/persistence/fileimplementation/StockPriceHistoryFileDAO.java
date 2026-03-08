@@ -15,21 +15,17 @@ public class StockPriceHistoryFileDAO implements StockPriceHistoryDAO
     this.uow = uow;
   }
 
-  @Override
-  public void create(StockPriceHistory history)
+  @Override public void create(StockPriceHistory history)
   {
     uow.getStockPriceHistories().add(history);
   }
 
-
-  @Override
-  public List<StockPriceHistory> getAll()
+  @Override public List<StockPriceHistory> getAll()
   {
     return uow.getStockPriceHistories();
   }
 
-  @Override
-  public List<StockPriceHistory> getByStockSymbol(String symbol)
+  @Override public List<StockPriceHistory> getByStockSymbol(String symbol)
   {
     List<StockPriceHistory> result = new ArrayList<>();
 

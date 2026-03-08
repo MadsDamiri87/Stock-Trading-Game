@@ -29,11 +29,10 @@ public class MarketTickHandler implements Runnable
 
       logger.log("Info - ", "Markedet blev opdateret");
 
-
       int base = AppConfig.getInstance().getUpdateFrequencyInMs();
       int varience = base / 2;
-      int freqUpdate = ThreadLocalRandom.current().nextInt(-varience,
-                                                           varience + 1)+base ;
+      int freqUpdate =
+          ThreadLocalRandom.current().nextInt(-varience, varience + 1) + base;
 
       try
       {
