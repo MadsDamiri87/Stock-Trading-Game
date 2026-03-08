@@ -3,6 +3,8 @@ import business.stockmarket.StockMarket;
 import business.stockmarket.simulation.LiveStock;
 import entities.Stock;
 import persistence.fileimplementation.FileUnitOfWork;
+import persistence.fileimplementation.StockPriceHistoryFileDAO;
+import persistence.interfaces.StockPriceHistoryDAO;
 
 import java.util.List;
 
@@ -11,7 +13,12 @@ public class TestMain{
   {
     FileUnitOfWork uow = new FileUnitOfWork("data/");
 
-    StockMarket stockMarket = StockMarket.getInstance();
+
+    StockPriceHistoryDAO dao = new StockPriceHistoryFileDAO(uow);
+    StockMarket stockMarket = StockMarket.getInstance(dao);
+    MarketTickHandler thread = new MarketTickHandler(stockMarket);
+    StockPriceHistoryDAO stockPriceHistoryDAO = new StockPriceHistoryFileDAO(uow);
+
 
     List<Stock> stocks = uow.getStocks();
 
@@ -26,8 +33,6 @@ public class TestMain{
       stockMarket.updateAllStocks();
     }
 
-    MarketTickHandler thread = new MarketTickHandler();
-
     Thread ns = new Thread(thread);
 
     ns.start();
@@ -36,6 +41,9 @@ public class TestMain{
     ns.interrupt();
 
     ns.join();
+
+
+    uow.commit();
 
   }
 

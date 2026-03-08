@@ -2,29 +2,36 @@ package business.stockmarket;
 
 import business.stockmarket.simulation.LiveStock;
 import entities.Stock;
+import entities.StockPriceHistory;
+import persistence.interfaces.StockPriceHistoryDAO;
 import shared.logging.Logger;
 
+import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class StockMarket
 {
 
   private static StockMarket instance;
-  private List<LiveStock> liveStocks;
+  private final List<LiveStock> liveStocks;
   private final Logger logger;
+  private final StockPriceHistoryDAO stockPriceHistoryDAO;
 
-  private StockMarket()
+  private StockMarket(StockPriceHistoryDAO stockPriceHistoryDAO)
   {
-    this.liveStocks = new ArrayList<>();
-    this.logger     = Logger.getInstance();
+    this.liveStocks           = new ArrayList<>();
+    this.logger               = Logger.getInstance();
+    this.stockPriceHistoryDAO = stockPriceHistoryDAO;
   }
 
-  public static StockMarket getInstance()
+  public static StockMarket getInstance(StockPriceHistoryDAO stockPriceHistoryDAO)
   {
     if (instance == null)
     {
-      instance = new StockMarket();
+      instance = new StockMarket(stockPriceHistoryDAO);
     }
     return instance;
   }
@@ -51,12 +58,23 @@ public class StockMarket
     {
       liveStock.updatePrice();
 
-      String logMessage = String.format("Stock: %s | Price: %.2f | State %s",
-                                        liveStock.getStockSymbol(),
-                                        liveStock.getCurrentPrice(),
-                                        liveStock.getCurrentState().getStateName());
+      String logMessage = String.format(
+          "Stock: %s | Price: %.2f | State: %s",
+          liveStock.getStockSymbol(),
+          liveStock.getCurrentPrice(),
+          liveStock.getCurrentStateName()
+      );
 
       logger.log("Info", logMessage);
+
+      StockPriceHistory history = new StockPriceHistory(
+          UUID.randomUUID(),
+          liveStock.getStockSymbol(),
+          BigDecimal.valueOf(liveStock.getCurrentPrice()),
+          Instant.now()
+      );
+
+      stockPriceHistoryDAO.create(history);
     }
   }
 
@@ -64,5 +82,4 @@ public class StockMarket
   {
     return liveStocks;
   }
-  //  Singleton da der kun er et stockmarket
 }

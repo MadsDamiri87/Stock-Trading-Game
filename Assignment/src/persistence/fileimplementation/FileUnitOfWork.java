@@ -83,7 +83,7 @@ public class FileUnitOfWork implements UnitOfWork
 
     for (Portfolio portfolio : portfolios)
     {
-      lines.add(stocPriceHistoryToPSV(portfolio));
+      lines.add(stockPriceHistoryToPSV(portfolio));
     }
 
     writeLinesToFile(PORTFOLIO_FILE, lines, "Portfolio blev skrevet til fil",
@@ -96,7 +96,7 @@ public class FileUnitOfWork implements UnitOfWork
 
     for (Stock stock : stocks)
     {
-      lines.add(stocPriceHistoryToPSV(stock));
+      lines.add(stockPriceHistoryToPSV(stock));
     }
 
     writeLinesToFile(STOCK_FILE, lines, "Stock blev skrevet til fil",
@@ -109,7 +109,7 @@ public class FileUnitOfWork implements UnitOfWork
 
     for (OwnedStock ownedStock : ownedStocks)
     {
-      lines.add(stocPriceHistoryToPSV(ownedStock));
+      lines.add(stockPriceHistoryToPSV(ownedStock));
     }
 
     writeLinesToFile(OWNEDSTOCK_FILE, lines, "OwnedStock blev skrevet til fil",
@@ -273,22 +273,22 @@ public class FileUnitOfWork implements UnitOfWork
                           numberOfShares);
   }
 
-  private String stocPriceHistoryToPSV(Portfolio p)
+  private String stockPriceHistoryToPSV(Portfolio p)
   {
-    return p.getPortfolioId() + "|" + p.getCurrentBalance().toPlainString();
+    return p.getPortfolioId() + " | " + p.getCurrentBalance().toPlainString();
   }
 
-  private String stocPriceHistoryToPSV(Stock s)
+  private String stockPriceHistoryToPSV(Stock s)
   {
-    return s.getSymbol() + "|" + s.getName() + "|" + s.getCurrentPrice()
-                                                      .toPlainString() + "|"
+    return s.getSymbol() + " | " + s.getName() + " | " + s.getCurrentPrice()
+                                                      .toPlainString() + " | "
         + s.getCurrentState();
   }
 
-  private String stocPriceHistoryToPSV(OwnedStock o)
+  private String stockPriceHistoryToPSV(OwnedStock o)
   {
-    return o.getOwnedStockId() + "|" + o.getPortfolioId() + "|"
-        + o.getStockSymbol() + "|" + o.getNumberOfShares();
+    return o.getOwnedStockId() + " | " + o.getPortfolioId() + " | "
+        + o.getStockSymbol() + " | " + o.getNumberOfShares();
   }
 
   private void resetLists()
@@ -341,12 +341,12 @@ public class FileUnitOfWork implements UnitOfWork
     return transactions;
   }
 
-  private String stocPriceHistoryToPSV(Transaction transaction)
+  private String stockPriceHistoryToPSV(Transaction transaction)
   {
-    return transaction.transactionId() + "|" + transaction.portfolioId() + "|"
-        + transaction.stockSymbol() + "|" + transaction.type() + "|"
-        + transaction.quantity() + "|" + transaction.pricePerShare() + "|"
-        + transaction.totalAmount() + "|" + transaction.fee() + "|"
+    return transaction.transactionId() + " | " + transaction.portfolioId() + " | "
+        + transaction.stockSymbol() + " | " + transaction.type() + " | "
+        + transaction.quantity() + " | " + transaction.pricePerShare() + " | "
+        + transaction.totalAmount() + " | " + transaction.fee() + " | "
         + transaction.timestamp();
   }
 
@@ -390,7 +390,7 @@ public class FileUnitOfWork implements UnitOfWork
 
     for (Transaction transaction : transactions)
     {
-      lines.add(stocPriceHistoryToPSV(transaction));
+      lines.add(stockPriceHistoryToPSV(transaction));
     }
 
     writeLinesToFile(TRANSACTION_FILE, lines,
@@ -404,7 +404,7 @@ public class FileUnitOfWork implements UnitOfWork
 
     for (StockPriceHistory history : stockPriceHistories)
     {
-      lines.add(stocPriceHistoryToPSV(history));
+      lines.add(stockPriceHistoryToPSV(history));
     }
 
     writeLinesToFile(STOCK_PRICE_HISTORY_FILE, lines,
@@ -439,10 +439,10 @@ public class FileUnitOfWork implements UnitOfWork
     return histories;
   }
 
-  private String stocPriceHistoryToPSV(StockPriceHistory history)
+  private String stockPriceHistoryToPSV(StockPriceHistory history)
   {
-    return history.getStockPriceHistId() + "|" + history.getStockSymbolId()
-        + "|" + history.getPrice() + "|" + history.getTimestamp();
+    return history.getStockPriceHistId() + " | " + history.getStockSymbolId()
+        + " | " + history.getPrice() + " | " + history.getTimestamp();
   }
 
   private StockPriceHistory stockPriceHistoryFromPSV(String line)

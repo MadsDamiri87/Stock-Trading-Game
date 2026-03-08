@@ -1,5 +1,6 @@
 package business.stockmarket;
 
+import persistence.interfaces.StockPriceHistoryDAO;
 import shared.configuration.AppConfig;
 import shared.logging.Logger;
 
@@ -10,10 +11,11 @@ public class MarketTickHandler implements Runnable
   private final StockMarket stockMarket;
   private final Logger logger;
   private boolean running;
+  private StockPriceHistoryDAO stockPriceHistoryDAO;
 
-  public MarketTickHandler()
+  public MarketTickHandler(StockMarket stockMarket)
   {
-    this.stockMarket = StockMarket.getInstance();
+    this.stockMarket = stockMarket;
     this.logger      = Logger.getInstance();
     this.running     = true;
 
