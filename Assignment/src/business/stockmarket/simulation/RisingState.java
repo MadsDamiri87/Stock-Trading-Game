@@ -13,7 +13,7 @@ public class RisingState implements LiveStockState
     if (random.nextDouble() < 0.2){
       liveStock.setState(new DecliningState());
     }
-    else if (random.nextDouble() < 0.1)
+    else if (random.nextDouble() < 0.3)
     {
       liveStock.setState(new SteadyState());
     }
@@ -22,6 +22,6 @@ public class RisingState implements LiveStockState
 
   @Override public String getStateName()
   {
-    return "Growing";
+    return "Rising";
   }
 }

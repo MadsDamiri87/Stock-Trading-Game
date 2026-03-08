@@ -51,10 +51,15 @@ public class StockMarket
     {
       liveStock.updatePrice();
 
-      logger.log("Info - ", "Stock: " + liveStock.getStockSymbol() +
-          ", Price: " + liveStock.getCurrentPrice() + ", State: " + liveStock.getCurrentStateName());
+      String logMessage = String.format("Stock: %s | Price: %.2f | State %s",
+                                        liveStock.getStockSymbol(),
+                                        liveStock.getCurrentPrice(),
+                                        liveStock.getCurrentState().getStateName());
+
+      logger.log("Info", logMessage);
     }
   }
+
   public List<LiveStock> getLiveStocks()
   {
     return liveStocks;

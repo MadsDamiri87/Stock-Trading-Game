@@ -15,7 +15,7 @@ public class LiveStock
     this.currentState = new SteadyState();
     this.currentPrice = AppConfig.getInstance().getStartingBalance();
   }
-  
+
   public LiveStock(String stockSymbol, LiveStockState currentState,
                    double currentPrice)
   {
@@ -30,7 +30,7 @@ public class LiveStock
 
     currentPrice += priceChange;
 
-    if (currentPrice <= 0)
+    if (currentPrice <= 0 && !(currentState instanceof BankruptState) )
     {
       currentPrice = 0;
       setState(new BankruptState());
