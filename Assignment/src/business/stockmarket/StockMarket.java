@@ -14,7 +14,7 @@ public class StockMarket
   private List<LiveStock> liveStocks;
   private final Logger logger;
 
-  public StockMarket()
+  private StockMarket()
   {
     this.liveStocks = new ArrayList<>();
     this.logger     = Logger.getInstance();

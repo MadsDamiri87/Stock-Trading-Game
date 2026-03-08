@@ -18,7 +18,7 @@ public class TestMain{
     for (Stock stock : stocks)
     {
       stockMarket.addExistingStock(stock);
-//      System.out.println("\u001B[25m"+stock.getSymbol() + " " + stock.getCurrentPrice()+"\u001B[0m");
+      System.out.println("\u001B[25m"+stock.getSymbol() + " " + stock.getCurrentPrice()+"\u001B[0m");
     }
 
     for (int i = 0; i < 10; i++)

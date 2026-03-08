@@ -1,10 +1,12 @@
 package business.stockmarket.simulation;
 
+import shared.configuration.AppConfig;
+
 public class ResetState implements LiveStockState
 {
   @Override public double calculatePriceChange(LiveStock liveStock)
   {
-    liveStock.setCurrentPrice(100.0);
+    liveStock.setCurrentPrice(AppConfig.getInstance().getStartingBalance());
     liveStock.setState(new SteadyState());
     return 0;
   }
