@@ -1,8 +1,6 @@
 package persistence.fileimplementation;
 
-import entities.OwnedStock;
-import entities.Portfolio;
-import entities.Stock;
+import entities.*;
 import persistence.interfaces.UnitOfWork;
 import shared.logging.Logger;
 
@@ -11,6 +9,7 @@ import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -23,11 +22,15 @@ public class FileUnitOfWork implements UnitOfWork
   private List<Portfolio> portfolios;
   private List<Stock> stocks;
   private List<OwnedStock> ownedStocks;
+  private List<Transaction> transactions;
+  private List<StockPriceHistory> stockPriceHistories;
   private final Logger logger = Logger.getInstance();
 
   private static final String PORTFOLIO_FILE = "portfolios.psv";
   private static final String STOCK_FILE = "stocks.psv";
   private static final String OWNEDSTOCK_FILE = "ownedstocks.psv";
+  private static final String TRANSACTION_FILE = "transactions.psv";
+  private static final String STOCK_PRICE_HISTORY_FILE = "stock_price_history.psv";
 
   public FileUnitOfWork(String directoryPath)
   {
@@ -55,6 +58,16 @@ public class FileUnitOfWork implements UnitOfWork
     {
       writeOwnedStocksToFile();
     }
+    if (transactions != null)
+    {
+      writeTransactionsToFile();
+    }
+
+    if (stockPriceHistories != null)
+    {
+      writeStockPriceHistoriesToFile();
+    }
+
     resetLists();
   }
 
@@ -70,7 +83,7 @@ public class FileUnitOfWork implements UnitOfWork
 
     for (Portfolio portfolio : portfolios)
     {
-      lines.add(toPSV(portfolio));
+      lines.add(stocPriceHistoryToPSV(portfolio));
     }
 
     writeLinesToFile(PORTFOLIO_FILE, lines, "Portfolio blev skrevet til fil",
@@ -83,7 +96,7 @@ public class FileUnitOfWork implements UnitOfWork
 
     for (Stock stock : stocks)
     {
-      lines.add(toPSV(stock));
+      lines.add(stocPriceHistoryToPSV(stock));
     }
 
     writeLinesToFile(STOCK_FILE, lines, "Stock blev skrevet til fil",
@@ -96,7 +109,7 @@ public class FileUnitOfWork implements UnitOfWork
 
     for (OwnedStock ownedStock : ownedStocks)
     {
-      lines.add(toPSV(ownedStock));
+      lines.add(stocPriceHistoryToPSV(ownedStock));
     }
 
     writeLinesToFile(OWNEDSTOCK_FILE, lines, "OwnedStock blev skrevet til fil",
@@ -116,6 +129,8 @@ public class FileUnitOfWork implements UnitOfWork
       createIfMissing(dir.resolve(PORTFOLIO_FILE));
       createIfMissing(dir.resolve(STOCK_FILE));
       createIfMissing(dir.resolve(OWNEDSTOCK_FILE));
+      createIfMissing(dir.resolve(TRANSACTION_FILE));
+      createIfMissing(dir.resolve(STOCK_PRICE_HISTORY_FILE));
     }
     catch (IOException e)
     {
@@ -158,7 +173,6 @@ public class FileUnitOfWork implements UnitOfWork
     }
     return portfolios;
   }
-
 
   private List<Stock> loadStocksFromFile()
   {
@@ -259,19 +273,19 @@ public class FileUnitOfWork implements UnitOfWork
                           numberOfShares);
   }
 
-  private String toPSV(Portfolio p)
+  private String stocPriceHistoryToPSV(Portfolio p)
   {
     return p.getPortfolioId() + "|" + p.getCurrentBalance().toPlainString();
   }
 
-  private String toPSV(Stock s)
+  private String stocPriceHistoryToPSV(Stock s)
   {
     return s.getSymbol() + "|" + s.getName() + "|" + s.getCurrentPrice()
                                                       .toPlainString() + "|"
         + s.getCurrentState();
   }
 
-  private String toPSV(OwnedStock o)
+  private String stocPriceHistoryToPSV(OwnedStock o)
   {
     return o.getOwnedStockId() + "|" + o.getPortfolioId() + "|"
         + o.getStockSymbol() + "|" + o.getNumberOfShares();
@@ -279,9 +293,11 @@ public class FileUnitOfWork implements UnitOfWork
 
   private void resetLists()
   {
-    portfolios  = null;
-    stocks      = null;
-    ownedStocks = null;
+    portfolios          = null;
+    stocks              = null;
+    ownedStocks         = null;
+    transactions        = null;
+    stockPriceHistories = null;
   }
 
   private void writeLinesToFile(String fileName, List<String> lines,
@@ -316,31 +332,156 @@ public class FileUnitOfWork implements UnitOfWork
     }
   }
 
+  public List<Transaction> getTransactions()
+  {
+    if (transactions == null)
+    {
+      transactions = loadTransactionsFromFile();
+    }
+    return transactions;
+  }
 
+  private String stocPriceHistoryToPSV(Transaction transaction)
+  {
+    return transaction.transactionId() + "|" + transaction.portfolioId() + "|"
+        + transaction.stockSymbol() + "|" + transaction.type() + "|"
+        + transaction.quantity() + "|" + transaction.pricePerShare() + "|"
+        + transaction.totalAmount() + "|" + transaction.fee() + "|"
+        + transaction.timestamp();
+  }
 
+  private List<Transaction> loadTransactionsFromFile()
+
+  {
+    List<Transaction> transactions = new ArrayList<>();
+
+    List<String> lines = readLinesFromFile(TRANSACTION_FILE,
+                                           "Fejl ved indlæsningen af transaktioner");
+
+    for (String line : lines)
+    {
+      if (!line.isBlank())
+      {
+        transactions.add(transactionFromPSV(line));
+      }
+    }
+
+    return transactions;
+  }
+
+  private Transaction transactionFromPSV(String line)
+  {
+    String[] parts = line.split("\\|");
+
+    if (parts.length < 9)
+    {
+      throw new RuntimeException("Ugyldig linje for transaction " + line);
+    }
+
+    return new Transaction(UUID.fromString(parts[0]), UUID.fromString(parts[1]),
+                           parts[2], parts[3], Integer.parseInt(parts[4]),
+                           new BigDecimal(parts[5]), new BigDecimal(parts[6]),
+                           new BigDecimal(parts[7]), Instant.parse(parts[8]));
+  }
+
+  private void writeTransactionsToFile()
+  {
+    List<String> lines = new ArrayList<>();
+
+    for (Transaction transaction : transactions)
+    {
+      lines.add(stocPriceHistoryToPSV(transaction));
+    }
+
+    writeLinesToFile(TRANSACTION_FILE, lines,
+                     "Transactions blev skrevet til fil",
+                     "Fejl i writeTransactionsToFile");
+  }
+
+  private void writeStockPriceHistoriesToFile()
+  {
+    List<String> lines = new ArrayList<>();
+
+    for (StockPriceHistory history : stockPriceHistories)
+    {
+      lines.add(stocPriceHistoryToPSV(history));
+    }
+
+    writeLinesToFile(STOCK_PRICE_HISTORY_FILE, lines,
+                     "StockPriceHistories blev skrevet til fil",
+                     "Fejl i writeStockPriceHistoriesToFile");
+  }
+
+  public List<StockPriceHistory> getStockPriceHistories()
+  {
+    if (stockPriceHistories == null)
+    {
+      stockPriceHistories = loadStockPriceHistoriesFromFile();
+    }
+    return stockPriceHistories;
+  }
+
+  private List<StockPriceHistory> loadStockPriceHistoriesFromFile()
+  {
+    List<StockPriceHistory> histories = new ArrayList<>();
+
+    List<String> lines = readLinesFromFile(STOCK_PRICE_HISTORY_FILE,
+                                           "Fejl ved indlæsningen af stock price histories");
+
+    for (String line : lines)
+    {
+      if (!line.isBlank())
+      {
+        histories.add(stockPriceHistoryFromPSV(line));
+      }
+    }
+
+    return histories;
+  }
+
+  private String stocPriceHistoryToPSV(StockPriceHistory history)
+  {
+    return history.getStockPriceHistId() + "|" + history.getStockSymbolId()
+        + "|" + history.getPrice() + "|" + history.getTimestamp();
+  }
+
+  private StockPriceHistory stockPriceHistoryFromPSV(String line)
+  {
+    String[] parts = line.split("\\|");
+
+    if (parts.length < 4)
+    {
+      throw new RuntimeException(
+          "Ugyldig linje for StockPriceHistory: " + line);
+    }
+
+    return new StockPriceHistory(UUID.fromString(parts[0]), parts[1],
+                                 new BigDecimal(parts[2]),
+                                 Instant.parse(parts[3]));
+  }
   // TODO
-//  Forenkel udgaven af hvordan der skrives og loades fra filer med generics.
-//  se filmen om det på:
-//  https://www.youtube.com/watch?v=K1iu1kXkVoA
-//  https://www.youtube.com/watch?v=FXAUXvPNKi8
-//  https://www.youtube.com/watch?si=2xVbYeAgRmYb0nPw&v=vqjA6dqugq8&feature=youtu.be
-//
-//  private <T> List<T> loadData(String filePath, Function<String, T> mapper)
-//  {
-//    List<String> lines = readAllLines(filePath);
-//    List<T> result = new ArrayList<>();
-//    for (String line : lines)
-//    {
-//      if (!line.trim().isEmpty())
-//      {
-//        result.add(mapper.apply(line));
-//      }
-//    }
-//    return result;
-//  }
-//
-//  private List<Transaction> loadTransactionsFromFile() {
-//    return loadData(getTransactionFilePath(), this::transactionFromPSV);
-//  }
+  //  Forenkel udgaven af hvordan der skrives og loades fra filer med generics.
+  //  se filmen om det på:
+  //  https://www.youtube.com/watch?v=K1iu1kXkVoA
+  //  https://www.youtube.com/watch?v=FXAUXvPNKi8
+  //  https://www.youtube.com/watch?si=2xVbYeAgRmYb0nPw&v=vqjA6dqugq8&feature=youtu.be
+  //
+  //  private <T> List<T> loadData(String filePath, Function<String, T> mapper)
+  //  {
+  //    List<String> lines = readAllLines(filePath);
+  //    List<T> result = new ArrayList<>();
+  //    for (String line : lines)
+  //    {
+  //      if (!line.trim().isEmpty())
+  //      {
+  //        result.add(mapper.apply(line));
+  //      }
+  //    }
+  //    return result;
+  //  }
+  //
+  //  private List<Transaction> loadTransactionsFromFile() {
+  //    return loadData(getTransactionFilePath(), this::transactionFromPSV);
+  //  }
 
 }
