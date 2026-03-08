@@ -14,7 +14,7 @@ public class AppConfig
 
   private AppConfig()
   {
-    this.startingBalance     = 10000;
+    this.startingBalance     = 100;
     this.transactionFee      = BigDecimal.valueOf(2.0);
     this.updateFrequencyInMs = 50;
     this.stockResetValue     = BigDecimal.valueOf(100);

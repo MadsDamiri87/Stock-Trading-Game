@@ -1,25 +1,27 @@
 package business.stockmarket.simulation;
 
+import shared.configuration.AppConfig;
+
 public class LiveStock
 {
 
-  private String stockSymbol;
+  private final String stockSymbol;
   private LiveStockState currentState;
   private double currentPrice;
 
+  public LiveStock(String stockSymbol)
+  {
+    this.stockSymbol  = stockSymbol;
+    this.currentState = new SteadyState();
+    this.currentPrice = AppConfig.getInstance().getStartingBalance();
+  }
+  
   public LiveStock(String stockSymbol, LiveStockState currentState,
                    double currentPrice)
   {
     this.stockSymbol  = stockSymbol;
     this.currentState = currentState;
     this.currentPrice = currentPrice;
-  }
-
-  public LiveStock(String stockSymbol)
-  {
-    this.stockSymbol  = stockSymbol;
-    this.currentState = new SteadyState();
-    this.currentPrice = 100.0;
   }
 
   public void updatePrice()
@@ -60,13 +62,8 @@ public class LiveStock
     this.currentPrice = currentPrice;
   }
 
-  public void setStockSymbol(String stockSymbol)
+  public String getCurrentStateName()
   {
-    this.stockSymbol = stockSymbol;
-  }
-
-  public void setCurrentState(LiveStockState currentState)
-  {
-    this.currentState = currentState;
+    return currentState.getStateName();
   }
 }
