@@ -33,6 +33,7 @@ public class TestMain{
     ns.start();
 
     Thread.sleep(10_000);
+    ns.interrupt();
 
     ns.join();
 

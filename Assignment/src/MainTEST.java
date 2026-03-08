@@ -22,7 +22,7 @@ public class MainTEST
     uow.beginTransaction();
 
     Stock apple = new Stock("AAPL", "APPLE", new BigDecimal("150.00"),
-                            "ACTIVE");
+                            "Steady");
 
     Portfolio portfolio = new Portfolio(UUID.randomUUID(),
                                         new BigDecimal("10000.00"));

@@ -3,6 +3,8 @@ package business.stockmarket;
 import shared.configuration.AppConfig;
 import shared.logging.Logger;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class MarketTickHandler implements Runnable
 {
   private final StockMarket stockMarket;
@@ -25,9 +27,16 @@ public class MarketTickHandler implements Runnable
 
       logger.log("Info - ", "Markedet blev opdateret");
 
+
+      int base = AppConfig.getInstance().getUpdateFrequencyInMs();
+      int varience = base / 2;
+      int freqUpdate = ThreadLocalRandom.current().nextInt(-varience,
+                                                           varience + 1)+base ;
+
       try
       {
-        Thread.sleep(AppConfig.getInstance().getUpdateFrequencyInMs());
+        System.out.println(freqUpdate);
+        Thread.sleep(freqUpdate);
       }
       catch (InterruptedException e)
       {
