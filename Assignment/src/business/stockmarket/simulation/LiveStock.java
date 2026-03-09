@@ -38,7 +38,7 @@ public class LiveStock
     }
   }
 
-  public void setState(LiveStockState currentState)
+  void setState(LiveStockState currentState)
   {
     String oldState =
         this.currentState == null ? "none" : this.currentState.getStateName();
