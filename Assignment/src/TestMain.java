@@ -1,9 +1,15 @@
+import business.services.StockAlertService;
+import business.services.StockBankruptService;
+import business.services.StockListenerService;
 import business.stockmarket.MarketTickHandler;
 import business.stockmarket.StockMarket;
+import business.stockmarket.StockMarketListener;
 import business.stockmarket.simulation.LiveStock;
 import entities.Stock;
 import persistence.fileimplementation.FileUnitOfWork;
+import persistence.fileimplementation.StockFileDAO;
 import persistence.fileimplementation.StockPriceHistoryFileDAO;
+import persistence.interfaces.StockDAO;
 import persistence.interfaces.StockPriceHistoryDAO;
 
 import java.util.List;
@@ -14,11 +20,8 @@ public class TestMain
   {
     FileUnitOfWork uow = new FileUnitOfWork("data/");
 
-    StockPriceHistoryDAO dao = new StockPriceHistoryFileDAO(uow);
-    StockMarket stockMarket = StockMarket.getInstance(dao);
+    StockMarket stockMarket = StockMarket.getInstance();
     MarketTickHandler thread = new MarketTickHandler(stockMarket);
-    StockPriceHistoryDAO stockPriceHistoryDAO = new StockPriceHistoryFileDAO(
-        uow);
 
     List<Stock> stocks = uow.getStocks();
 
@@ -45,6 +48,25 @@ public class TestMain
     ns.join();
 
     uow.commit();
+
+
+    StockDAO stockDAO = new StockFileDAO(uow);
+    StockPriceHistoryDAO historyDAO = new StockPriceHistoryFileDAO(uow);
+
+    StockMarket stockMarket1 = StockMarket.getInstance();
+
+    StockListenerService stockListenerService = new StockListenerService(uow, stockDAO, historyDAO);
+    StockBankruptService stockBankruptService = new StockBankruptService();
+    StockAlertService stockAlertService = new StockAlertService();
+
+    stockMarket1.addListener(stockListenerService);
+    stockMarket1.addListener(stockBankruptService);
+    stockMarket1.addListener(stockAlertService);
+
+    stockMarket1.updateAllStocks();
+
+
+
 
   }
 

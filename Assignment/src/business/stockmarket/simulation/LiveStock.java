@@ -17,7 +17,7 @@ public class LiveStock
     this.currentPrice = AppConfig.getInstance().getStartingBalance();
   }
 
-  public LiveStock(String stockSymbol, LiveStockState currentState,
+  LiveStock(String stockSymbol, LiveStockState currentState,
                    double currentPrice)
   {
     this.stockSymbol  = stockSymbol;

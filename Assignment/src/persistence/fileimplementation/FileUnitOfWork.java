@@ -236,8 +236,8 @@ public class FileUnitOfWork implements UnitOfWork
       throw new RuntimeException("Ugyldig linje for portfolio: " + line);
     }
 
-    UUID id = UUID.fromString(parts[0]);
-    BigDecimal balance = new BigDecimal(parts[1]);
+    UUID id = UUID.fromString(parts[0].trim());
+    BigDecimal balance = new BigDecimal(parts[1].trim());
     return new Portfolio(id, balance);
   }
 
@@ -249,10 +249,10 @@ public class FileUnitOfWork implements UnitOfWork
     {
       throw new RuntimeException("Ugyldig linje for stock: " + line);
     }
-    String symbol = parts[0];
-    String name = parts[1];
-    BigDecimal currentPrice = new BigDecimal(parts[2]);
-    String currentState = parts[3];
+    String symbol = parts[0].trim();
+    String name = parts[1].trim();
+    BigDecimal currentPrice = new BigDecimal(parts[2].trim());
+    String currentState = parts[3].trim();
     return new Stock(symbol, name, currentPrice, currentState);
   }
 
@@ -264,10 +264,10 @@ public class FileUnitOfWork implements UnitOfWork
     {
       throw new RuntimeException("Ugyldig linje for ownedstock " + line);
     }
-    UUID ownedStockId = UUID.fromString(parts[0]);
-    UUID portfolioId = UUID.fromString(parts[1]);
-    String stockSymbol = parts[2];
-    int numberOfShares = Integer.parseInt(parts[3]);
+    UUID ownedStockId = UUID.fromString(parts[0].trim());
+    UUID portfolioId = UUID.fromString(parts[1].trim());
+    String stockSymbol = parts[2].trim();
+    int numberOfShares = Integer.parseInt(parts[3].trim());
 
     return new OwnedStock(ownedStockId, portfolioId, stockSymbol,
                           numberOfShares);
@@ -378,10 +378,10 @@ public class FileUnitOfWork implements UnitOfWork
       throw new RuntimeException("Ugyldig linje for transaction " + line);
     }
 
-    return new Transaction(UUID.fromString(parts[0]), UUID.fromString(parts[1]),
-                           parts[2], parts[3], Integer.parseInt(parts[4]),
-                           new BigDecimal(parts[5]), new BigDecimal(parts[6]),
-                           new BigDecimal(parts[7]), Instant.parse(parts[8]));
+    return new Transaction(UUID.fromString(parts[0].trim()), UUID.fromString(parts[1].trim()),
+                           parts[2].trim(), parts[3].trim(), Integer.parseInt(parts[4].trim()),
+                           new BigDecimal(parts[5].trim()), new BigDecimal(parts[6].trim()),
+                           new BigDecimal(parts[7].trim()), Instant.parse(parts[8].trim()));
   }
 
   private void writeTransactionsToFile()
@@ -455,9 +455,9 @@ public class FileUnitOfWork implements UnitOfWork
           "Ugyldig linje for StockPriceHistory: " + line);
     }
 
-    return new StockPriceHistory(UUID.fromString(parts[0]), parts[1],
-                                 new BigDecimal(parts[2]),
-                                 Instant.parse(parts[3]));
+    return new StockPriceHistory(UUID.fromString(parts[0].trim()), parts[1].trim(),
+                                 new BigDecimal(parts[2].trim()),
+                                 Instant.parse(parts[3].trim()));
   }
   // TODO
   //  Forenkel udgaven af hvordan der skrives og loades fra filer med generics.

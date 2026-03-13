@@ -2,15 +2,10 @@ package business.stockmarket;
 
 import business.stockmarket.simulation.LiveStock;
 import entities.Stock;
-import entities.StockPriceHistory;
-import persistence.interfaces.StockPriceHistoryDAO;
 import shared.logging.Logger;
 
-import java.math.BigDecimal;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class StockMarket
 {
@@ -18,23 +13,40 @@ public class StockMarket
   private static StockMarket instance;
   private final List<LiveStock> liveStocks;
   private final Logger logger;
-  private final StockPriceHistoryDAO stockPriceHistoryDAO;
+  private final List<StockMarketListener> listeners;
 
-  private StockMarket(StockPriceHistoryDAO stockPriceHistoryDAO)
+  private StockMarket()
   {
-    this.liveStocks           = new ArrayList<>();
-    this.logger               = Logger.getInstance();
-    this.stockPriceHistoryDAO = stockPriceHistoryDAO;
+    this.liveStocks = new ArrayList<>();
+    this.logger     = Logger.getInstance();
+    this.listeners  = new ArrayList<>();
   }
 
-  public static StockMarket getInstance(
-      StockPriceHistoryDAO stockPriceHistoryDAO)
+  public static StockMarket getInstance()
   {
     if (instance == null)
     {
-      instance = new StockMarket(stockPriceHistoryDAO);
+      instance = new StockMarket();
     }
     return instance;
+  }
+
+  public void addListener(StockMarketListener listener)
+  {
+    listeners.add(listener);
+  }
+
+  public void removeListener(StockMarketListener listener)
+  {
+    listeners.remove(listener);
+  }
+
+  private void notifyStockUpdate(LiveStock liveStock)
+  {
+    for (StockMarketListener listener : listeners)
+    {
+      listener.onStockUpdated(liveStock);
+    }
   }
 
   public void addNewStock(String stockSymbol)
@@ -65,14 +77,7 @@ public class StockMarket
                                         liveStock.getCurrentStateName());
 
       logger.log("Info", logMessage);
-
-      StockPriceHistory history = new StockPriceHistory(UUID.randomUUID(),
-                                                        liveStock.getStockSymbol(),
-                                                        BigDecimal.valueOf(
-                                                            liveStock.getCurrentPrice()),
-                                                        Instant.now());
-
-      stockPriceHistoryDAO.create(history);
+      notifyStockUpdate(liveStock);
     }
   }
 
