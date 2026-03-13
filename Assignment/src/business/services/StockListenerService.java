@@ -4,9 +4,9 @@ import business.stockmarket.StockMarketListener;
 import business.stockmarket.simulation.LiveStock;
 import entities.Stock;
 import entities.StockPriceHistory;
-import persistence.fileimplementation.FileUnitOfWork;
 import persistence.interfaces.StockDAO;
 import persistence.interfaces.StockPriceHistoryDAO;
+import persistence.interfaces.UnitOfWork;
 import shared.logging.Logger;
 
 import java.math.BigDecimal;
@@ -18,11 +18,11 @@ public class StockListenerService implements StockMarketListener
 {
 
   private final Logger logger;
-  private final FileUnitOfWork uow;
+  private final UnitOfWork uow;
   private final StockDAO stockDAO;
   private final StockPriceHistoryDAO stockPriceHistoryDAO;
 
-  public StockListenerService(FileUnitOfWork uow, StockDAO stockDAO,
+  public StockListenerService(UnitOfWork uow, StockDAO stockDAO,
                               StockPriceHistoryDAO stockPriceHistoryDAO)
   {
     this.logger               = Logger.getInstance();
@@ -48,6 +48,7 @@ public class StockListenerService implements StockMarketListener
       {
         logger.log("Error",
                    "Stock blev ikke fundet: " + liveStock.getStockSymbol());
+        uow.rollback();
         return;
       }
 

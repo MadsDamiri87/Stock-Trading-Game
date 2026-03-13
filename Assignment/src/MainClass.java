@@ -3,8 +3,10 @@ import business.services.StockBankruptService;
 import business.services.StockListenerService;
 import business.stockmarket.StockMarket;
 import persistence.fileimplementation.FileUnitOfWork;
+import persistence.fileimplementation.OwnedStockFileDAO;
 import persistence.fileimplementation.StockFileDAO;
 import persistence.fileimplementation.StockPriceHistoryFileDAO;
+import persistence.interfaces.OwnedStockDAO;
 import persistence.interfaces.StockDAO;
 import persistence.interfaces.StockPriceHistoryDAO;
 
@@ -20,8 +22,10 @@ public class MainClass
 
     StockPriceHistoryDAO historyDAO = new StockPriceHistoryFileDAO(uow);
 
+    OwnedStockDAO ownedStockDAO = new OwnedStockFileDAO(uow);
+
     StockListenerService stockListenerService = new StockListenerService(uow, stockDAO, historyDAO);
-    StockBankruptService stockBankruptService = new StockBankruptService();
+    StockBankruptService stockBankruptService = new StockBankruptService(uow, ownedStockDAO);
     StockAlertService stockAlertService = new StockAlertService();
 
     stockMarket1.addListener(stockListenerService);

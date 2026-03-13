@@ -7,8 +7,10 @@ import business.stockmarket.StockMarketListener;
 import business.stockmarket.simulation.LiveStock;
 import entities.Stock;
 import persistence.fileimplementation.FileUnitOfWork;
+import persistence.fileimplementation.OwnedStockFileDAO;
 import persistence.fileimplementation.StockFileDAO;
 import persistence.fileimplementation.StockPriceHistoryFileDAO;
+import persistence.interfaces.OwnedStockDAO;
 import persistence.interfaces.StockDAO;
 import persistence.interfaces.StockPriceHistoryDAO;
 
@@ -55,8 +57,10 @@ public class TestMain
 
     StockMarket stockMarket1 = StockMarket.getInstance();
 
+    OwnedStockDAO ownedStockDAO = new OwnedStockFileDAO(uow);
+
     StockListenerService stockListenerService = new StockListenerService(uow, stockDAO, historyDAO);
-    StockBankruptService stockBankruptService = new StockBankruptService();
+    StockBankruptService stockBankruptService = new StockBankruptService(uow, ownedStockDAO);
     StockAlertService stockAlertService = new StockAlertService();
 
     stockMarket1.addListener(stockListenerService);
