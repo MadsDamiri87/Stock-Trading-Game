@@ -3,12 +3,14 @@ package business.services;
 import business.stockmarket.StockMarketListener;
 import business.stockmarket.simulation.LiveStock;
 import entities.OwnedStock;
-import persistence.fileimplementation.OwnedStockFileDAO;
 import persistence.interfaces.OwnedStockDAO;
 import persistence.interfaces.UnitOfWork;
 import shared.logging.Logger;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class StockBankruptService implements StockMarketListener
 {
@@ -16,29 +18,40 @@ public class StockBankruptService implements StockMarketListener
   private final Logger logger;
   private final UnitOfWork uow;
   private final OwnedStockDAO ownedStockDAO;
+  private final Set<String> handledBankruptStocks = new HashSet<>();
 
-  public StockBankruptService(UnitOfWork uow,
-                              OwnedStockDAO ownedStockDAO)
+  public StockBankruptService(UnitOfWork uow, OwnedStockDAO ownedStockDAO)
   {
-    this.logger            = Logger.getInstance();
-    this.uow               = uow;
+    this.logger        = Logger.getInstance();
+    this.uow           = uow;
     this.ownedStockDAO = ownedStockDAO;
   }
 
   @Override public void onStockUpdated(LiveStock liveStock)
   {
-    if (!liveStock.getCurrentStateName().equalsIgnoreCase("Bankrupt"))
+    String symbol = liveStock.getStockSymbol();
+    String state = liveStock.getCurrentStateName();
+
+    if (!state.equalsIgnoreCase("Bankrupt"))
+    {
+      handledBankruptStocks.remove(symbol);
+      return;
+    }
+
+    if (handledBankruptStocks.contains(symbol))
     {
       return;
     }
 
-    logger.log("Info", "Stock " + liveStock.getStockSymbol()
-        + " er bankrupt. Tjekker OwnedStock.");
+    handledBankruptStocks.add(symbol);
+
+    logger.log("Info", "Stock " + symbol + " er bankrupt. Tjekker OwnedStock.");
+
     try
     {
       uow.beginTransaction();
 
-      List<OwnedStock> ownedStocks = ownedStockDAO.getAll();
+      List<OwnedStock> ownedStocks = new ArrayList<>(ownedStockDAO.getAll());
       boolean found = false;
 
       for (OwnedStock ownedStock : ownedStocks)
@@ -47,9 +60,9 @@ public class StockBankruptService implements StockMarketListener
                       .equalsIgnoreCase(liveStock.getStockSymbol()))
         {
           found = true;
+          ownedStockDAO.delete(ownedStock.getOwnedStockId());
           logger.log("Info",
                      "OwnedStock slettet for: " + liveStock.getStockSymbol());
-
         }
       }
       if (!found)
@@ -63,6 +76,7 @@ public class StockBankruptService implements StockMarketListener
     catch (Exception e)
     {
       uow.rollback();
+      handledBankruptStocks.remove(symbol);
       logger.log("Error", "Fejl i StockBankruptService: " + e.getMessage());
       throw new RuntimeException("Fejl ved håndtering af bankrupt stock", e);
     }
