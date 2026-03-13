@@ -31,7 +31,7 @@ public class MarketTickHandler implements Runnable
 
       int base = AppConfig.getInstance().getUpdateFrequencyInMs();
       int varience = base / 2;
-      int upperBound = varience +1;
+      int upperBound = varience + 1;
       int freqUpdate =
           ThreadLocalRandom.current().nextInt(-varience, upperBound) + base;
 

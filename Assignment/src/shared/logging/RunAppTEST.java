@@ -6,7 +6,7 @@ public class RunAppTEST
   {
     Logger logger = Logger.getInstance();
 
-    // Linje 13+14 er ikke nødvendige da jeg allerede har
+    // Linje 15+16 er ikke nødvendige da jeg allerede har
     // output sat til newConsoleLogOutput inde i Logger.
     // De er kun med for at demonstrere at setOutput virker.
     LogOutput consoleOutPut = new ConsoleLogOutput();

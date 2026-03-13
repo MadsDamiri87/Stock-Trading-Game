@@ -5,6 +5,7 @@ public class Logger
 
   private static Logger instance;
   private LogOutput output;
+  private final String className = getClass().getSimpleName();
 
   private Logger()
   {
@@ -22,7 +23,11 @@ public class Logger
 
   public synchronized void log(String level, String message)
   {
-    output.log(level, message);
+    String className = Thread.currentThread().getStackTrace()[3].getClassName();
+
+    className = className.substring(className.lastIndexOf('.') + 1);
+
+    output.log(className, level, message);
   }
 
   public void setOutput(LogOutput output)

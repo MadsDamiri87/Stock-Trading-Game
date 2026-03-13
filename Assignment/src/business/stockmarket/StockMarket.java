@@ -11,15 +11,13 @@ public class StockMarket
 {
 
   private static StockMarket instance;
-  private final List<LiveStock> liveStocks;
-  private final Logger logger;
-  private final List<StockMarketListener> listeners;
+  private final List<LiveStock> liveStocks = new ArrayList<>();
+  private final Logger logger = Logger.getInstance();
+  private final List<StockMarketListener> listeners = new ArrayList<>();
 
   private StockMarket()
   {
-    this.liveStocks = new ArrayList<>();
-    this.logger     = Logger.getInstance();
-    this.listeners  = new ArrayList<>();
+
   }
 
   public static StockMarket getInstance()
@@ -41,7 +39,7 @@ public class StockMarket
     listeners.remove(listener);
   }
 
-  private void notifyStockUpdate(LiveStock liveStock)
+  void notifyStockUpdate(LiveStock liveStock)
   {
     for (StockMarketListener listener : listeners)
     {

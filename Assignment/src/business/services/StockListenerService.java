@@ -44,7 +44,7 @@ public class StockListenerService implements StockMarketListener
     listeners.remove(listener);
   }
 
-  private void notifyStockUpdated(Stock stock)
+  void notifyStockUpdated(Stock stock)
   {
     for (StockUpdateListener listener : listeners)
     {
@@ -93,6 +93,7 @@ public class StockListenerService implements StockMarketListener
       logger.log("Info", "Stock " + stock.getSymbol() + " blev opdateret"
           + " og pricehistory blev gemt");
 
+      logger.log("Debug", "Notifying presentation listeners");
       notifyStockUpdated(stock);
     }
     catch (Exception e)
@@ -101,8 +102,6 @@ public class StockListenerService implements StockMarketListener
       logger.log("Error", "Fejl i StockListenerService: " + e.getMessage());
       throw new RuntimeException("Fejl ved opdateringen af stock", e);
     }
-
-
 
   }
 

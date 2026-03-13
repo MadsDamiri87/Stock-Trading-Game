@@ -31,11 +31,12 @@ public class StockSetupService
 
       if (optionalStock.isPresent())
       {
-        logger.log("Info", "Stock " + symbol + " findes allerede");
+        logger.log("Info", "Stock " + symbol + " findes allerede - ");
+        uow.rollback();
         return optionalStock.get();
 
       }
-      logger.log("Info", "Opretter ny stock: " + symbol);
+      logger.log("Info", "Opretter ny stock: " + symbol + " from class: ");
       Stock stock = new Stock(symbol, name, price, state);
       stockDAO.create(stock);
 
