@@ -3,8 +3,6 @@ import business.services.StockBankruptService;
 import business.services.StockListenerService;
 import business.stockmarket.MarketTickHandler;
 import business.stockmarket.StockMarket;
-import business.stockmarket.StockMarketListener;
-import business.stockmarket.simulation.LiveStock;
 import entities.Stock;
 import persistence.fileimplementation.FileUnitOfWork;
 import persistence.fileimplementation.OwnedStockFileDAO;

@@ -11,6 +11,8 @@ import shared.logging.Logger;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -21,6 +23,7 @@ public class StockListenerService implements StockMarketListener
   private final UnitOfWork uow;
   private final StockDAO stockDAO;
   private final StockPriceHistoryDAO stockPriceHistoryDAO;
+  private final List<StockUpdateListener> listeners = new ArrayList<>();
 
   public StockListenerService(UnitOfWork uow, StockDAO stockDAO,
                               StockPriceHistoryDAO stockPriceHistoryDAO)
@@ -29,6 +32,24 @@ public class StockListenerService implements StockMarketListener
     this.uow                  = uow;
     this.stockDAO             = stockDAO;
     this.stockPriceHistoryDAO = stockPriceHistoryDAO;
+  }
+
+  public void addListener(StockUpdateListener listener)
+  {
+    listeners.add(listener);
+  }
+
+  public void removeListener(StockUpdateListener listener)
+  {
+    listeners.remove(listener);
+  }
+
+  private void notifyStockUpdated(Stock stock)
+  {
+    for (StockUpdateListener listener : listeners)
+    {
+      listener.onStockUpdated(stock);
+    }
   }
 
   @Override public void onStockUpdated(LiveStock liveStock)
@@ -71,6 +92,8 @@ public class StockListenerService implements StockMarketListener
 
       logger.log("Info", "Stock " + stock.getSymbol() + " blev opdateret"
           + " og pricehistory blev gemt");
+
+      notifyStockUpdated(stock);
     }
     catch (Exception e)
     {
@@ -78,6 +101,7 @@ public class StockListenerService implements StockMarketListener
       logger.log("Error", "Fejl i StockListenerService: " + e.getMessage());
       throw new RuntimeException("Fejl ved opdateringen af stock", e);
     }
+
 
 
   }

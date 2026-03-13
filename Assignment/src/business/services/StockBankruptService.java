@@ -57,18 +57,18 @@ public class StockBankruptService implements StockMarketListener
       for (OwnedStock ownedStock : ownedStocks)
       {
         if (ownedStock.getStockSymbol()
-                      .equalsIgnoreCase(liveStock.getStockSymbol()))
+                      .equalsIgnoreCase(symbol))
         {
           found = true;
           ownedStockDAO.delete(ownedStock.getOwnedStockId());
           logger.log("Info",
-                     "OwnedStock slettet for: " + liveStock.getStockSymbol());
+                     "OwnedStock slettet for: " + symbol);
         }
       }
       if (!found)
       {
         logger.log("Info", "Ingen OwnedStock fundet for bankrupt stock: "
-            + liveStock.getStockSymbol());
+            + symbol);
       }
 
       uow.commit();

@@ -11,6 +11,7 @@ import persistence.fileimplementation.StockPriceHistoryFileDAO;
 import persistence.interfaces.OwnedStockDAO;
 import persistence.interfaces.StockDAO;
 import persistence.interfaces.StockPriceHistoryDAO;
+import presentation.listeners.StockPresentationListener;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -32,21 +33,24 @@ public class testclass
         new StockListenerService(uow, stockDAO, historyDAO);
     StockBankruptService stockBankruptService = new StockBankruptService(uow, ownedStockDAO);
     StockAlertService stockAlertService = new StockAlertService();
-//
-//    stockMarket.addListener(stockListenerService);
-//    stockMarket.addListener(stockBankruptService);
-//    stockMarket.addListener(stockAlertService);
-//
-//    Optional<Stock> existing = stockDAO.getBySymbol("AAPL");
-//
-//    StockSetupService setupService = new StockSetupService(stockDAO);
-//
-//    Stock stock = setupService.getOrCreateStock("APPL", "Apple",
-//                                                BigDecimal.valueOf(150),
-//                                                "Steady");
-//    stockMarket.addExistingStock(stock);
 
 
+    stockMarket.addListener(stockAlertService);
+    stockMarket.addListener(stockListenerService);
+    stockMarket.addListener(stockBankruptService);
+
+    Optional<Stock> existing = stockDAO.getBySymbol("APPL");
+
+    StockSetupService setupService = new StockSetupService(uow,stockDAO);
+
+    Stock stock = setupService.getOrCreateStock("APPL", "Apple",
+                                                BigDecimal.valueOf(150),
+                                                "Steady");
+    stockMarket.addExistingStock(stock);
+
+    StockPresentationListener uiListener = new StockPresentationListener();
+
+    stockListenerService.addListener(uiListener);
 
 
 

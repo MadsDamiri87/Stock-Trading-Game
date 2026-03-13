@@ -61,7 +61,7 @@ public class StockMarket
     LiveStock liveStk = new LiveStock(stock.getSymbol());
     liveStocks.add(liveStk);
 
-    logger.log("Info - ", "Eksisterende Stock tilføjet som LiveStock: "
+    logger.log("Info", "Eksisterende Stock tilføjet som LiveStock: "
         + stock.getSymbol());
   }
 
