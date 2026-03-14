@@ -1,15 +1,14 @@
 package presentation.listeners;
 
 import business.services.StockUpdateListener;
-import entities.Stock;
+import business.services.StockUpdatedEvent;
 
 public class StockPresentationListener implements StockUpdateListener
 {
-
-  @Override public void onStockUpdated(Stock stock)
+  @Override public void onStockUpdated(StockUpdatedEvent event)
   {
-    System.out.println("UI update -> " + stock.getSymbol() + " | Price: "
-                           + stock.getCurrentPrice() + " | State: "
-                           + stock.getCurrentState());
+    System.out.println(
+        "UI update: " + event.symbol() + " | Price: " + event.currentState()
+            + " | State: " + event.currentState());
   }
 }

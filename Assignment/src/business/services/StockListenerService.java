@@ -46,9 +46,13 @@ public class StockListenerService implements StockMarketListener
 
   void notifyStockUpdated(Stock stock)
   {
+    StockUpdatedEvent event = new StockUpdatedEvent(stock.getSymbol(),
+                                                    stock.getCurrentPrice(),
+                                                    stock.getCurrentState());
+
     for (StockUpdateListener listener : listeners)
     {
-      listener.onStockUpdated(stock);
+      listener.onStockUpdated(event);
     }
   }
 

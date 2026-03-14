@@ -378,10 +378,13 @@ public class FileUnitOfWork implements UnitOfWork
       throw new RuntimeException("Ugyldig linje for transaction " + line);
     }
 
-    return new Transaction(UUID.fromString(parts[0].trim()), UUID.fromString(parts[1].trim()),
-                           parts[2].trim(), parts[3].trim(), Integer.parseInt(parts[4].trim()),
-                           new BigDecimal(parts[5].trim()), new BigDecimal(parts[6].trim()),
-                           new BigDecimal(parts[7].trim()), Instant.parse(parts[8].trim()));
+    return new Transaction(UUID.fromString(parts[0].trim()),
+                           UUID.fromString(parts[1].trim()), parts[2].trim(),
+                           parts[3].trim(), Integer.parseInt(parts[4].trim()),
+                           new BigDecimal(parts[5].trim()),
+                           new BigDecimal(parts[6].trim()),
+                           new BigDecimal(parts[7].trim()),
+                           Instant.parse(parts[8].trim()));
   }
 
   private void writeTransactionsToFile()
@@ -455,7 +458,8 @@ public class FileUnitOfWork implements UnitOfWork
           "Ugyldig linje for StockPriceHistory: " + line);
     }
 
-    return new StockPriceHistory(UUID.fromString(parts[0].trim()), parts[1].trim(),
+    return new StockPriceHistory(UUID.fromString(parts[0].trim()),
+                                 parts[1].trim(),
                                  new BigDecimal(parts[2].trim()),
                                  Instant.parse(parts[3].trim()));
   }
