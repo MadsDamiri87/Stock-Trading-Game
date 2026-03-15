@@ -50,7 +50,7 @@ public class testclass
 
     StockPresentationListener uiListener = new StockPresentationListener();
 
-    stockListenerService.addListener(uiListener);
+    stockMarket.addListener(uiListener);
 
 
 

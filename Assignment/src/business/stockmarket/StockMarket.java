@@ -17,7 +17,6 @@ public class StockMarket
 
   private StockMarket()
   {
-
   }
 
   public static StockMarket getInstance()
@@ -39,11 +38,11 @@ public class StockMarket
     listeners.remove(listener);
   }
 
-  void notifyStockUpdate(LiveStock liveStock)
+  private void notifyStockUpdate(StockMarketUpdateEvent event)
   {
     for (StockMarketListener listener : listeners)
     {
-      listener.onStockUpdated(liveStock);
+      listener.onStockUpdated(event);
     }
   }
 
@@ -74,8 +73,13 @@ public class StockMarket
                                         liveStock.getCurrentPrice(),
                                         liveStock.getCurrentStateName());
 
+
       logger.log("Info", logMessage);
-      notifyStockUpdate(liveStock);
+
+      StockMarketUpdateEvent event = new StockMarketUpdateEvent(
+          liveStock.getStockSymbol(), liveStock.getCurrentPrice(),
+          liveStock.getCurrentStateName());
+      notifyStockUpdate(event);
     }
   }
 

@@ -1,7 +1,7 @@
 package business.services;
 
 import business.stockmarket.StockMarketListener;
-import business.stockmarket.simulation.LiveStock;
+import business.stockmarket.StockMarketUpdateEvent;
 import entities.Stock;
 import entities.StockPriceHistory;
 import persistence.interfaces.StockDAO;
@@ -11,8 +11,6 @@ import shared.logging.Logger;
 
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -23,7 +21,6 @@ public class StockListenerService implements StockMarketListener
   private final UnitOfWork uow;
   private final StockDAO stockDAO;
   private final StockPriceHistoryDAO stockPriceHistoryDAO;
-  private final List<StockUpdateListener> listeners = new ArrayList<>();
 
   public StockListenerService(UnitOfWork uow, StockDAO stockDAO,
                               StockPriceHistoryDAO stockPriceHistoryDAO)
@@ -34,60 +31,39 @@ public class StockListenerService implements StockMarketListener
     this.stockPriceHistoryDAO = stockPriceHistoryDAO;
   }
 
-  public void addListener(StockUpdateListener listener)
-  {
-    listeners.add(listener);
-  }
 
-  public void removeListener(StockUpdateListener listener)
-  {
-    listeners.remove(listener);
-  }
-
-  void notifyStockUpdated(Stock stock)
-  {
-    StockUpdatedEvent event = new StockUpdatedEvent(stock.getSymbol(),
-                                                    stock.getCurrentPrice(),
-                                                    stock.getCurrentState());
-
-    for (StockUpdateListener listener : listeners)
-    {
-      listener.onStockUpdated(event);
-    }
-  }
-
-  @Override public void onStockUpdated(LiveStock liveStock)
+  @Override public void onStockUpdated(StockMarketUpdateEvent event)
   {
 
     logger.log("Info", "StockListenerService modtog update for: "
-        + liveStock.getStockSymbol());
+        + event.stockSymbol());
 
     try
     {
       uow.beginTransaction();
 
       Optional<Stock> optionalStock = stockDAO.getBySymbol(
-          liveStock.getStockSymbol());
+          event.stockSymbol());
 
       if (optionalStock.isEmpty())
       {
         logger.log("Error",
-                   "Stock blev ikke fundet: " + liveStock.getStockSymbol());
+                   "Stock blev ikke fundet: " + event.stockSymbol());
         uow.rollback();
         return;
       }
 
       Stock stock = optionalStock.get();
 
-      stock.setCurrentPrice(BigDecimal.valueOf(liveStock.getCurrentPrice()));
-      stock.setCurrentState(liveStock.getCurrentStateName());
+      stock.setCurrentPrice(BigDecimal.valueOf(event.currentPrice()));
+      stock.setCurrentState(event.currentState());
 
       stockDAO.update(stock);
 
       StockPriceHistory history = new StockPriceHistory(UUID.randomUUID(),
-                                                        liveStock.getStockSymbol(),
+                                                        event.stockSymbol(),
                                                         BigDecimal.valueOf(
-                                                            liveStock.getCurrentPrice()),
+                                                            event.currentPrice()),
                                                         Instant.now());
 
       stockPriceHistoryDAO.create(history);
@@ -96,9 +72,6 @@ public class StockListenerService implements StockMarketListener
 
       logger.log("Info", "Stock " + stock.getSymbol() + " blev opdateret"
           + " og pricehistory blev gemt");
-
-      logger.log("Debug", "Notifying presentation listeners");
-      notifyStockUpdated(stock);
     }
     catch (Exception e)
     {

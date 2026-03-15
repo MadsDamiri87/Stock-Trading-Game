@@ -1,7 +1,7 @@
 package business.services;
 
 import business.stockmarket.StockMarketListener;
-import business.stockmarket.simulation.LiveStock;
+import business.stockmarket.StockMarketUpdateEvent;
 import shared.logging.Logger;
 
 public class StockAlertService implements StockMarketListener
@@ -13,11 +13,11 @@ public class StockAlertService implements StockMarketListener
     this.logger = Logger.getInstance();
   }
 
-  @Override public void onStockUpdated(LiveStock liveStock)
+  @Override public void onStockUpdated(StockMarketUpdateEvent event)
   {
-    String symbol = liveStock.getStockSymbol();
-    double price = liveStock.getCurrentPrice();
-    String state = liveStock.getCurrentStateName();
+    String symbol = event.stockSymbol();
+    double price = event.currentPrice();
+    String state = event.currentState();
 
     if (state.equalsIgnoreCase("Bankrupt"))
     {

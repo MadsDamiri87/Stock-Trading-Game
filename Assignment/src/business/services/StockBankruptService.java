@@ -1,7 +1,7 @@
 package business.services;
 
 import business.stockmarket.StockMarketListener;
-import business.stockmarket.simulation.LiveStock;
+import business.stockmarket.StockMarketUpdateEvent;
 import entities.OwnedStock;
 import persistence.interfaces.OwnedStockDAO;
 import persistence.interfaces.UnitOfWork;
@@ -27,10 +27,10 @@ public class StockBankruptService implements StockMarketListener
     this.ownedStockDAO = ownedStockDAO;
   }
 
-  @Override public void onStockUpdated(LiveStock liveStock)
+  @Override public void onStockUpdated(StockMarketUpdateEvent event)
   {
-    String symbol = liveStock.getStockSymbol();
-    String state = liveStock.getCurrentStateName();
+    String symbol = event.stockSymbol();
+    String state = event.currentState();
 
     if (!state.equalsIgnoreCase("Bankrupt"))
     {
