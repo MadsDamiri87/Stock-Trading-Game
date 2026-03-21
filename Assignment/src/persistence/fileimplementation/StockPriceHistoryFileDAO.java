@@ -31,7 +31,7 @@ public class StockPriceHistoryFileDAO implements StockPriceHistoryDAO
 
     for (StockPriceHistory h : uow.getStockPriceHistories())
     {
-      if (h.getStockSymbolId().equals(symbol))
+      if (h.getStockSymbolId().equalsIgnoreCase(symbol))
       {
         result.add(h);
       }

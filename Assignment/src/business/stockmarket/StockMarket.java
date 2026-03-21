@@ -30,7 +30,14 @@ public class StockMarket
 
   public void addListener(StockMarketListener listener)
   {
-    listeners.add(listener);
+    if (listener == null)
+    {
+      throw new IllegalArgumentException("Listner cannot be null");
+    }
+    if (!listeners.contains(listener))
+    {
+      listeners.add(listener);
+    }
   }
 
   public void removeListener(StockMarketListener listener)
@@ -42,21 +49,62 @@ public class StockMarket
   {
     for (StockMarketListener listener : listeners)
     {
-      listener.onStockUpdated(event);
+      try
+      {
+        listener.onStockUpdated(event);
+
+      }
+      catch (Exception e)
+      {
+        logger.log("Error",
+                   "Listener failed for stock " + event.stockSymbol() + ": "
+                       + e.getMessage());
+      }
     }
   }
 
   public void addNewStock(String stockSymbol)
   {
+    boolean alreadyExists = liveStocks.stream().anyMatch(
+        s -> s.getStockSymbol().equalsIgnoreCase(stockSymbol));
+
+    if (alreadyExists)
+    {
+      logger.log("Info", "LiveStock already exists in market: " + stockSymbol);
+      return;
+    }
+
     LiveStock liveStock = new LiveStock(stockSymbol);
     liveStocks.add(liveStock);
-    logger.log("Info - ", "Ny LiveStock tilføjet: " + stockSymbol);
+    logger.log("Info", "Ny LiveStock tilføjet: " + stockSymbol);
   }
 
   public void addExistingStock(Stock stock)
   {
-    LiveStock liveStk = new LiveStock(stock.getSymbol());
-    liveStocks.add(liveStk);
+    if (stock == null)
+    {
+      throw new IllegalArgumentException("Stock cannot be null");
+    }
+    if (stock.getCurrentPrice() == null)
+    {
+      throw new IllegalArgumentException(
+          "Stock price cannot be null for symbol: " + stock.getSymbol());
+    }
+
+    boolean alreadyExists = liveStocks.stream().anyMatch(
+        s -> s.getStockSymbol().equalsIgnoreCase(stock.getSymbol()));
+
+    if (alreadyExists)
+    {
+      logger.log("Info",
+                 "Existing LiveStock already loaded: " + stock.getSymbol());
+      return;
+    }
+
+    LiveStock liveStock = new LiveStock(stock.getSymbol(),
+                                        stock.getCurrentPrice().doubleValue());
+
+    liveStocks.add(liveStock);
 
     logger.log("Info", "Eksisterende Stock tilføjet som LiveStock: "
         + stock.getSymbol());
@@ -73,7 +121,6 @@ public class StockMarket
                                         liveStock.getCurrentPrice(),
                                         liveStock.getCurrentStateName());
 
-
       logger.log("Info", logMessage);
 
       StockMarketUpdateEvent event = new StockMarketUpdateEvent(
@@ -85,6 +132,7 @@ public class StockMarket
 
   public List<LiveStock> getLiveStocks()
   {
-    return liveStocks;
+
+    return List.copyOf(liveStocks);
   }
 }

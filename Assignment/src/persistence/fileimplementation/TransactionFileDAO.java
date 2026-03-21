@@ -60,7 +60,7 @@ public class TransactionFileDAO implements TransactionDAO
 
     for (Transaction transaction : uow.getTransactions())
     {
-      if (transaction.stockSymbol().equals(stockSymbol))
+      if (transaction.stockSymbol().equalsIgnoreCase(stockSymbol))
       {
         result.add(transaction);
       }

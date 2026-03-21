@@ -11,7 +11,6 @@ public class MarketTickHandler implements Runnable
   private final StockMarket stockMarket;
   private final Logger logger;
   private boolean running;
-  private StockPriceHistoryDAO stockPriceHistoryDAO;
 
   public MarketTickHandler(StockMarket stockMarket)
   {
@@ -30,10 +29,10 @@ public class MarketTickHandler implements Runnable
       logger.log("Info - ", "Markedet blev opdateret");
 
       int base = AppConfig.getInstance().getUpdateFrequencyInMs();
-      int varience = base / 2;
-      int upperBound = varience + 1;
+      int variance = base / 2;
+      int upperBound = variance + 1;
       int freqUpdate =
-          ThreadLocalRandom.current().nextInt(-varience, upperBound) + base;
+          ThreadLocalRandom.current().nextInt(-variance, upperBound) + base;
 
       try
       {

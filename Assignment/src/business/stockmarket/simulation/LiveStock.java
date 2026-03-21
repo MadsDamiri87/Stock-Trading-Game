@@ -17,6 +17,13 @@ public class LiveStock
     this.currentPrice = AppConfig.getInstance().getStartingBalance();
   }
 
+  public LiveStock(String stockSymbol, double currentPrice)
+  {
+    this.stockSymbol  = stockSymbol;
+    this.currentState = new SteadyState();
+    this.currentPrice = currentPrice;
+  }
+
   public void updatePrice()
   {
     double priceChange = currentState.calculatePriceChange(this);

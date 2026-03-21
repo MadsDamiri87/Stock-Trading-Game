@@ -28,13 +28,20 @@ public class OwnedStockFileDAO implements OwnedStockDAO
     for (OwnedStock ownedStock : uow.getOwnedStocks())
     {
       if (ownedStock.getPortfolioId().equals(portfolioId)
-          && ownedStock.getStockSymbol().equals(stockSymbol))
+          && ownedStock.getStockSymbol().equalsIgnoreCase(stockSymbol))
       {
         return Optional.of(ownedStock);
       }
 
     }
     return Optional.empty();
+  }
+
+  @Override public List<OwnedStock> getByPortfolioId(UUID portfolioId)
+  {
+    return uow.getOwnedStocks().stream()
+              .filter(stock -> stock.getPortfolioId().equals(portfolioId))
+              .toList();
   }
 
   @Override public void update(OwnedStock update)
