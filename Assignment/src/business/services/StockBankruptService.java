@@ -51,7 +51,7 @@ public class StockBankruptService implements StockMarketListener
     {
       uow.beginTransaction();
 
-      List<OwnedStock> ownedStocks = new ArrayList<>(ownedStockDAO.getAll());
+      List<OwnedStock> ownedStocks = ownedStockDAO.getAll();
       boolean found = false;
 
       for (OwnedStock ownedStock : ownedStocks)

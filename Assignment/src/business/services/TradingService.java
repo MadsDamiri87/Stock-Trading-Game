@@ -1,6 +1,6 @@
 package business.services;
 
-import business.dto.TradeResultDTO;
+import business.dto.TradeRequestDTO;
 import entities.OwnedStock;
 import entities.Portfolio;
 import entities.Stock;
@@ -23,9 +23,8 @@ public class TradingService
   private final TransactionDAO transactionDAO;
   private final Logger logger = Logger.getInstance();
 
-  public TradingService(UnitOfWork uow, PortfolioDAO portfolioDAO,
-                        StockDAO stockDAO, OwnedStockDAO ownedStockDAO,
-                        TransactionDAO transactionDAO)
+  public TradingService(UnitOfWork uow, PortfolioDAO portfolioDAO, StockDAO stockDAO,
+                        OwnedStockDAO ownedStockDAO, TransactionDAO transactionDAO)
   {
     this.uow            = uow;
     this.portfolioDAO   = portfolioDAO;
@@ -34,11 +33,15 @@ public class TradingService
     this.transactionDAO = transactionDAO;
   }
 
-  public TradeResultDTO buyStock(UUID portfolioId, String stockSymbol,
-                                 int quantity)
+  public void buyStock(TradeRequestDTO request)
   {
-    logger.log("Info", "BuyStock started for portfolioID: " + portfolioId
-        + ", stockSymbol: " + stockSymbol + ", quantity: " + quantity);
+    UUID portfolioId = request.portfolieId();
+    String stockSymbol = request.stockSymbol();
+    int quantity = request.quantity();
+
+    logger.log("Info",
+               "BuyStock started for portfolioID: " + portfolioId + ", stockSymbol: " + stockSymbol
+                   + ", quantity: " + quantity);
 
     if (quantity <= 0)
     {
@@ -63,63 +66,58 @@ public class TradingService
       }
 
       BigDecimal pricePerShare = stock.getCurrentPrice();
-      BigDecimal totalAmount = pricePerShare.multiply(
-          BigDecimal.valueOf(quantity));
+      BigDecimal totalAmount = pricePerShare.multiply(BigDecimal.valueOf(quantity));
 
-      BigDecimal feeRate = AppConfig.getInstance().getTransactionFee();
-      BigDecimal fee = totalAmount.multiply(feeRate);
+      BigDecimal fee = AppConfig.getInstance().getTransactionFee();
       BigDecimal totalCost = totalAmount.add(fee);
 
-      if (portfolio.getCurrentBalance().compareTo(totalCost) < 0)
+      BigDecimal portfolioBalance = portfolio.getCurrentBalance();
+
+      boolean insufficientFunds = portfolioBalance.compareTo(totalCost) < 0;
+
+      if (insufficientFunds)
       {
-        logger.log("Error", "Insufficient funds for portfolioId: " + portfolioId
-            + ". Required: " + totalCost + ", available: "
-            + portfolio.getCurrentBalance());
+        logger.log("Error",
+                   "Insufficient funds for portfolioId: " + portfolioId + ". Required: " + totalCost
+                       + ", available: " + portfolio.getCurrentBalance());
         throw new RuntimeException("Insufficient funds");
       }
 
-      portfolio.setCurrentBalance(
-          portfolio.getCurrentBalance().subtract(totalCost));
+      portfolio.setCurrentBalance(portfolio.getCurrentBalance().subtract(totalCost));
       portfolioDAO.update(portfolio);
 
-      OwnedStock ownedStock = ownedStockDAO.getByPortfolioIdAndStockSymbol(
-          portfolioId, stockSymbol).orElse(null);
+      OwnedStock ownedStock = ownedStockDAO.getByPortfolioIdAndStockSymbol(portfolioId, stockSymbol)
+                                           .orElse(null);
 
       if (ownedStock == null)
       {
-        ownedStock = new OwnedStock(UUID.randomUUID(), portfolioId, stockSymbol,
-                                    quantity);
+        ownedStock = new OwnedStock(UUID.randomUUID(), portfolioId, stockSymbol, quantity);
 
         ownedStockDAO.create(ownedStock);
 
-        logger.log("Info", "Created new OwnedStock for symbol: " + stockSymbol
-            + ", quantity: " + quantity);
+        logger.log("Info",
+                   "Created new OwnedStock for symbol: " + stockSymbol + ", quantity: " + quantity);
       }
       else
       {
         ownedStock.setNumberOfShares(ownedStock.getNumberOfShares() + quantity);
         ownedStockDAO.update(ownedStock);
 
-        logger.log("Info", "Updated OwnedStock for symbol: " + stockSymbol
-            + ", new quantity: " + ownedStock.getNumberOfShares());
+        logger.log("Info", "Updated OwnedStock for symbol: " + stockSymbol + ", new quantity: "
+            + ownedStock.getNumberOfShares());
       }
 
-      Transaction transaction = new Transaction(UUID.randomUUID(), portfolioId,
-                                                stockSymbol, "BUY", quantity,
-                                                pricePerShare, totalAmount, fee,
+      Transaction transaction = new Transaction(UUID.randomUUID(), portfolioId, stockSymbol, "BUY",
+                                                quantity, pricePerShare, totalAmount, fee,
                                                 Instant.now());
 
       transactionDAO.create(transaction);
 
       uow.commit();
 
-      logger.log("Info", "BuyStock completed for portfolioId: " + portfolioId
-          + ", stockSymbol: " + stockSymbol + ", quantity: " + quantity
-          + ", new balance: " + portfolio.getCurrentBalance());
-
-      return new TradeResultDTO(stockSymbol, "BUY", quantity, pricePerShare,
-                                fee, totalAmount,
-                                portfolio.getCurrentBalance());
+      logger.log("Info", "BuyStock completed for portfolioId: " + portfolioId + ", stockSymbol: "
+          + stockSymbol + ", quantity: " + quantity + ", new balance: "
+          + portfolio.getCurrentBalance());
 
     }
     catch (Exception e)
@@ -130,11 +128,15 @@ public class TradingService
     }
   }
 
-  public TradeResultDTO sellStock(UUID portfolioId, String stockSymbol,
-                                  int quantity)
+  public void sellStock(TradeRequestDTO request)
   {
-    logger.log("Info", "SellStock started for portfolioID: " + portfolioId
-        + ", stockSymbol: " + stockSymbol + ", quantity: " + quantity);
+    UUID portfolioId = request.portfolieId();
+    String stockSymbol = request.stockSymbol();
+    int quantity = request.quantity();
+
+    logger.log("Info",
+               "SellStock started for portfolioID: " + portfolioId + ", stockSymbol: " + stockSymbol
+                   + ", quantity: " + quantity);
 
     if (quantity <= 0)
     {
@@ -151,22 +153,22 @@ public class TradingService
       Stock stock = stockDAO.getBySymbol(stockSymbol).orElseThrow(
           () -> new RuntimeException("Stock not found: " + stockSymbol));
 
-      OwnedStock ownedStock = ownedStockDAO.getByPortfolioIdAndStockSymbol(
-          portfolioId, stockSymbol).orElseThrow(() -> new RuntimeException(
-          "OwnedStock not found for portfolioId: " + portfolioId
-              + ", stockSymbol: " + stockSymbol));
+      OwnedStock ownedStock = ownedStockDAO.getByPortfolioIdAndStockSymbol(portfolioId, stockSymbol)
+                                           .orElseThrow(() -> new RuntimeException(
+                                               "OwnedStock not found for portfolioId: "
+                                                   + portfolioId + ", stockSymbol: "
+                                                   + stockSymbol));
 
       if (ownedStock.getNumberOfShares() < quantity)
       {
-        logger.log("Error", "Not enough shares to sell. Requested: " + quantity
-            + ", owned: " + ownedStock.getNumberOfShares());
+        logger.log("Error", "Not enough shares to sell. Requested: " + quantity + ", owned: "
+            + ownedStock.getNumberOfShares());
         throw new RuntimeException("Not enough shares to sell");
       }
 
       BigDecimal pricePerShare = stock.getCurrentPrice();
-      BigDecimal totalAmount = pricePerShare.multiply(
-          BigDecimal.valueOf(quantity));
-      BigDecimal fee = totalAmount.multiply(BigDecimal.valueOf(0.015));
+      BigDecimal totalAmount = pricePerShare.multiply(BigDecimal.valueOf(quantity));
+      BigDecimal fee = AppConfig.getInstance().getTransactionFee();;
       BigDecimal payout = totalAmount.subtract(fee);
 
       portfolio.setCurrentBalance(portfolio.getCurrentBalance().add(payout));
@@ -185,25 +187,20 @@ public class TradingService
         ownedStock.setNumberOfShares(remainingShares);
         ownedStockDAO.update(ownedStock);
 
-        logger.log("Info",
-                   "Updated OwnedStock after sale for symbol: " + stockSymbol
-                       + ", remaining shares: " + remainingShares);
+        logger.log("Info", "Updated OwnedStock after sale for symbol: " + stockSymbol
+            + ", remaining shares: " + remainingShares);
       }
 
-      Transaction transaction = new Transaction(UUID.randomUUID(), portfolioId,
-                                                stockSymbol, "SELL", quantity,
-                                                pricePerShare, totalAmount, fee,
+      Transaction transaction = new Transaction(UUID.randomUUID(), portfolioId, stockSymbol, "SELL",
+                                                quantity, pricePerShare, totalAmount, fee,
                                                 Instant.now());
       transactionDAO.create(transaction);
 
       uow.commit();
 
-      logger.log("Info", "SellStock completed for portfolioId: " + portfolioId
-          + ", stockSymbol: " + stockSymbol + ", quantity: " + quantity
-          + ", new balance: " + portfolio.getCurrentBalance());
-
-      return new TradeResultDTO(stockSymbol, "SELL", quantity, pricePerShare,
-                                fee, payout, portfolio.getCurrentBalance());
+      logger.log("Info", "SellStock completed for portfolioId: " + portfolioId + ", stockSymbol: "
+          + stockSymbol + ", quantity: " + quantity + ", new balance: "
+          + portfolio.getCurrentBalance());
 
     }
     catch (Exception e)

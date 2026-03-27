@@ -4,6 +4,7 @@ import entities.OwnedStock;
 import entities.Portfolio;
 import persistence.interfaces.OwnedStockDAO;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -87,7 +88,8 @@ public class OwnedStockFileDAO implements OwnedStockDAO
 
   @Override public List<OwnedStock> getAll()
   {
-    return uow.getOwnedStocks();
+
+    return new ArrayList<>(uow.getOwnedStocks());
   }
 
 }
