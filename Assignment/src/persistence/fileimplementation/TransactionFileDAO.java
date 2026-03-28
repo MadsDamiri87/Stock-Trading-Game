@@ -39,19 +39,10 @@ public class TransactionFileDAO implements TransactionDAO
     return uow.getTransactions();
   }
 
-  @Override public List<Transaction> getByPortfolioId(UUID portfolioId)
+  @Override public List<Transaction> getByPortfolioId(UUID portfolioId, int offset, int limit)
   {
-    List<Transaction> result = new ArrayList<>();
-
-    for (Transaction transaction : uow.getTransactions())
-    {
-      if (transaction.portfolioId().equals(portfolioId))
-      {
-        result.add(transaction);
-      }
-    }
-
-    return result;
+    return getAll().stream().filter((t -> t.portfolioId().equals(portfolioId))).skip(offset)
+                   .limit(limit).toList();
   }
 
   @Override public List<Transaction> getByStockSymbol(String stockSymbol)

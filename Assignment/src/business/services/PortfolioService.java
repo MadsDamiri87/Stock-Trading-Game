@@ -23,8 +23,7 @@ public class PortfolioService
   private final StockDAO stockDAO;
   private final Logger logger = Logger.getInstance();
 
-  public PortfolioService(PortfolioDAO portfolioDAO,
-                          OwnedStockDAO ownedStockDAO,
+  public PortfolioService(PortfolioDAO portfolioDAO, OwnedStockDAO ownedStockDAO,
                           TransactionDAO transactionDAO, StockDAO stockDAO)
   {
     this.portfolioDAO   = portfolioDAO;
@@ -39,16 +38,24 @@ public class PortfolioService
     Portfolio portfolio = portfolioDAO.getById(portfolioId).orElseThrow(
         () -> new RuntimeException("Portfolio not found: " + portfolioId));
 
-    List<OwnedStockDTO> ownedStockDTOs = ownedStockDAO.getByPortfolioId(
-        portfolioId).stream().map(OwnedStockMapper::toOwnedStockDTO).toList();
+    List<OwnedStockDTO> ownedStockDTOs = ownedStockDAO.getByPortfolioId(portfolioId).stream()
+                                                      .map(OwnedStockMapper::toOwnedStockDTO)
+                                                      .toList();
     return PortfolioMapper.toPortfolioDTO(portfolio, ownedStockDTOs);
   }
 
-  public List<TransactionDTO> getTransactionHistory(UUID portfolioId)
+  public List<TransactionDTO> getTransactionHistory(UUID portfolioId, int page, int size)
   {
     logger.log("Info", "Fetching TransactionHistory: " + portfolioId);
 
-    return transactionDAO.getByPortfolioId(portfolioId).stream()
+    if (page < 0 || size <= 0)
+    {
+      throw new IllegalArgumentException("Page must be equal to og greater than 0, and size must be greater than 0");
+    }
+
+    int offset = page * size;
+
+    return transactionDAO.getByPortfolioId(portfolioId, offset, size).stream()
                          .map(TransactionMapper::toTransactionDTO).toList();
   }
 

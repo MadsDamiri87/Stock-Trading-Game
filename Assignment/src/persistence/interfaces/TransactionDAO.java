@@ -14,7 +14,7 @@ public interface TransactionDAO
 
   List<Transaction> getAll();
 
-  List<Transaction> getByPortfolioId(UUID portfolioId);
+  List<Transaction> getByPortfolioId(UUID portfolioId, int page, int size);
 
   List<Transaction> getByStockSymbol(String stockSymbol);
 }
