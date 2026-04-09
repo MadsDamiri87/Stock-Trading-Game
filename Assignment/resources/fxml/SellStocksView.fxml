@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="24.0"
+      maxWidth="760.0"
+      xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="presentation.controllers.SellStocksController">
+
+    <padding>
+        <Insets top="0.0" right="0.0" bottom="0.0" left="0.0"/>
+    </padding>
+
+    <VBox spacing="8.0">
+        <Label text="Sell Stocks" styleClass="welcome-title"/>
+        <Label text="Review your position, choose quantity, and estimate the proceeds before selling."
+               wrapText="true"
+               styleClass="welcome-subtitle"/>
+    </VBox>
+
+    <HBox spacing="20.0">
+        <VBox spacing="16.0" prefWidth="360.0" styleClass="glass-card-large">
+            <Label text="Sell Order" styleClass="overview-title"/>
+
+            <VBox spacing="8.0">
+                <Label text="Stock Symbol" styleClass="form-label"/>
+                <TextField fx:id="symbolField"
+                           promptText="e.g. TSLA"
+                           styleClass="glass-input"/>
+            </VBox>
+
+            <VBox spacing="8.0">
+                <Label text="Number of Shares" styleClass="form-label"/>
+                <TextField fx:id="sharesField"
+                           promptText="e.g. 5"
+                           styleClass="glass-input"/>
+            </VBox>
+
+            <VBox spacing="8.0">
+                <Label text="Current Price" styleClass="form-label"/>
+                <TextField fx:id="priceField"
+                           promptText="e.g. 168.77"
+                           styleClass="glass-input"/>
+            </VBox>
+
+            <HBox spacing="12.0">
+                <Button text="Estimate"
+                        onAction="#handleEstimate"
+                        styleClass="action-button-secondary"/>
+
+                <Button text="Sell Stock"
+                        onAction="#handleSell"
+                        styleClass="sell-button-primary"/>
+            </HBox>
+        </VBox>
+
+        <VBox spacing="16.0" prefWidth="340.0" styleClass="glass-card-large">
+            <Label text="Sell Summary" styleClass="overview-title"/>
+
+            <HBox spacing="12.0">
+                <Label text="Symbol:" styleClass="table-header"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="summarySymbolLabel" text="-" styleClass="table-cell-strong"/>
+            </HBox>
+
+            <HBox spacing="12.0">
+                <Label text="Shares:" styleClass="table-header"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="summarySharesLabel" text="-" styleClass="table-cell"/>
+            </HBox>
+
+            <HBox spacing="12.0">
+                <Label text="Price:" styleClass="table-header"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="summaryPriceLabel" text="-" styleClass="table-cell"/>
+            </HBox>
+
+            <HBox spacing="12.0">
+                <Label text="Estimated Proceeds:" styleClass="table-header"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="summaryTotalLabel" text="-" styleClass="table-negative"/>
+            </HBox>
+
+            <VBox spacing="8.0">
+                <Label text="Status" styleClass="form-label"/>
+                <Label fx:id="statusLabel"
+                       text="Fill in the form to prepare your sell order."
+                       wrapText="true"
+                       styleClass="overview-text"/>
+            </VBox>
+        </VBox>
+    </HBox>
+
+    <VBox spacing="12.0" styleClass="glass-card-large">
+        <Label text="Quick Tips" styleClass="overview-title"/>
+        <Label text="Later you can validate against owned shares before confirming the sale and connect the proceeds directly to the portfolio balance."
+               wrapText="true"
+               styleClass="overview-text"/>
+    </VBox>
+</VBox>

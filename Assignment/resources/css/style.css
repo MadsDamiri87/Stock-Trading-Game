@@ -1,0 +1,62 @@
+.table-header {
+  -fx-text-fill: rgba(255,255,255,0.60);
+  -fx-font-size: 13px;
+  -fx-font-weight: bold;
+}
+
+.table-cell {
+  -fx-text-fill: rgba(255,255,255,0.82);
+  -fx-font-size: 14px;
+}
+
+.table-cell-strong {
+  -fx-text-fill: white;
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+}
+
+.table-positive {
+  -fx-text-fill: #86efac;
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+}
+
+.table-negative {
+  -fx-text-fill: #fca5a5;
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+}
+
+.form-label {
+  -fx-text-fill: rgba(255,255,255,0.72);
+  -fx-font-size: 13px;
+  -fx-font-weight: bold;
+}
+
+.glass-input {
+  -fx-background-color: rgba(255,255,255,0.08);
+  -fx-text-fill: white;
+  -fx-prompt-text-fill: rgba(255,255,255,0.40);
+  -fx-background-radius: 14;
+  -fx-border-radius: 14;
+  -fx-border-color: rgba(255,255,255,0.12);
+  -fx-padding: 10 14 10 14;
+}
+
+.glass-combo {
+  -fx-background-color: rgba(255,255,255,0.08);
+  -fx-background-radius: 14;
+  -fx-border-radius: 14;
+  -fx-border-color: rgba(255,255,255,0.12);
+  -fx-padding: 6 10 6 10;
+}
+
+.sell-button-primary {
+  -fx-background-color: linear-gradient(to right, #ef4444, #dc2626);
+  -fx-text-fill: white;
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+  -fx-background-radius: 14;
+  -fx-padding: 12 22 12 22;
+  -fx-cursor: hand;
+}

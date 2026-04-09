@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane fitToWidth="true"
+            hbarPolicy="NEVER"
+            vbarPolicy="AS_NEEDED"
+            style="-fx-background: transparent; -fx-background-color: transparent;"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="presentation.controllers.StockMarketController">
+
+    <content>
+        <VBox spacing="24.0" styleClass="center-content">
+            <padding>
+                <Insets top="0.0" right="0.0" bottom="0.0" left="0.0"/>
+            </padding>
+
+            <VBox spacing="8.0">
+                <Label text="Stock Market" styleClass="welcome-title"/>
+                <Label text="Follow prices, trends, and recent changes across the market."
+                       wrapText="true"
+                       styleClass="welcome-subtitle"/>
+            </VBox>
+
+            <HBox spacing="14.0">
+                <Button onAction="#handleOpenPortfolio"
+                        text="Open Portfolio"
+                        styleClass="action-button-secondary"/>
+            </HBox>
+
+            <HBox spacing="20.0">
+                <VBox prefWidth="220.0" spacing="8.0" styleClass="glass-card">
+                    <Label text="Market Status" styleClass="card-label"/>
+                    <Label fx:id="marketStatusLabel" text="LIVE" styleClass="card-value"/>
+                    <Label text="Live tracking enabled" styleClass="card-positive"/>
+                </VBox>
+
+                <VBox prefWidth="220.0" spacing="8.0" styleClass="glass-card">
+                    <Label text="Tracked Symbol" styleClass="card-label"/>
+                    <Label fx:id="symbolLabel" text="AAPL" styleClass="card-value"/>
+                    <Label text="Live Price" styleClass="card-positive"/>
+                </VBox>
+
+                <VBox prefWidth="220.0" spacing="8.0" styleClass="glass-card">
+                    <Label text="Current Price" styleClass="card-label"/>
+                    <Label fx:id="currentPriceLabel" text="189.42" styleClass="card-value"/>
+                    <Label text="Updated" styleClass="card-positive"/>
+                </VBox>
+            </HBox>
+
+            <VBox spacing="16.0" styleClass="glass-card-large">
+                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                    <Label text="Live Stock" styleClass="overview-title"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="Updated just now" styleClass="card-muted"/>
+                </HBox>
+
+                <Separator opacity="0.20"/>
+
+                <LineChart fx:id="priceChart"
+                           animated="false"
+                           createSymbols="false"
+                           legendVisible="false"
+                           prefHeight="380.0"
+                           styleClass="market-chart">
+                    <xAxis>
+                        <NumberAxis fx:id="xAxis" label="Tick"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis fx:id="yAxis" label="Price"/>
+                    </yAxis>
+                </LineChart>
+            </VBox>
+
+        </VBox>
+    </content>
+</ScrollPane>

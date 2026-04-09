@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="rootPane"
+            prefHeight="700.0"
+            prefWidth="1000.0"
+            stylesheets="@../css/StyleSheet.css"
+            styleClass="root-pane"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="presentation.controllers.DashboardController">
+
+    <top>
+        <HBox fx:id="titleBar"
+              alignment="CENTER_RIGHT"
+              spacing="8.0"
+              styleClass="window-bar">
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Button text="—"
+                    onAction="#handleMinimize"
+                    styleClass="window-btn"/>
+
+            <Button text="✕"
+                    onAction="#handleClose"
+                    styleClass="window-btn-close"/>
+        </HBox>
+    </top>
+
+    <left>
+        <StackPane fx:id="sidebarContainer"
+                   prefWidth="240.0"
+                   minWidth="240.0"
+                   maxWidth="240.0"
+                   styleClass="sidebar-container">
+
+            <VBox fx:id="sidebar"
+                  spacing="14.0"
+                  onMouseClicked="#handleToggleSidebarAreaClick"
+                  styleClass="sidebar">
+
+                <VBox spacing="8.0"
+                      maxWidth="Infinity"
+                      fillWidth="true">
+
+                    <Label fx:id="sidebarTitleLabel"
+                           text="Stock Trading"
+                           styleClass="sidebar-title"/>
+
+                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                        <Label fx:id="sidebarSubtitleLabel"
+                               text="Main Menu"
+                               styleClass="sidebar-subtitle"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                </VBox>
+
+                <Region prefHeight="12.0"/>
+
+                <VBox spacing="10.0" alignment="TOP_CENTER">
+                    <Button fx:id="dashboardButton"
+                            text="Dashboard"
+                            maxWidth="220.0"
+                            onAction="#handleOpenDashboard"
+                            styleClass="menu-button-primary"/>
+
+                    <Button fx:id="portfolioButton"
+                            text="Portfolio"
+                            maxWidth="220.0"
+                            onAction="#handleOpenPortfolio"
+                            styleClass="menu-button-secondary"/>
+
+                    <Button fx:id="buyButton"
+                            text="Buy Stocks"
+                            maxWidth="220.0"
+                            onAction="#handleBuyStocks"
+                            styleClass="menu-button-secondary"/>
+
+                    <Button fx:id="sellButton"
+                            text="Sell Stocks"
+                            maxWidth="220.0"
+                            onAction="#handleSellStocks"
+                            styleClass="menu-button-secondary"/>
+
+                    <Button fx:id="marketButton"
+                            text="Market"
+                            maxWidth="220.0"
+                            onAction="#handleViewMarket"
+                            styleClass="menu-button-secondary"/>
+                </VBox>
+
+                <Region VBox.vgrow="ALWAYS"/>
+
+                <VBox spacing="10.0" alignment="BOTTOM_CENTER">
+                    <Button fx:id="settingsButton"
+                            text="Settings"
+                            maxWidth="220.0"
+                            styleClass="menu-button-settings"/>
+
+                    <Button fx:id="closeAppButton"
+                            text="Close Application"
+                            onAction="#handleClose"
+                            maxWidth="220.0"
+                            styleClass="menu-button-logout"/>
+                </VBox>
+            </VBox>
+        </StackPane>
+    </left>
+
+    <center>
+        <StackPane styleClass="center-content"/>
+    </center>
+
+</BorderPane>
