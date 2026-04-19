@@ -9,15 +9,16 @@ public class OwnedStock
   private UUID portfolioId;
   private String stockSymbol;
   private int numberOfShares;
+  private double tradePrice;
 
-  public OwnedStock(UUID ownedStockId, UUID portfolioId, String stockSymbol,
-                    int numberOfShares)
+  public OwnedStock(UUID ownedStockId, UUID portfolioId, String stockSymbol, int numberOfShares, double tradePrice)
   {
 
     this.ownedStockId   = ownedStockId;
     this.portfolioId    = portfolioId;
     this.stockSymbol    = stockSymbol;
     this.numberOfShares = numberOfShares;
+    this.tradePrice     = tradePrice;
   }
 
   public UUID getOwnedStockId()
@@ -40,6 +41,11 @@ public class OwnedStock
     return numberOfShares;
   }
 
+  public double getTradePrice()
+  {
+    return tradePrice;
+  }
+
   public void setPortfolioId(UUID portfolioId)
   {
     this.portfolioId = portfolioId;
@@ -54,4 +60,11 @@ public class OwnedStock
   {
     this.numberOfShares = numberOfShares;
   }
+
+  public void setTradePrice(double boughtPrice)
+  {
+    this.tradePrice = boughtPrice;
+  }
+
+
 }

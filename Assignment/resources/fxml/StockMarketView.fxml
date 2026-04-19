@@ -8,7 +8,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Priority?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
@@ -23,7 +22,7 @@
     <content>
         <VBox spacing="24.0" styleClass="center-content">
             <padding>
-                <Insets top="0.0" right="0.0" bottom="0.0" left="0.0"/>
+                <Insets top="8.0" right="24.0" bottom="24.0" left="24.0"/>
             </padding>
 
             <VBox spacing="8.0">
@@ -48,13 +47,13 @@
 
                 <VBox prefWidth="220.0" spacing="8.0" styleClass="glass-card">
                     <Label text="Tracked Symbol" styleClass="card-label"/>
-                    <Label fx:id="symbolLabel" text="AAPL" styleClass="card-value"/>
+                    <Label fx:id="symbolLabel" styleClass="card-value"/>
                     <Label text="Live Price" styleClass="card-positive"/>
                 </VBox>
 
                 <VBox prefWidth="220.0" spacing="8.0" styleClass="glass-card">
                     <Label text="Current Price" styleClass="card-label"/>
-                    <Label fx:id="currentPriceLabel" text="189.42" styleClass="card-value"/>
+                    <Label fx:id="currentPriceLabel" styleClass="card-value"/>
                     <Label text="Updated" styleClass="card-positive"/>
                 </VBox>
             </HBox>
@@ -81,6 +80,53 @@
                         <NumberAxis fx:id="yAxis" label="Price"/>
                     </yAxis>
                 </LineChart>
+
+                <Separator opacity="0.18"/>
+
+                <VBox spacing="12.0">
+                    <HBox alignment="CENTER_LEFT" spacing="12.0">
+                        <Label text="Market Overview" styleClass="overview-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label text="Price swings and current state" styleClass="card-muted"/>
+                    </HBox>
+
+                    <HBox spacing="16.0" styleClass="market-overview-header">
+                        <Label text="Symbol" styleClass="market-overview-header-label" prefWidth="90.0"/>
+                        <Label text="Name" styleClass="market-overview-header-label" prefWidth="180.0"/>
+                        <Label text="Swing" styleClass="market-overview-header-label" prefWidth="120.0"/>
+                        <Label text="State" styleClass="market-overview-header-label" prefWidth="120.0"/>
+                    </HBox>
+
+                    <VBox fx:id="marketOverviewBox" spacing="8.0">
+                        <HBox spacing="16.0" styleClass="market-overview-row">
+                            <Label text="AAPL" styleClass="market-overview-symbol" prefWidth="90.0"/>
+                            <Label text="Apple Inc." styleClass="market-overview-name" prefWidth="180.0"/>
+                            <Label text="+4.25%" styleClass="table-positive" prefWidth="120.0"/>
+                            <Label text="Bullish" styleClass="market-state-positive" prefWidth="120.0"/>
+                        </HBox>
+
+                        <HBox spacing="16.0" styleClass="market-overview-row">
+                            <Label text="TSLA" styleClass="market-overview-symbol" prefWidth="90.0"/>
+                            <Label text="Tesla" styleClass="market-overview-name" prefWidth="180.0"/>
+                            <Label text="-2.13%" styleClass="table-negative" prefWidth="120.0"/>
+                            <Label text="Volatile" styleClass="market-state-warning" prefWidth="120.0"/>
+                        </HBox>
+
+                        <HBox spacing="16.0" styleClass="market-overview-row">
+                            <Label text="MSFT" styleClass="market-overview-symbol" prefWidth="90.0"/>
+                            <Label text="Microsoft" styleClass="market-overview-name" prefWidth="180.0"/>
+                            <Label text="+1.48%" styleClass="table-positive" prefWidth="120.0"/>
+                            <Label text="Stable" styleClass="market-state-neutral" prefWidth="120.0"/>
+                        </HBox>
+
+                        <HBox spacing="16.0" styleClass="market-overview-row">
+                            <Label text="NVDA" styleClass="market-overview-symbol" prefWidth="90.0"/>
+                            <Label text="NVIDIA" styleClass="market-overview-name" prefWidth="180.0"/>
+                            <Label text="+6.02%" styleClass="table-positive" prefWidth="120.0"/>
+                            <Label text="Rising" styleClass="market-state-positive" prefWidth="120.0"/>
+                        </HBox>
+                    </VBox>
+                </VBox>
             </VBox>
 
         </VBox>

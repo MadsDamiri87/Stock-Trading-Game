@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.geometry.Insets?>
 <BorderPane fx:id="rootPane"
             prefHeight="700.0"
             prefWidth="1000.0"
@@ -101,6 +102,7 @@
 
                 <VBox spacing="10.0" alignment="BOTTOM_CENTER">
                     <Button fx:id="settingsButton"
+                            onAction="#startStopMarket"
                             text="Settings"
                             maxWidth="220.0"
                             styleClass="menu-button-settings"/>
@@ -112,6 +114,7 @@
                             styleClass="menu-button-logout"/>
                 </VBox>
             </VBox>
+
         </StackPane>
     </left>
 

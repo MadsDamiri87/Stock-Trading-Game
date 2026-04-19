@@ -12,7 +12,7 @@
 .window-btn {
   -fx-background-color: rgba(255,255,255,0.08);
   -fx-text-fill: rgba(255,255,255,0.88);
-  -fx-font-size: 18px;
+  -fx-font-size: 14px;
   -fx-font-weight: bold;
   -fx-background-radius: 8;
   -fx-border-radius: 8;
@@ -394,4 +394,149 @@
 
 .sidebar-toggle-area:hover {
   -fx-background-color: rgba(255,255,255,0.06);
+}
+
+.chart-series-line {
+  -fx-stroke-width: 1px;
+  -fx-padding: 0px;
+}
+.chart-vertical-grid-lines {
+  -fx-stroke: rgba(255, 255, 255, 0.15);
+}
+
+.chart-horizontal-grid-lines {
+  -fx-stroke: rgba(255, 255, 255, 0.15);
+}
+.chart-vertical-grid-lines {
+  -fx-stroke: rgba(255, 255, 255, 0.3);
+}
+
+.summary-mini-box {
+  -fx-background-color: rgba(255,255,255,0.05);
+  -fx-background-radius: 16;
+  -fx-border-radius: 16;
+  -fx-border-color: rgba(255,255,255,0.10);
+  -fx-padding: 14;
+}
+
+.balance-value {
+  -fx-text-fill: white;
+  -fx-font-size: 28px;
+  -fx-font-weight: bold;
+}
+
+.stock-list-view {
+  -fx-background-color: transparent;
+  -fx-control-inner-background: rgba(255,255,255,0.04);
+  -fx-background-radius: 16;
+  -fx-border-radius: 16;
+  -fx-border-color: rgba(255,255,255,0.12);
+  -fx-padding: 8;
+}
+
+.stock-list-view .virtual-flow {
+  -fx-background-color: transparent;
+}
+
+.stock-list-view .list-cell {
+  -fx-background-color: transparent;
+  -fx-text-fill: white;
+  -fx-padding: 14 16 14 16;
+  -fx-border-color: transparent transparent rgba(255,255,255,0.06) transparent;
+  -fx-font-size: 14px;
+}
+
+.stock-list-view .list-cell:hover {
+  -fx-background-color: rgba(255,255,255,0.08);
+  -fx-background-radius: 12;
+}
+
+.stock-list-view .list-cell:selected {
+  -fx-background-color: rgba(99,102,241,0.30);
+  -fx-background-radius: 12;
+  -fx-text-fill: white;
+}
+
+.stock-line-chart {
+  -fx-background-color: rgba(255,255,255,0.03);
+  -fx-background-radius: 18;
+  -fx-border-radius: 18;
+  -fx-border-color: rgba(255,255,255,0.10);
+  -fx-padding: 14;
+}
+
+.stock-line-chart .chart-plot-background {
+  -fx-background-color: transparent;
+}
+
+.stock-line-chart .axis {
+  -fx-tick-label-fill: rgba(255,255,255,0.72);
+}
+
+.stock-line-chart .axis-label {
+  -fx-text-fill: rgba(255,255,255,0.72);
+}
+
+.stock-line-chart .chart-series-line {
+  -fx-stroke-width: 2px;
+}
+
+.stock-line-chart .chart-legend {
+  -fx-background-color: transparent;
+}
+
+.market-overview-header {
+  -fx-padding: 6 12 6 12;
+  -fx-background-color: rgba(255,255,255,0.05);
+  -fx-background-radius: 12;
+  -fx-border-radius: 12;
+  -fx-border-color: rgba(255,255,255,0.08);
+}
+
+.market-overview-header-label {
+  -fx-text-fill: rgba(255,255,255,0.58);
+  -fx-font-size: 12px;
+  -fx-font-weight: bold;
+}
+
+.market-overview-row {
+  -fx-alignment: center-left;
+  -fx-padding: 10 12 10 12;
+  -fx-background-color: rgba(255,255,255,0.035);
+  -fx-background-radius: 12;
+  -fx-border-radius: 12;
+  -fx-border-color: rgba(255,255,255,0.06);
+}
+
+.market-overview-row:hover {
+  -fx-background-color: rgba(255,255,255,0.06);
+}
+
+.market-overview-symbol {
+  -fx-text-fill: white;
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+}
+
+.market-overview-name {
+  -fx-text-fill: rgba(255,255,255,0.80);
+  -fx-font-size: 14px;
+}
+
+.market-state-positive {
+  -fx-text-fill: #86efac;
+  -fx-font-size: 13px;
+  -fx-font-weight: bold;
+}
+
+.market-state-warning {
+  -fx-text-fill: #fcd34d;
+  -fx-font-size: 13px;
+  -fx-font-weight: bold;
+}
+
+.market-state-neutral {
+  -fx-text-fill: rgba(255,255,255,0.72);
+  -fx-font-size: 13px;
+  -fx-font-weight: bold;
 }

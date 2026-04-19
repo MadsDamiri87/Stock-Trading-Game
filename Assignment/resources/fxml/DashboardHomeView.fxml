@@ -51,8 +51,8 @@
     </HBox>
 
     <VBox spacing="10.0" styleClass="glass-card-large">
-        <Label text="Quick Overview" styleClass="overview-title"/>
-        <Label text="Use the menu on the left to view your portfolio, buy or sell stocks, and follow the latest market updates."
+        <Label text="Overview" styleClass="overview-title"/>
+        <Label text="Overblik over de aktier som har klaret sig bedst, og dem som har klaret sig værst."
                wrapText="true"
                styleClass="overview-text"/>
     </VBox>

@@ -20,8 +20,7 @@ public class ControllerFactory implements Callback<Class<?>, Object>
     this.context = context;
   }
 
-  @Override
-  public Object call(Class<?> controllerClass)
+  @Override public Object call(Class<?> controllerClass)
   {
     if (controllerClass == PopUpWelcomeController.class)
     {
@@ -53,7 +52,6 @@ public class ControllerFactory implements Callback<Class<?>, Object>
     }
 
     logger.log("ERROR", "Couldn't create controller: " + controllerClass.getName());
-    throw new IllegalArgumentException(
-        "Unknown controller class: " + controllerClass.getName());
+    throw new IllegalArgumentException("Unknown controller class: " + controllerClass.getName());
   }
 }

@@ -99,8 +99,7 @@ public class FileUnitOfWork implements UnitOfWork
       lines.add(stockPriceHistoryToPSV(stock));
     }
 
-    writeLinesToFile(STOCK_FILE, lines, "Stock blev skrevet til fil",
-                     "Fejl i writeStocksToFile");
+    writeLinesToFile(STOCK_FILE, lines, "Stock blev skrevet til fil", "Fejl i writeStocksToFile");
   }
 
   private void writeOwnedStocksToFile()
@@ -135,8 +134,7 @@ public class FileUnitOfWork implements UnitOfWork
     catch (IOException e)
     {
       logger.log("Error", "Fejl i ensureFilesExist: " + e.getMessage());
-      throw new RuntimeException(
-          "Noget gik galt i persistence-files: " + directoryPath, e);
+      throw new RuntimeException("Noget gik galt i persistence-files: " + directoryPath, e);
     }
   }
 
@@ -144,8 +142,8 @@ public class FileUnitOfWork implements UnitOfWork
   {
     if (!Files.exists(path))
     {
-      logger.log("Info", "File at: " + path
-          + " wasn't found. New file was created in createIfMissing");
+      logger.log("Info",
+                 "File at: " + path + " wasn't found. New file was created in createIfMissing");
       Files.createFile(path);
     }
   }
@@ -162,8 +160,7 @@ public class FileUnitOfWork implements UnitOfWork
   private List<Portfolio> loadPortfoliosFromFile()
   {
     List<Portfolio> portfolios = new ArrayList<>();
-    List<String> lines = readLinesFromFile(PORTFOLIO_FILE,
-                                           "Fejl ved indlæsningen af portfolios");
+    List<String> lines = readLinesFromFile(PORTFOLIO_FILE, "Fejl ved indlæsningen af portfolios");
     for (String line : lines)
     {
       if (!line.isBlank())
@@ -178,8 +175,7 @@ public class FileUnitOfWork implements UnitOfWork
   {
     List<Stock> stocks = new ArrayList<>();
 
-    List<String> lines = readLinesFromFile(STOCK_FILE,
-                                           "Fejl ved indlæsningen af stocks");
+    List<String> lines = readLinesFromFile(STOCK_FILE, "Fejl ved indlæsningen af stocks");
 
     for (String line : lines)
     {
@@ -215,8 +211,7 @@ public class FileUnitOfWork implements UnitOfWork
   {
     List<OwnedStock> ownedStocks = new ArrayList<>();
 
-    List<String> lines = readLinesFromFile(OWNEDSTOCK_FILE,
-                                           "Fejl ved indlæsningen af ownedstocks");
+    List<String> lines = readLinesFromFile(OWNEDSTOCK_FILE, "Fejl ved indlæsningen af ownedstocks");
 
     for (String line : lines)
     {
@@ -253,6 +248,8 @@ public class FileUnitOfWork implements UnitOfWork
     String name = parts[1].trim();
     BigDecimal currentPrice = new BigDecimal(parts[2].trim());
     String currentState = parts[3].trim();
+
+
     return new Stock(symbol, name, currentPrice, currentState);
   }
 
@@ -260,17 +257,17 @@ public class FileUnitOfWork implements UnitOfWork
   {
     String[] parts = line.split("\\|");
 
-    if (parts.length < 4)
+    if (parts.length < 5)
     {
-      throw new RuntimeException("Ugyldig linje for ownedstock " + line);
+      throw new RuntimeException("Invalid file format for OwnedStock " + line);
     }
     UUID ownedStockId = UUID.fromString(parts[0].trim());
     UUID portfolioId = UUID.fromString(parts[1].trim());
     String stockSymbol = parts[2].trim();
     int numberOfShares = Integer.parseInt(parts[3].trim());
+    double tradePrice = Double.parseDouble(parts[4].trim());
 
-    return new OwnedStock(ownedStockId, portfolioId, stockSymbol,
-                          numberOfShares);
+    return new OwnedStock(ownedStockId, portfolioId, stockSymbol, numberOfShares, tradePrice);
   }
 
   private String stockPriceHistoryToPSV(Portfolio p)
@@ -280,15 +277,14 @@ public class FileUnitOfWork implements UnitOfWork
 
   private String stockPriceHistoryToPSV(Stock s)
   {
-    return s.getSymbol() + " | " + s.getName() + " | " + s.getCurrentPrice()
-                                                          .toPlainString()
-        + " | " + s.getCurrentState();
+    return s.getSymbol() + " | " + s.getName() + " | " + s.getCurrentPrice().toPlainString() + " | "
+        + s.getCurrentState();
   }
 
   private String stockPriceHistoryToPSV(OwnedStock o)
   {
-    return o.getOwnedStockId() + " | " + o.getPortfolioId() + " | "
-        + o.getStockSymbol() + " | " + o.getNumberOfShares();
+    return o.getOwnedStockId() + " | " + o.getPortfolioId() + " | " + o.getStockSymbol() + " | "
+        + o.getNumberOfShares() + " | " + o.getTradePrice();
   }
 
   private void resetLists()
@@ -300,8 +296,8 @@ public class FileUnitOfWork implements UnitOfWork
     stockPriceHistories = null;
   }
 
-  private void writeLinesToFile(String fileName, List<String> lines,
-                                String successMessage, String errorMessage)
+  private void writeLinesToFile(String fileName, List<String> lines, String successMessage,
+                                String errorMessage)
   {
     Path filePath = Paths.get(directoryPath, fileName);
 
@@ -343,11 +339,10 @@ public class FileUnitOfWork implements UnitOfWork
 
   private String stockPriceHistoryToPSV(Transaction transaction)
   {
-    return transaction.transactionId() + " | " + transaction.portfolioId()
-        + " | " + transaction.stockSymbol() + " | " + transaction.type() + " | "
-        + transaction.quantity() + " | " + transaction.pricePerShare() + " | "
-        + transaction.totalAmount() + " | " + transaction.fee() + " | "
-        + transaction.timestamp();
+    return transaction.transactionId() + " | " + transaction.portfolioId() + " | "
+        + transaction.stockSymbol() + " | " + transaction.type() + " | " + transaction.quantity()
+        + " | " + transaction.pricePerShare() + " | " + transaction.totalAmount() + " | "
+        + transaction.fee() + " | " + transaction.timestamp();
   }
 
   private List<Transaction> loadTransactionsFromFile()
@@ -378,13 +373,10 @@ public class FileUnitOfWork implements UnitOfWork
       throw new RuntimeException("Ugyldig linje for transaction " + line);
     }
 
-    return new Transaction(UUID.fromString(parts[0].trim()),
-                           UUID.fromString(parts[1].trim()), parts[2].trim(),
-                           parts[3].trim(), Integer.parseInt(parts[4].trim()),
-                           new BigDecimal(parts[5].trim()),
-                           new BigDecimal(parts[6].trim()),
-                           new BigDecimal(parts[7].trim()),
-                           Instant.parse(parts[8].trim()));
+    return new Transaction(UUID.fromString(parts[0].trim()), UUID.fromString(parts[1].trim()),
+                           parts[2].trim(), parts[3].trim(), Integer.parseInt(parts[4].trim()),
+                           new BigDecimal(parts[5].trim()), new BigDecimal(parts[6].trim()),
+                           new BigDecimal(parts[7].trim()), Instant.parse(parts[8].trim()));
   }
 
   private void writeTransactionsToFile()
@@ -396,8 +388,7 @@ public class FileUnitOfWork implements UnitOfWork
       lines.add(stockPriceHistoryToPSV(transaction));
     }
 
-    writeLinesToFile(TRANSACTION_FILE, lines,
-                     "Transactions blev skrevet til fil",
+    writeLinesToFile(TRANSACTION_FILE, lines, "Transactions blev skrevet til fil",
                      "Fejl i writeTransactionsToFile");
   }
 
@@ -410,8 +401,7 @@ public class FileUnitOfWork implements UnitOfWork
       lines.add(stockPriceHistoryToPSV(history));
     }
 
-    writeLinesToFile(STOCK_PRICE_HISTORY_FILE, lines,
-                     "StockPriceHistories blev skrevet til fil",
+    writeLinesToFile(STOCK_PRICE_HISTORY_FILE, lines, "StockPriceHistories blev skrevet til fil",
                      "Fejl i writeStockPriceHistoriesToFile");
   }
 
@@ -444,8 +434,8 @@ public class FileUnitOfWork implements UnitOfWork
 
   private String stockPriceHistoryToPSV(StockPriceHistory history)
   {
-    return history.getStockPriceHistId() + " | " + history.getStockSymbolId()
-        + " | " + history.getPrice() + " | " + history.getTimestamp();
+    return history.getStockPriceHistId() + " | " + history.getStockSymbolId() + " | "
+        + history.getPrice() + " | " + history.getTimestamp();
   }
 
   private StockPriceHistory stockPriceHistoryFromPSV(String line)
@@ -454,14 +444,11 @@ public class FileUnitOfWork implements UnitOfWork
 
     if (parts.length < 4)
     {
-      throw new RuntimeException(
-          "Ugyldig linje for StockPriceHistory: " + line);
+      throw new RuntimeException("Ugyldig linje for StockPriceHistory: " + line);
     }
 
-    return new StockPriceHistory(UUID.fromString(parts[0].trim()),
-                                 parts[1].trim(),
-                                 new BigDecimal(parts[2].trim()),
-                                 Instant.parse(parts[3].trim()));
+    return new StockPriceHistory(UUID.fromString(parts[0].trim()), parts[1].trim(),
+                                 new BigDecimal(parts[2].trim()), Instant.parse(parts[3].trim()));
   }
   // TODO
   //  Forenkel udgaven af hvordan der skrives og loades fra filer med generics.

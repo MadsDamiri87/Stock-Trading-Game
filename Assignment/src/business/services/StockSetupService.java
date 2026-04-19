@@ -21,8 +21,7 @@ public class StockSetupService
     this.stockDAO = stockDAO;
   }
 
-  public Stock getOrCreateStock(String symbol, String name, BigDecimal price,
-                                String state)
+  public Stock getOrCreateStock(String symbol, String name, BigDecimal price, String state)
   {
     try
     {
@@ -36,7 +35,7 @@ public class StockSetupService
         return optionalStock.get();
 
       }
-      logger.log("Info", "Opretter ny stock: " + symbol + " from class: ");
+      logger.log("Info", "Opretter ny stock: " + symbol + " fra klassen: ");
       Stock stock = new Stock(symbol, name, price, state);
       stockDAO.create(stock);
 

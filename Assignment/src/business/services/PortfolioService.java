@@ -1,6 +1,7 @@
 package business.services;
 
 import business.dto.*;
+import business.services.interfaces.PortfolioServiceInterface;
 import business.services.mapping.OwnedStockMapper;
 import business.services.mapping.PortfolioMapper;
 import business.services.mapping.StockMapper;
@@ -15,7 +16,7 @@ import shared.logging.Logger;
 import java.util.List;
 import java.util.UUID;
 
-public class PortfolioService
+public class PortfolioService implements PortfolioServiceInterface
 {
   private final PortfolioDAO portfolioDAO;
   private final OwnedStockDAO ownedStockDAO;
@@ -32,7 +33,7 @@ public class PortfolioService
     this.stockDAO       = stockDAO;
   }
 
-  public PortfolioDTO getPortfolio(UUID portfolioId)
+  @Override public PortfolioDTO getPortfolio(UUID portfolioId)
   {
     logger.log("Info", "Fetching portfolio: " + portfolioId);
     Portfolio portfolio = portfolioDAO.getById(portfolioId).orElseThrow(
@@ -44,13 +45,14 @@ public class PortfolioService
     return PortfolioMapper.toPortfolioDTO(portfolio, ownedStockDTOs);
   }
 
-  public List<TransactionDTO> getTransactionHistory(UUID portfolioId, int page, int size)
+  @Override public List<TransactionDTO> getTransactionHistory(UUID portfolioId, int page, int size)
   {
     logger.log("Info", "Fetching TransactionHistory: " + portfolioId);
 
     if (page < 0 || size <= 0)
     {
-      throw new IllegalArgumentException("Page must be equal to og greater than 0, and size must be greater than 0");
+      throw new IllegalArgumentException(
+          "Page must be equal to og greater than 0, and size must be greater than 0");
     }
 
     int offset = page * size;
@@ -59,7 +61,7 @@ public class PortfolioService
                          .map(TransactionMapper::toTransactionDTO).toList();
   }
 
-  public List<StockDTO> getAvailableStocks()
+  @Override public List<StockDTO> getAvailableStocks()
   {
     logger.log("Info", "Fetching AvailableStocks");
 

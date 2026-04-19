@@ -1,6 +1,4 @@
-import business.services.StockAlertService;
-import business.services.StockBankruptService;
-import business.services.StockListenerService;
+import business.services.*;
 import business.stockmarket.MarketTickHandler;
 import business.stockmarket.StockMarket;
 import entities.Stock;
@@ -21,7 +19,14 @@ public class TestMain
     FileUnitOfWork uow = new FileUnitOfWork("data/");
 
     StockMarket stockMarket = StockMarket.getInstance();
-    MarketTickHandler thread = new MarketTickHandler(stockMarket);
+    StockDAO stockDAO = new StockFileDAO(uow);
+
+    StockSetupService setupService = new StockSetupService(uow, stockDAO);
+
+    GameStateService gameStateService = new GameStateService(stockMarket, setupService, stockDAO,
+                                                             true, true);
+
+    MarketTickHandler thread = new MarketTickHandler(gameStateService);
 
     List<Stock> stocks = uow.getStocks();
 
@@ -50,7 +55,7 @@ public class TestMain
     uow.commit();
 
 
-    StockDAO stockDAO = new StockFileDAO(uow);
+    StockDAO stockDAO1 = new StockFileDAO(uow);
     StockPriceHistoryDAO historyDAO = new StockPriceHistoryFileDAO(uow);
 
     StockMarket stockMarket1 = StockMarket.getInstance();

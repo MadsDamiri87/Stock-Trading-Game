@@ -29,7 +29,7 @@ public class MainTEST
 
     OwnedStock owned = new OwnedStock(UUID.randomUUID(),
                                       portfolio.getPortfolioId(),
-                                      apple.getSymbol(), 10);
+                                      apple.getSymbol(), 10, 110);
 
     if (stockDao.getBySymbol("AAPL").isEmpty())
     {

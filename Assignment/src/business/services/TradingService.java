@@ -1,6 +1,7 @@
 package business.services;
 
 import business.dto.TradeRequestDTO;
+import business.services.interfaces.TradingServiceInterface;
 import entities.OwnedStock;
 import entities.Portfolio;
 import entities.Stock;
@@ -13,7 +14,7 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
-public class TradingService
+public class TradingService implements TradingServiceInterface
 {
 
   private final UnitOfWork uow;
@@ -33,11 +34,12 @@ public class TradingService
     this.transactionDAO = transactionDAO;
   }
 
-  public void buyStock(TradeRequestDTO request)
+  @Override public void buyStock(TradeRequestDTO request)
   {
-    UUID portfolioId = request.portfolieId();
+    UUID portfolioId = request.portfolioId();
     String stockSymbol = request.stockSymbol();
     int quantity = request.quantity();
+    double tradePrice = request.tradePrice();
 
     logger.log("Info",
                "BuyStock started for portfolioID: " + portfolioId + ", stockSymbol: " + stockSymbol
@@ -91,7 +93,8 @@ public class TradingService
 
       if (ownedStock == null)
       {
-        ownedStock = new OwnedStock(UUID.randomUUID(), portfolioId, stockSymbol, quantity);
+        ownedStock = new OwnedStock(UUID.randomUUID(), portfolioId, stockSymbol, quantity,
+                                    tradePrice);
 
         ownedStockDAO.create(ownedStock);
 
@@ -101,6 +104,7 @@ public class TradingService
       else
       {
         ownedStock.setNumberOfShares(ownedStock.getNumberOfShares() + quantity);
+        ownedStock.setTradePrice(tradePrice);
         ownedStockDAO.update(ownedStock);
 
         logger.log("Info", "Updated OwnedStock for symbol: " + stockSymbol + ", new quantity: "
@@ -128,9 +132,9 @@ public class TradingService
     }
   }
 
-  public void sellStock(TradeRequestDTO request)
+  @Override public void sellStock(TradeRequestDTO request)
   {
-    UUID portfolioId = request.portfolieId();
+    UUID portfolioId = request.portfolioId();
     String stockSymbol = request.stockSymbol();
     int quantity = request.quantity();
 
@@ -168,7 +172,8 @@ public class TradingService
 
       BigDecimal pricePerShare = stock.getCurrentPrice();
       BigDecimal totalAmount = pricePerShare.multiply(BigDecimal.valueOf(quantity));
-      BigDecimal fee = AppConfig.getInstance().getTransactionFee();;
+      BigDecimal fee = AppConfig.getInstance().getTransactionFee();
+      ;
       BigDecimal payout = totalAmount.subtract(fee);
 
       portfolio.setCurrentBalance(portfolio.getCurrentBalance().add(payout));

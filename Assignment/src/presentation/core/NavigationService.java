@@ -4,7 +4,7 @@ public interface NavigationService
 {
 
   //  TODO:
-  //      Muligvis implementer interfacet i stedet fro at bruge for mange af de samme
+  //      Muligvis implementer interfacet i stedet for at bruge for mange af de samme
   //      metoder på tværs af klasser og lade viewmodels kende hinanden?..
   //      [undersøg hvad der giver mening]
 

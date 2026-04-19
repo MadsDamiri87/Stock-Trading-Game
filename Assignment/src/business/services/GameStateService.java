@@ -1,5 +1,6 @@
 package business.services;
 
+import business.services.interfaces.GameStateServiceInterface;
 import business.stockmarket.StockMarket;
 import entities.Stock;
 import persistence.interfaces.StockDAO;
@@ -8,7 +9,7 @@ import shared.logging.Logger;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class GameStateService
+public class GameStateService implements GameStateServiceInterface
 {
   private final StockMarket stockMarket;
   private final StockSetupService stockSetupService;
@@ -18,10 +19,8 @@ public class GameStateService
   private boolean marketInitialized;
   private boolean gameRunning;
 
-  public GameStateService(StockMarket stockMarket,
-                          StockSetupService stockSetupService,
-                          StockDAO stockDAO, boolean marketInitialized,
-                          boolean gameRunning)
+  public GameStateService(StockMarket stockMarket, StockSetupService stockSetupService,
+                          StockDAO stockDAO, boolean marketInitialized, boolean gameRunning)
   {
     this.stockMarket       = stockMarket;
     this.stockSetupService = stockSetupService;
@@ -30,7 +29,7 @@ public class GameStateService
     this.gameRunning       = gameRunning;
   }
 
-  public void startGame()
+  @Override public void startGame()
   {
     if (!marketInitialized)
     {
@@ -41,18 +40,18 @@ public class GameStateService
     logger.log("Info", "Game started");
   }
 
-  public void stopGame()
+  @Override public void stopGame()
   {
     gameRunning = false;
     logger.log("Info", "Game stopped");
   }
 
-  public boolean isGameRunning()
+  @Override public boolean isGameRunning()
   {
     return gameRunning;
   }
 
-  public boolean isMarketInitialized()
+  @Override public boolean isMarketInitialized()
   {
     return marketInitialized;
   }
@@ -72,9 +71,15 @@ public class GameStateService
     {
       logger.log("Info", "No stocks found in persistence. Creating default stocks.");
 
-    addStockToGame("AAPL", "Apple", BigDecimal.valueOf(150), "Steady");
-    addStockToGame("TSLA", "Tesla", BigDecimal.valueOf(180), "Steady");
-    addStockToGame("NVDA", "Nvidia", BigDecimal.valueOf(200), "Steady");
+      addStockToGame("AAPL", "Apple", BigDecimal.valueOf(150), "Steady");
+      addStockToGame("TSLA", "Tesla", BigDecimal.valueOf(180), "Steady");
+      addStockToGame("NVDA", "Nvidia", BigDecimal.valueOf(200), "Steady");
+      addStockToGame("MSFT", "Microsoft", BigDecimal.valueOf(320), "Steady");
+      addStockToGame("GOOGL", "Alphabet", BigDecimal.valueOf(140), "Steady");
+      addStockToGame("AMZN", "Amazon", BigDecimal.valueOf(135), "Steady");
+      addStockToGame("META", "Meta", BigDecimal.valueOf(300), "Steady");
+      addStockToGame("GM", "General Motors", BigDecimal.valueOf(210), "Steady");
+
     }
     else
     {
@@ -89,11 +94,9 @@ public class GameStateService
     logger.log("Info", "Stock market initialized");
   }
 
-  private void addStockToGame(String symbol, String name, BigDecimal price,
-                              String state)
+  private void addStockToGame(String symbol, String name, BigDecimal price, String state)
   {
-    Stock stock = stockSetupService.getOrCreateStock(symbol, name, price,
-                                                     state);
+    Stock stock = stockSetupService.getOrCreateStock(symbol, name, price, state);
     stockMarket.addExistingStock(stock);
 
     logger.log("Info", "Stock added to market and persistence: " + symbol);
@@ -101,7 +104,7 @@ public class GameStateService
 
   public void resetGame()
   {
-    gameRunning = false;
+    gameRunning       = false;
     marketInitialized = false;
     logger.log("Info", "Game state was reset - NO data was reset");
   }

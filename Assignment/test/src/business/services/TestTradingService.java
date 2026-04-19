@@ -124,7 +124,7 @@ class TestTradingService
 
     ownedStockDAO.create(new OwnedStock(ownedStockId, portfolioId, "NKA", 2));
 
-    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "NKA", 3);
+    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "NKA", 3, 210);
 
     //    ACT
 
@@ -148,7 +148,7 @@ class TestTradingService
     Stock stock = new Stock("AAPL", "Apple", BigDecimal.valueOf(100), "Steady");
     stockDAO.create(stock);
 
-    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 1);
+    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 1, 213);
 
     // ACT
     tradingService.buyStock(request);
@@ -170,7 +170,7 @@ class TestTradingService
     Stock stock = new Stock("AAPL", "Apple", BigDecimal.valueOf(100), "Steady");
     stockDAO.create(stock);
 
-    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 2);
+    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 2, 231);
 
     // ACT
     tradingService.buyStock(request);
@@ -193,7 +193,7 @@ class TestTradingService
     Stock stock = new Stock("AAPL", "Apple", BigDecimal.valueOf(100), "Steady");
     stockDAO.create(stock);
 
-    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 1);
+    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 1, 123);
 
     // ACT
     tradingService.buyStock(request);
@@ -210,7 +210,7 @@ class TestTradingService
     Portfolio portfolio = new Portfolio(portfolioId, BigDecimal.valueOf(1000));
     portfolioDAO.create(portfolio);
 
-    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 1);
+    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 1,213);
 
     // ACT + ASSERT
     assertThrows(RuntimeException.class, () -> {
@@ -229,7 +229,7 @@ class TestTradingService
     Stock stock = new Stock("TSLA", "Tesla", BigDecimal.valueOf(90), "Steady");
     stockDAO.create(stock);
 
-    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "TSLA", 2);
+    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "TSLA", 2, 213);
 
     // ACT
     try
@@ -257,7 +257,7 @@ class TestTradingService
     Stock stock = new Stock("AAPL", "Apple", BigDecimal.valueOf(100), "Steady");
     stockDAO.create(stock);
 
-    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", -1);
+    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", -1,213);
 
     //    ACT + ASSERT
     assertThrows(RuntimeException.class, () -> {
@@ -278,7 +278,7 @@ class TestTradingService
 
     ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 5));
 
-    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 2);
+    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 2,215);
 
     // ACT
     tradingService.sellStock(request);
@@ -300,7 +300,7 @@ class TestTradingService
 
     ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 5));
 
-    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 3);
+    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 3, 213);
 
     //    ACT
     tradingService.sellStock(request);
@@ -323,7 +323,7 @@ class TestTradingService
 
     ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 2));
 
-    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 5);
+    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 5,120);
 
     //    ACT + ASSERT
     assertThrows(RuntimeException.class, () -> {
@@ -342,7 +342,7 @@ class TestTradingService
 
     ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 5));
 
-    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 1);
+    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 1, 210);
 
     //    ACT
     tradingService.sellStock(request);
@@ -364,7 +364,7 @@ class TestTradingService
 
     ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 5));
 
-    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 1);
+    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 1, 120);
     //    ACT
     tradingService.sellStock(request);
 
@@ -382,7 +382,7 @@ class TestTradingService
 
     stockDAO.create(new Stock("AAPL", "Apple", BigDecimal.valueOf(100), "Steady"));
 
-    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 1);
+    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 1, 110);
 
     //   ACT + ASSERT
     assertThrows(RuntimeException.class, () -> {
@@ -401,7 +401,7 @@ class TestTradingService
 
     ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 5));
 
-    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 0);
+    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 0,132);
 
     //    ACT + ASSERT
     assertThrows(RuntimeException.class, () -> {
@@ -420,7 +420,7 @@ class TestTradingService
 
     ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 2));
 
-    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 2);
+    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 2,120);
 
     //    ACT
     tradingService.sellStock(request);
@@ -442,7 +442,7 @@ class TestTradingService
 
     ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 1));
 
-    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 5);
+    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 5,130);
 
     //    ACT
     try

@@ -1,6 +1,6 @@
 package business.stockmarket;
 
-import persistence.interfaces.StockPriceHistoryDAO;
+import business.services.GameStateService;
 import shared.configuration.AppConfig;
 import shared.logging.Logger;
 
@@ -8,25 +8,27 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class MarketTickHandler implements Runnable
 {
-  private final StockMarket stockMarket;
+  private final GameStateService gameStateService;
   private final Logger logger;
   private boolean running;
 
-  public MarketTickHandler(StockMarket stockMarket)
+  public MarketTickHandler(GameStateService gameStateService)
   {
-    this.stockMarket = stockMarket;
-    this.logger      = Logger.getInstance();
-    this.running     = true;
-
+    this.gameStateService = gameStateService;
+    this.logger = Logger.getInstance();
+    this.running = true;
   }
 
-  @Override public void run()
+  @Override
+  public void run()
   {
     while (running)
     {
-      stockMarket.updateAllStocks();
-
-      logger.log("Info - ", "Markedet blev opdateret");
+      if (gameStateService.isGameRunning())
+      {
+        gameStateService.startGame();
+        logger.log("Info", "Markedet blev opdateret");
+      }
 
       int base = AppConfig.getInstance().getUpdateFrequencyInMs();
       int variance = base / 2;
@@ -36,13 +38,19 @@ public class MarketTickHandler implements Runnable
 
       try
       {
-        System.out.println(freqUpdate);
+        if (gameStateService.isGameRunning())
+        {
+          if (gameStateService instanceof GameStateService concreteService)
+          {
+            concreteService.updateMarket();
+          }
+        }
+
         Thread.sleep(freqUpdate);
       }
       catch (InterruptedException e)
       {
-        logger.log("Error ",
-                   "MarketTickerHandler blev afbrudt: " + e.getMessage());
+        logger.log("Error", "MarketTickHandler blev afbrudt: " + e.getMessage());
         stopTicks();
         Thread.currentThread().interrupt();
       }

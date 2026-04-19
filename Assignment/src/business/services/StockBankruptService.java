@@ -65,8 +65,7 @@ public class StockBankruptService implements StockMarketListener
       }
       if (!found)
       {
-        logger.log("Info",
-                   "Ingen OwnedStock fundet for bankrupt stock: " + symbol);
+        logger.log("Info", "Ingen OwnedStock fundet for bankrupt stock: " + symbol);
       }
 
       uow.commit();

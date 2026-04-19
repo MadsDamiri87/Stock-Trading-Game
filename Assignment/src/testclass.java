@@ -1,7 +1,5 @@
-import business.services.StockAlertService;
-import business.services.StockBankruptService;
-import business.services.StockListenerService;
-import business.services.StockSetupService;
+import business.services.*;
+import business.services.interfaces.GameStateServiceInterface;
 import business.stockmarket.StockMarket;
 import entities.Stock;
 import persistence.fileimplementation.FileUnitOfWork;
@@ -12,6 +10,8 @@ import persistence.interfaces.OwnedStockDAO;
 import persistence.interfaces.StockDAO;
 import persistence.interfaces.StockPriceHistoryDAO;
 import presentation.listeners.StockPresentationListener;
+import presentation.viewmodels.DashboardViewModel;
+import presentation.viewmodels.StockMarketViewModel;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -48,7 +48,13 @@ public class testclass
                                                 "Steady");
     stockMarket.addExistingStock(stock);
 
-    StockPresentationListener uiListener = new StockPresentationListener();
+    GameStateService gameStateService = new GameStateService(stockMarket, setupService, stockDAO, true, true);
+
+
+    DashboardViewModel DBViewModel = new DashboardViewModel(gameStateService);
+    StockMarketViewModel STMViewModel = new StockMarketViewModel(DBViewModel);
+    StockPresentationListener uiListener = new StockPresentationListener(STMViewModel);
+
 
     stockMarket.addListener(uiListener);
 

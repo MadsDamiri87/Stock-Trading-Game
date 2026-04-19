@@ -15,9 +15,9 @@ public class PortfolioController implements Initializable
     this.viewModel = viewModel;
   }
 
-  @Override
-  public void initialize(URL location, ResourceBundle resources)
+  @Override public void initialize(URL location, ResourceBundle resources)
   {
+    viewModel.loadPortfolio();
   }
 
   public void openBuyStocksFromPortfolio()

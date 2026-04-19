@@ -1,5 +1,6 @@
 package presentation.viewmodels;
 
+import business.services.interfaces.GameStateServiceInterface;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -9,37 +10,78 @@ import presentation.core.ViewManager;
 
 public class DashboardViewModel implements NavigationService
 {
-  private final StringProperty welcomeMessage =
-      new SimpleStringProperty("Welcome back, Trader");
+  private final GameStateServiceInterface gameStateService;
 
-  private final StringProperty activeView =
-      new SimpleStringProperty("dashboard");
+  private final StringProperty welcomeMessage = new SimpleStringProperty("Welcome back, Trader");
 
-  private final BooleanProperty sidebarExpanded =
-      new SimpleBooleanProperty(true);
+  private final StringProperty activeView = new SimpleStringProperty("dashboard");
 
-  private final StringProperty sidebarTitle =
-      new SimpleStringProperty("Stock Trading");
-  private final StringProperty sidebarSubtitle =
-      new SimpleStringProperty("Main Menu");
+  private final BooleanProperty sidebarExpanded = new SimpleBooleanProperty(true);
 
-  private final StringProperty dashboardButtonText =
-      new SimpleStringProperty("Dashboard");
-  private final StringProperty portfolioButtonText =
-      new SimpleStringProperty("Portfolio");
-  private final StringProperty buyButtonText =
-      new SimpleStringProperty("Buy Stocks");
-  private final StringProperty sellButtonText =
-      new SimpleStringProperty("Sell Stocks");
-  private final StringProperty marketButtonText =
-      new SimpleStringProperty("Market");
-  private final StringProperty settingsButtonText =
-      new SimpleStringProperty("Settings");
-  private final StringProperty closeAppButtonText =
-      new SimpleStringProperty("Close Application");
+  private final StringProperty sidebarTitle = new SimpleStringProperty("Stock Trading");
+  private final StringProperty sidebarSubtitle = new SimpleStringProperty("Main Menu");
+
+  private final StringProperty dashboardButtonText = new SimpleStringProperty("Dashboard");
+  private final StringProperty portfolioButtonText = new SimpleStringProperty("Portfolio");
+  private final StringProperty buyButtonText = new SimpleStringProperty("Buy Stocks");
+  private final StringProperty sellButtonText = new SimpleStringProperty("Sell Stocks");
+  private final StringProperty marketButtonText = new SimpleStringProperty("Market");
+  private final StringProperty settingsButtonText = new SimpleStringProperty("Stop Market");
+  private final StringProperty closeAppButtonText = new SimpleStringProperty("Close Application");
 
   private static final double EXPANDED_WIDTH = 240;
   private static final double COLLAPSED_WIDTH = 86;
+
+  public DashboardViewModel(GameStateServiceInterface gameStateService)
+  {
+    this.gameStateService = gameStateService;
+    updateMarketButtonText();
+  }
+
+  public void toggleMarketRunning()
+  {
+    if (gameStateService.isGameRunning())
+    {
+      gameStateService.stopGame();
+    }
+    else
+    {
+      gameStateService.startGame();
+    }
+
+    if (sidebarExpanded.get())
+    {
+      updateMarketButtonText();
+    }
+    else
+    {
+      updateMarketButtonCollapsedText();
+    }
+  }
+
+  private void updateMarketButtonText()
+  {
+    if (gameStateService.isGameRunning())
+    {
+      settingsButtonText.set("Stop Market");
+    }
+    else
+    {
+      settingsButtonText.set("Start Market");
+    }
+  }
+
+  private void updateMarketButtonCollapsedText()
+  {
+    if (gameStateService.isGameRunning())
+    {
+      settingsButtonText.set("⏸");
+    }
+    else
+    {
+      settingsButtonText.set("⏯");
+    }
+  }
 
   public void setTraderName(String traderName)
   {
@@ -73,7 +115,7 @@ public class DashboardViewModel implements NavigationService
       buyButtonText.set("Buy Stocks");
       sellButtonText.set("Sell Stocks");
       marketButtonText.set("Market");
-      settingsButtonText.set("Settings");
+      updateMarketButtonText();
       closeAppButtonText.set("Close Application");
     }
     else
@@ -86,7 +128,7 @@ public class DashboardViewModel implements NavigationService
       buyButtonText.set("⊕");
       sellButtonText.set("⊖");
       marketButtonText.set("◉");
-      settingsButtonText.set("⚙");
+      updateMarketButtonCollapsedText();
       closeAppButtonText.set("⏻");
     }
   }
@@ -106,31 +148,31 @@ public class DashboardViewModel implements NavigationService
     return sidebarExpanded;
   }
 
-  public void openDashboardHome()
+  @Override public void openDashboardHome()
   {
     activeView.set("dashboard");
     ViewManager.showView("DashboardHomeView");
   }
 
-  public void openPortfolio()
+  @Override public void openPortfolio()
   {
     activeView.set("portfolio");
     ViewManager.showView("PortfolioView");
   }
 
-  public void buyStocks()
+  @Override public void buyStocks()
   {
     activeView.set("buy");
     ViewManager.showView("BuyStocksView");
   }
 
-  public void sellStocks()
+  @Override public void sellStocks()
   {
     activeView.set("sell");
     ViewManager.showView("SellStocksView");
   }
 
-  public void openMarket()
+  @Override public void openMarket()
   {
     activeView.set("market");
     ViewManager.showView("StockMarketView");
@@ -190,6 +232,4 @@ public class DashboardViewModel implements NavigationService
   {
     return closeAppButtonText;
   }
-
-
 }

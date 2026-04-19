@@ -1,108 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Priority?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="24.0"
-      maxWidth="760.0"
-      xmlns="http://javafx.com/javafx/25"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="presentation.controllers.BuyStocksController">
+<ScrollPane fitToWidth="true" hbarPolicy="NEVER" pannable="true" styleClass="scroll-pane" vbarPolicy="AS_NEEDED" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.BuyStocksController">
 
-    <padding>
-        <Insets top="0.0" right="0.0" bottom="0.0" left="0.0"/>
-    </padding>
+    <content>
+        <StackPane>
+            <padding>
+                <Insets bottom="24.0" left="20.0" right="25.0" top="8.0" />
+            </padding>
 
-    <VBox spacing="8.0">
-        <Label text="Buy Stocks" styleClass="welcome-title"/>
-        <Label text="Search for a stock, choose quantity, and review the estimated total before buying."
-               wrapText="true"
-               styleClass="welcome-subtitle"/>
-    </VBox>
+            <VBox fillWidth="true" maxWidth="920.0" spacing="24.0">
 
-    <HBox spacing="20.0">
-        <VBox spacing="16.0" prefWidth="360.0" styleClass="glass-card-large">
-            <Label text="Order Details" styleClass="overview-title"/>
+                <padding>
+                    <Insets bottom="0.0" left="0.0" right="0.0" top="0.0" />
+                </padding>
 
-            <VBox spacing="8.0">
-                <Label text="Stock Symbol" styleClass="form-label"/>
-                <TextField fx:id="symbolField"
-                           promptText="e.g. AAPL"
-                           styleClass="glass-input"/>
+                <VBox spacing="8.0">
+                    <Label styleClass="welcome-title" text="Buy Stocks" />
+                    <Label styleClass="welcome-subtitle" text="Choose a stock from the list, enter number of shares, and review your balance before buying." wrapText="true" />
+                </VBox>
+
+                <HBox fillHeight="true" spacing="20.0">
+                    <VBox maxWidth="380.0" prefWidth="380.0" spacing="16.0" styleClass="glass-card-large">
+                        <Label styleClass="overview-title" text="Order Details" />
+
+                        <VBox spacing="8.0">
+                            <Label styleClass="form-label" text="Selected Stock:" />
+                     <Label fx:id="selectedStock" layoutX="10.0" layoutY="10.0" styleClass="form-label" text="stockSymbol" />
+                        </VBox>
+
+                        <VBox spacing="8.0">
+                            <Label styleClass="form-label" text="Price per Share:" />
+                     <Label fx:id="pricePerShare" layoutX="10.0" layoutY="10.0" styleClass="form-label" text="pricePerShare" />
+                        </VBox>
+
+                        <VBox spacing="8.0">
+                            <Label styleClass="form-label" text="Number of Shares" />
+                            <TextField fx:id="sharesField" promptText="e.g. 10" styleClass="glass-input" />
+                        </VBox>
+
+                        <VBox spacing="10.0" styleClass="summary-mini-box">
+                            <HBox spacing="12.0">
+                                <Label styleClass="table-header" text="Estimated Total:" />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <Label fx:id="summaryTotalLabel" styleClass="table-positive" text="-" />
+                            </HBox>
+
+                            <HBox spacing="12.0">
+                                <Label styleClass="table-header" text="Status:" />
+                                <Region HBox.hgrow="ALWAYS" />
+                            </HBox>
+
+                            <Label fx:id="statusLabel" styleClass="overview-text" text="Choose a stock and enter shares." wrapText="true" />
+                        </VBox>
+
+                        <HBox spacing="12.0">
+                            <Button onAction="#handleEstimate" styleClass="action-button-secondary" text="Estimate" />
+
+                            <Button onAction="#handleBuy" styleClass="action-button-primary" text="Buy Stock" />
+                        </HBox>
+                    </VBox>
+
+                    <VBox spacing="16.0" styleClass="glass-card-large" HBox.hgrow="ALWAYS">
+                        <HBox spacing="12.0">
+                            <Label styleClass="overview-title" text="Available Stocks" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label styleClass="card-muted" text="Select one to view price and chart" />
+                        </HBox>
+
+                        <ListView fx:id="stockListView" minHeight="320.0" prefHeight="320.0" styleClass="stock-list-view" VBox.vgrow="ALWAYS" />
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="20.0">
+                    <VBox maxWidth="280.0" prefWidth="280.0" spacing="10.0" styleClass="glass-card-large">
+                        <Label styleClass="overview-title" text="Total Balance" />
+                        <Label fx:id="balanceLabel" styleClass="balance-value" text="0.00" />
+                        <Label styleClass="overview-text" text="Available funds for your next purchase." wrapText="true" />
+                    </VBox>
+
+                    <VBox spacing="10.0" styleClass="glass-card-large" HBox.hgrow="ALWAYS">
+                        <Label styleClass="overview-title" text="Selected Stock Summary" />
+
+                        <HBox spacing="12.0">
+                            <Label styleClass="table-header" text="Stock:" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label fx:id="stockName" styleClass="table-cell-strong" text="-" />
+                        </HBox>
+
+                        <HBox spacing="12.0">
+                            <Label styleClass="table-header" text="Owned Shares:" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label fx:id="ownedSharesLabel" styleClass="table-cell" text="-" />
+                        </HBox>
+
+                        <HBox spacing="12.0">
+                            <Label styleClass="table-header" text="Price:" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label fx:id="summaryPriceLabel" styleClass="table-cell" text="-" />
+                        </HBox>
+                    </VBox>
+                </HBox>
+
+                <VBox spacing="14.0" styleClass="glass-card-large">
+                    <HBox spacing="12.0">
+                        <Label styleClass="overview-title" text="Price Development" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label styleClass="card-muted" text="Updates when another stock is selected" />
+                    </HBox>
+
+                    <LineChart fx:id="stockChart" animated="false" createSymbols="false" legendVisible="false" minHeight="280.0" prefHeight="320.0" styleClass="stock-line-chart">
+                        <xAxis>
+                            <NumberAxis label="Tick" fx:id="xAxis" />
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis fx:id="yAxis" label="Price" />
+                        </yAxis>
+                    </LineChart>
+                </VBox>
+
             </VBox>
-
-            <VBox spacing="8.0">
-                <Label text="Number of Shares" styleClass="form-label"/>
-                <TextField fx:id="sharesField"
-                           promptText="e.g. 10"
-                           styleClass="glass-input"/>
-            </VBox>
-
-            <VBox spacing="8.0">
-                <Label text="Price per Share" styleClass="form-label"/>
-                <TextField fx:id="priceField"
-                           promptText="e.g. 189.42"
-                           styleClass="glass-input"/>
-            </VBox>
-
-            <HBox spacing="12.0">
-                <Button text="Estimate"
-                        onAction="#handleEstimate"
-                        styleClass="action-button-secondary"/>
-
-                <Button text="Buy Stock"
-                        onAction="#handleBuy"
-                        styleClass="action-button-primary"/>
-            </HBox>
-        </VBox>
-
-        <VBox spacing="16.0" prefWidth="340.0" styleClass="glass-card-large">
-            <Label text="Order Summary" styleClass="overview-title"/>
-
-            <HBox spacing="12.0">
-                <Label text="Symbol:" styleClass="table-header"/>
-                <Region HBox.hgrow="ALWAYS"/>
-                <Label fx:id="summarySymbolLabel" text="-" styleClass="table-cell-strong"/>
-            </HBox>
-
-            <HBox spacing="12.0">
-                <Label text="Shares:" styleClass="table-header"/>
-                <Region HBox.hgrow="ALWAYS"/>
-                <Label fx:id="summarySharesLabel" text="-" styleClass="table-cell"/>
-            </HBox>
-
-            <HBox spacing="12.0">
-                <Label text="Price:" styleClass="table-header"/>
-                <Region HBox.hgrow="ALWAYS"/>
-                <Label fx:id="summaryPriceLabel" text="-" styleClass="table-cell"/>
-            </HBox>
-
-            <HBox spacing="12.0">
-                <Label text="Estimated Total:" styleClass="table-header"/>
-                <Region HBox.hgrow="ALWAYS"/>
-                <Label fx:id="summaryTotalLabel" text="-" styleClass="table-positive"/>
-            </HBox>
-
-            <VBox spacing="8.0">
-                <Label text="Status" styleClass="form-label"/>
-                <Label fx:id="statusLabel"
-                       text="Fill in the form to prepare your order."
-                       wrapText="true"
-                       styleClass="overview-text"/>
-            </VBox>
-        </VBox>
-    </HBox>
-
-    <VBox spacing="12.0" styleClass="glass-card-large">
-        <Label text="Quick Tips" styleClass="overview-title"/>
-        <Label text="Later you can bind these fields directly to ViewModel properties and validate symbol, quantity, and balance before committing a real trade."
-               wrapText="true"
-               styleClass="overview-text"/>
-    </VBox>
-</VBox>
+        </StackPane>
+    </content>
+</ScrollPane>

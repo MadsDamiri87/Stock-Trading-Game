@@ -8,6 +8,7 @@ public class OwnedStockMapper
   public static OwnedStockDTO toOwnedStockDTO(OwnedStock ownedStock)
   {
     return new OwnedStockDTO(ownedStock.getStockSymbol(),
-                             ownedStock.getNumberOfShares());
+                             ownedStock.getNumberOfShares(),
+                             ownedStock.getTradePrice());
   }
 }
