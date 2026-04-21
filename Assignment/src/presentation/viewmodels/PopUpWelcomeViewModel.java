@@ -2,23 +2,24 @@ package presentation.viewmodels;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import presentation.core.NavigationService;
 import presentation.core.ViewManager;
 
 public class PopUpWelcomeViewModel
 {
   private final StringProperty traderName = new SimpleStringProperty("");
-  private final DashboardViewModel dashboardViewModel;
+  private final NavigationService navigationsService;
 
-  public PopUpWelcomeViewModel(DashboardViewModel dashboardViewModel)
+  public PopUpWelcomeViewModel(NavigationService navigationsService)
   {
-    this.dashboardViewModel = dashboardViewModel;
+    this.navigationsService = navigationsService;
   }
 
   public void continueToDashboard()
   {
-    dashboardViewModel.setTraderName(traderName.get());
+    navigationsService.setTraderName(traderName.get());
     ViewManager.openMainApplication("DashboardView");
-    dashboardViewModel.openDashboardHome();
+    navigationsService.openDashboardHome();
   }
 
   public StringProperty traderNameProperty()

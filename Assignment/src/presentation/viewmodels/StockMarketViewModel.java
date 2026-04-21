@@ -8,6 +8,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart;
+import presentation.core.NavigationService;
 import presentation.listeners.StockUpdateReceiver;
 
 import java.util.HashMap;
@@ -17,7 +18,7 @@ public class StockMarketViewModel implements StockUpdateReceiver
 {
   private static final int MAX_DATA_POINTS = 30;
 
-  private final DashboardViewModel dashboardViewModel;
+  private final NavigationService navigationsService;
 
   private final StringProperty marketStatus = new SimpleStringProperty("Live");
   private final StringProperty symbol = new SimpleStringProperty("-");
@@ -30,14 +31,14 @@ public class StockMarketViewModel implements StockUpdateReceiver
 
   private final IntegerProperty highestTick = new SimpleIntegerProperty(0);
 
-  public StockMarketViewModel(DashboardViewModel dashboardViewModel)
+  public StockMarketViewModel(NavigationService navigationService)
   {
-    this.dashboardViewModel = dashboardViewModel;
+    this.navigationsService = navigationService;
   }
 
   public void openPortfolio()
   {
-    dashboardViewModel.openPortfolio();
+    navigationsService.openPortfolio();
   }
 
   @Override public void onStockUpdate(StockMarketUpdateEvent event)

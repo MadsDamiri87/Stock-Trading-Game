@@ -26,6 +26,8 @@ public class MainClass
 
     StockListenerService stockListenerService = new StockListenerService(uow, stockDAO, historyDAO);
     StockBankruptService stockBankruptService = new StockBankruptService(uow, ownedStockDAO);
+
+
     StockAlertService stockAlertService = new StockAlertService();
 
     stockMarket1.addListener(stockListenerService);

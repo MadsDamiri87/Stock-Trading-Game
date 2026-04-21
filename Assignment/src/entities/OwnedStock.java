@@ -61,9 +61,9 @@ public class OwnedStock
     this.numberOfShares = numberOfShares;
   }
 
-  public void setTradePrice(double boughtPrice)
+  public void setTradePrice(double tradePrice)
   {
-    this.tradePrice = boughtPrice;
+    this.tradePrice = tradePrice;
   }
 
 

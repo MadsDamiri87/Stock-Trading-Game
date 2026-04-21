@@ -122,7 +122,7 @@ class TestTradingService
 
     UUID ownedStockId = UUID.randomUUID();
 
-    ownedStockDAO.create(new OwnedStock(ownedStockId, portfolioId, "NKA", 2));
+    ownedStockDAO.create(new OwnedStock(ownedStockId, portfolioId, "NKA", 2, 100));
 
     TradeRequestDTO request = new TradeRequestDTO(portfolioId, "NKA", 3, 210);
 
@@ -276,7 +276,7 @@ class TestTradingService
     Stock stock = new Stock("AAPL", "Apple", BigDecimal.valueOf(100), "Steady");
     stockDAO.create(stock);
 
-    ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 5));
+    ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 5, 200));
 
     TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 2,215);
 
@@ -298,7 +298,7 @@ class TestTradingService
 
     stockDAO.create(new Stock("AAPL", "Apple", BigDecimal.valueOf(100), "Steady"));
 
-    ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 5));
+    ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 5, 200));
 
     TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 3, 213);
 
@@ -321,7 +321,7 @@ class TestTradingService
 
     stockDAO.create(new Stock("AAPL", "Apple", BigDecimal.valueOf(100), "Steady"));
 
-    ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 2));
+    ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 2, 200));
 
     TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 5,120);
 
@@ -340,7 +340,7 @@ class TestTradingService
 
     stockDAO.create(new Stock("AAPL", "Apple", BigDecimal.valueOf(100), "Steady"));
 
-    ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 5));
+    ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 5, 300));
 
     TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 1, 210);
 
@@ -362,7 +362,7 @@ class TestTradingService
 
     stockDAO.create(new Stock("AAPL", "Apple", BigDecimal.valueOf(100), "Steady"));
 
-    ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 5));
+    ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 5, 12));
 
     TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 1, 120);
     //    ACT
@@ -399,7 +399,7 @@ class TestTradingService
 
     stockDAO.create(new Stock("AAPL", "Apple", BigDecimal.valueOf(100), "Steady"));
 
-    ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 5));
+    ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 5, 21));
 
     TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 0,132);
 
@@ -418,7 +418,7 @@ class TestTradingService
 
     stockDAO.create(new Stock("AAPL", "Apple", BigDecimal.valueOf(100), "Steady"));
 
-    ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 2));
+    ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 2, 230));
 
     TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 2,120);
 
@@ -440,7 +440,7 @@ class TestTradingService
 
     stockDAO.create(new Stock("AAPL", "Apple", BigDecimal.valueOf(100), "Steady"));
 
-    ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 1));
+    ownedStockDAO.create(new OwnedStock(UUID.randomUUID(), portfolioId, "AAPL", 1, 32));
 
     TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 5,130);
 

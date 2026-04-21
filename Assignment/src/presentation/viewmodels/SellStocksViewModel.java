@@ -11,7 +11,6 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart;
@@ -40,7 +39,7 @@ public class SellStocksViewModel implements StockUpdateReceiver
   private final StringProperty balance = new SimpleStringProperty("-");
   private final StringProperty ownedShares = new SimpleStringProperty("0");
   private final StringProperty tradePrice = new SimpleStringProperty("-");
-  private final StringProperty statuDescription = new SimpleStringProperty("-");
+  private final StringProperty statusDescription = new SimpleStringProperty("-");
 
   private final StringProperty summaryShares = new SimpleStringProperty("-");
   private final StringProperty summaryPrice = new SimpleStringProperty("-");
@@ -104,7 +103,7 @@ public class SellStocksViewModel implements StockUpdateReceiver
       summaryPrice.set("-");
       selectedStockSeries.getData().clear();
       tradePrice.set("-");
-      statuDescription.set("-");
+      statusDescription.set("-");
       tickCounter = 0;
       return;
     }
@@ -383,6 +382,6 @@ public class SellStocksViewModel implements StockUpdateReceiver
 
   public StringProperty statusDescription()
   {
-    return statuDescription;
+    return statusDescription;
   }
 }

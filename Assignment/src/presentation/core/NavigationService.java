@@ -13,4 +13,5 @@ public interface NavigationService
   void buyStocks();
   void sellStocks();
   void openMarket();
+  void setTraderName(String traderName);
 }

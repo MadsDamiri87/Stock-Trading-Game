@@ -1,8 +1,6 @@
 package presentation.core;
 
-import business.dto.OwnedStockDTO;
 import business.services.*;
-import business.services.notifications.StockAlert;
 import business.services.notifications.StockAlertPublisher;
 import business.stockmarket.MarketTickHandler;
 import business.stockmarket.StockMarket;

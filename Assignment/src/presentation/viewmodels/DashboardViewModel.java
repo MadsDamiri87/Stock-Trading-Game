@@ -83,7 +83,7 @@ public class DashboardViewModel implements NavigationService
     }
   }
 
-  public void setTraderName(String traderName)
+  @Override public void setTraderName(String traderName)
   {
     String safeName = traderName == null ? "" : traderName.trim();
 

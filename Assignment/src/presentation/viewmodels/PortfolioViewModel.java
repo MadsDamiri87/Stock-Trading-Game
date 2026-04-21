@@ -10,6 +10,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import presentation.core.NavigationService;
 import presentation.state.UserSession;
 import shared.logging.Logger;
 
@@ -17,7 +18,7 @@ import java.util.UUID;
 
 public class PortfolioViewModel
 {
-  private final DashboardViewModel viewModel;
+  private final NavigationService navigationService;
   private final PortfolioServiceInterface portfolioService;
   private final UserSession userSession;
   private final Logger logger = Logger.getInstance();
@@ -28,10 +29,10 @@ public class PortfolioViewModel
   private final ObservableList<OwnedStockDTO> ownedStocks = FXCollections.observableArrayList();
   private final ObservableList<TransactionDTO> transactions = FXCollections.observableArrayList();
 
-  public PortfolioViewModel(DashboardViewModel viewModel,
+  public PortfolioViewModel(NavigationService navigationService,
                             PortfolioServiceInterface portfolioService, UserSession userSession)
   {
-    this.viewModel        = viewModel;
+    this.navigationService        = navigationService;
     this.portfolioService = portfolioService;
     this.userSession      = userSession;
   }
@@ -70,12 +71,12 @@ public class PortfolioViewModel
 
   public void sellStocks()
   {
-    viewModel.sellStocks();
+    navigationService.sellStocks();
   }
 
   public void openBuyStocks()
   {
-    viewModel.buyStocks();
+    navigationService.buyStocks();
   }
 
   public StringProperty balanceProperty()

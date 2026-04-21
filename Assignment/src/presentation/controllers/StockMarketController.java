@@ -70,7 +70,7 @@ public class StockMarketController implements Initializable
     }
   }
 
-  @FXML private void handleOpenPortfolio(ActionEvent actionEvent)
+  @FXML private void handleOpenPortfolio()
   {
     viewModel.openPortfolio();
   }

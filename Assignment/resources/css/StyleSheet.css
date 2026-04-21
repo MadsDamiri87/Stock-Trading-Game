@@ -3,7 +3,7 @@
   -fx-background-radius: 20 20 20 20;
 }
 
-/* ===== WINDOW BAR ===== */
+/* WINDOW BAR */
 
 .window-bar {
   -fx-padding: 12 14 0 14;
@@ -45,7 +45,7 @@
   -fx-border-color: rgba(239,68,68,0.28);
 }
 
-/* ===== SIDEBAR ===== */
+/* SIDEBAR */
 
 .sidebar-container {
   -fx-background-color: transparent;
@@ -73,7 +73,7 @@
   -fx-font-size: 13px;
 }
 
-/* ===== MENU BUTTONS ===== */
+/* MENU BUTTONS*/
 
 .menu-button-primary,
 .menu-button-secondary,
@@ -150,7 +150,7 @@
   -fx-border-color: rgba(239,68,68,0.30);
 }
 
-/* ===== COLLAPSED SIDEBAR ===== */
+/* COLLAPSED SIDEBAR */
 
 .sidebar-collapsed .menu-button-primary,
 .sidebar-collapsed .menu-button-secondary,
@@ -167,7 +167,7 @@
   -fx-opacity: 0;
 }
 
-/* ===== CENTER CONTENT ===== */
+/* CENTER CONTENT */
 
 .center-content {
   -fx-padding: 48;
@@ -184,7 +184,7 @@
   -fx-font-size: 16px;
 }
 
-/* ===== ACTION BUTTONS ===== */
+/* ACTION BUTTONS */
 
 .action-button-primary {
   -fx-background-color: linear-gradient(to right, #6366f1, #4f46e5);
@@ -217,7 +217,7 @@
   -fx-text-fill: white;
 }
 
-/* ===== SELL BUTTON ===== */
+/* SELL BUTTON */
 
 .sell-button-primary {
   -fx-background-color: linear-gradient(to right, #ef4444, #dc2626);
@@ -233,7 +233,7 @@
   -fx-background-color: linear-gradient(to right, #f05a5a, #e03636);
 }
 
-/* ===== FORM ===== */
+/* FORM */
 
 .form-label {
   -fx-text-fill: rgba(255,255,255,0.72);
@@ -259,7 +259,7 @@
   -fx-padding: 6 10 6 10;
 }
 
-/* ===== GLASS CARDS ===== */
+/* GLASS CARDS */
 
 .glass-card {
   -fx-background-color: rgba(255,255,255,0.10);
@@ -302,7 +302,7 @@
   -fx-font-size: 13px;
 }
 
-/* ===== OVERVIEW ===== */
+/* OVERVIEW */
 
 .overview-title {
   -fx-text-fill: white;
@@ -315,7 +315,7 @@
   -fx-font-size: 14px;
 }
 
-/* ===== TABLE / MARKET ===== */
+/* TABLE / MARKET */
 
 .table-header {
   -fx-text-fill: rgba(255,255,255,0.60);
@@ -346,7 +346,7 @@
   -fx-font-weight: bold;
 }
 
-/* ===== SCROLLPANE ===== */
+/* SCROLLPANE */
 
 .scroll-pane {
   -fx-background-color: transparent;

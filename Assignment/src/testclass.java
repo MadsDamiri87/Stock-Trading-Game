@@ -1,5 +1,4 @@
 import business.services.*;
-import business.services.interfaces.GameStateServiceInterface;
 import business.stockmarket.StockMarket;
 import entities.Stock;
 import persistence.fileimplementation.FileUnitOfWork;
