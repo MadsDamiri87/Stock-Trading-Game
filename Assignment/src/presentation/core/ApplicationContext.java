@@ -1,6 +1,9 @@
 package presentation.core;
 
 import business.services.*;
+import business.services.interfaces.GameStateServiceInterface;
+import business.services.interfaces.PortfolioServiceInterface;
+import business.services.interfaces.TradingServiceInterface;
 import business.services.notifications.StockAlertPublisher;
 import business.stockmarket.MarketTickHandler;
 import business.stockmarket.StockMarket;
@@ -36,9 +39,9 @@ public class ApplicationContext
   private final TransactionDAO transactionDAO;
   private final StockPriceHistoryDAO stockPriceHistoryDAO;
 
-  private final GameStateService gameStateService;
-  private final PortfolioService portfolioService;
-  private final TradingService tradingService;
+  private final GameStateServiceInterface gameStateService;
+  private final PortfolioServiceInterface portfolioService;
+  private final TradingServiceInterface tradingService;
   private final MarketTickHandler marketTickHandler;
   private final Thread marketThread;
 
@@ -96,6 +99,7 @@ public class ApplicationContext
     stockMarket.addListener(new StockPresentationListener(buyStocksViewModel));
     stockMarket.addListener(new StockListenerService(unitOfWork, stockDAO, stockPriceHistoryDAO));
     stockMarket.addListener(new StockBankruptService(unitOfWork, ownedStockDAO));
+
     stockMarket.addListener(stockAlertService);
 
     this.marketTickHandler = new MarketTickHandler(gameStateService);

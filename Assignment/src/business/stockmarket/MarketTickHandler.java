@@ -1,6 +1,7 @@
 package business.stockmarket;
 
 import business.services.GameStateService;
+import business.services.interfaces.GameStateServiceInterface;
 import shared.configuration.AppConfig;
 import shared.logging.Logger;
 
@@ -8,11 +9,11 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class MarketTickHandler implements Runnable
 {
-  private final GameStateService gameStateService;
+  private final GameStateServiceInterface gameStateService;
   private final Logger logger;
   private boolean running;
 
-  public MarketTickHandler(GameStateService gameStateService)
+  public MarketTickHandler(GameStateServiceInterface gameStateService)
   {
     this.gameStateService = gameStateService;
     this.logger = Logger.getInstance();
