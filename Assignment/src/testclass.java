@@ -8,6 +8,8 @@ import persistence.fileimplementation.StockPriceHistoryFileDAO;
 import persistence.interfaces.OwnedStockDAO;
 import persistence.interfaces.StockDAO;
 import persistence.interfaces.StockPriceHistoryDAO;
+import presentation.core.NavigationService;
+import presentation.core.ViewNavigationService;
 import presentation.listeners.StockPresentationListener;
 import presentation.viewmodels.DashboardViewModel;
 import presentation.viewmodels.StockMarketViewModel;
@@ -51,7 +53,9 @@ public class testclass
 
 
     DashboardViewModel DBViewModel = new DashboardViewModel(gameStateService);
-    StockMarketViewModel STMViewModel = new StockMarketViewModel(DBViewModel);
+    NavigationService navigationService = new ViewNavigationService(DBViewModel);
+
+    StockMarketViewModel STMViewModel = new StockMarketViewModel(navigationService);
     StockPresentationListener uiListener = new StockPresentationListener(STMViewModel);
 
 

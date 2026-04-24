@@ -10,8 +10,8 @@ public interface NavigationService
 
   void openDashboardHome();
   void openPortfolio();
-  void buyStocks();
-  void sellStocks();
-  void openMarket();
+  void openBuyStocksView();
+  void openSellStocksView();
+  void openMarketView();
   void setTraderName(String traderName);
 }

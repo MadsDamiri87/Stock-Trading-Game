@@ -28,12 +28,15 @@ public class ControllerFactory implements Callback<Class<?>, Object>
     }
     else if (controllerClass == DashboardController.class)
     {
-      return new DashboardController(context.getDashboardViewModel());
+      return new DashboardController(context.getDashboardViewModel(),
+                                     context.getNavigationService());
     }
     else if (controllerClass == DashboardHomeController.class)
     {
-      return new DashboardHomeController(context.getDashboardViewModel());
+      return new DashboardHomeController(context.getNavigationService(),
+                                         context.getDashboardViewModel());
     }
+
     else if (controllerClass == PortfolioController.class)
     {
       return new PortfolioController(context.getPortfolioViewModel());

@@ -2,6 +2,9 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
@@ -22,61 +25,59 @@
     <HBox spacing="20.0">
         <VBox prefWidth="220.0" styleClass="glass-card">
             <Label text="Total Value" styleClass="card-label"/>
-            <Label text="24,580" styleClass="card-value"/>
-            <Label text="+4.2% today" styleClass="card-positive"/>
+            <Label fx:id="totalValueLabel" text="-" styleClass="card-value"/>
+            <Label fx:id="todayChangeLabel" text="Live market value" styleClass="card-positive"/>
         </VBox>
 
         <VBox prefWidth="220.0" styleClass="glass-card">
             <Label text="Cash Balance" styleClass="card-label"/>
-            <Label text="3,420" styleClass="card-value"/>
+            <Label fx:id="cashBalanceLabel" text="-" styleClass="card-value"/>
             <Label text="Available to trade" styleClass="card-muted"/>
         </VBox>
 
         <VBox prefWidth="220.0" styleClass="glass-card">
             <Label text="Open Positions" styleClass="card-label"/>
-            <Label text="12" styleClass="card-value"/>
-            <Label text="Across 6 holdings" styleClass="card-muted"/>
+            <Label fx:id="openPositionLabel" text="-" styleClass="card-value"/>
+            <Label fx:id="holdingCountLabel" text="-" styleClass="card-muted"/>
         </VBox>
     </HBox>
 
-    <VBox spacing="14.0" styleClass="glass-card-large">
-        <HBox spacing="52.0">
-            <Label text="Symbol" styleClass="table-header"/>
-            <Label text="Shares" styleClass="table-header"/>
-            <Label text="Avg Price" styleClass="table-header"/>
-            <Label text="Current" styleClass="table-header"/>
-            <Label text="P/L" styleClass="table-header"/>
-        </HBox>
+    <ScrollPane fitToWidth="true"
+                prefHeight="320.0"
+                maxHeight="320.0"
+                hbarPolicy="NEVER"
+                vbarPolicy="AS_NEEDED"
+                styleClass="transparent-scroll">
 
-        <HBox spacing="62.0">
-            <Label text="AAPL" styleClass="table-cell-strong"/>
-            <Label text="15" styleClass="table-cell"/>
-            <Label text="182.10" styleClass="table-cell"/>
-            <Label text="187.40" styleClass="table-cell"/>
-            <Label text="+$79.50" styleClass="table-positive"/>
-        </HBox>
+        <VBox fx:id="holdingsBox" spacing="10.0" styleClass="glass-card-large">
+            <GridPane hgap="25.0">
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="140.0"/>
+                    <ColumnConstraints prefWidth="90.0"/>
+                    <ColumnConstraints prefWidth="130.0"/>
+                    <ColumnConstraints prefWidth="130.0"/>
+                    <ColumnConstraints prefWidth="130.0"/>
+                </columnConstraints>
 
-        <HBox spacing="64.0">
-            <Label text="TSLA" styleClass="table-cell-strong"/>
-            <Label text="8" styleClass="table-cell"/>
-            <Label text="221.50" styleClass="table-cell"/>
-            <Label text="215.90" styleClass="table-cell"/>
-            <Label text="-$44.80" styleClass="table-negative"/>
-        </HBox>
-
-        <HBox spacing="60.0">
-            <Label text="MSFT" styleClass="table-cell-strong"/>
-            <Label text="10" styleClass="table-cell"/>
-            <Label text="401.20" styleClass="table-cell"/>
-            <Label text="409.80" styleClass="table-cell"/>
-            <Label text="+$86.00" styleClass="table-positive"/>
-        </HBox>
-    </VBox>
+                <Label text="Symbol" styleClass="table-header" GridPane.columnIndex="0"/>
+                <Label text="Shares" styleClass="table-header" GridPane.columnIndex="1"/>
+                <Label text="Avg Price" styleClass="table-header" GridPane.columnIndex="2"/>
+                <Label text="Current" styleClass="table-header" GridPane.columnIndex="3"/>
+                <Label text="P/L" styleClass="table-header" GridPane.columnIndex="4"/>
+            </GridPane>
+        </VBox>
+    </ScrollPane>
 
     <HBox spacing="14.0">
-        <Button text="Buy Stocks" onAction="#openBuyStocksFromPortfolio" styleClass="action-button-primary"/>
-        <Button text="Sell Stocks" onAction="#openSellStocksFromPortfolio" styleClass="action-button-secondary"/>
+        <Button text="Buy Stocks"
+                onAction="#openBuyStocksFromPortfolio"
+                styleClass="action-button-primary"/>
+
+        <Button text="Sell Stocks"
+                onAction="#openSellStocksFromPortfolio"
+                styleClass="action-button-secondary"/>
     </HBox>
 
     <Region VBox.vgrow="ALWAYS"/>
+
 </VBox>

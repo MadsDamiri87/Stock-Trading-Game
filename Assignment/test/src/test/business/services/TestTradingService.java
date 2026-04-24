@@ -1,4 +1,4 @@
-package business.services;
+package test.business.services;
 
 import business.dto.TradeRequestDTO;
 import entities.OwnedStock;
@@ -7,7 +7,7 @@ import entities.Stock;
 import entities.Transaction;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import persistence.mocks.*;
+import test.persistence.mocks.*;
 
 import java.math.BigDecimal;
 import java.util.List;

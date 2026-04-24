@@ -1,4 +1,4 @@
-package persistence.mocks;
+package test.persistence.mocks;
 
 import persistence.interfaces.UnitOfWork;
 

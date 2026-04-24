@@ -4,9 +4,9 @@ import business.dto.OwnedStockDTO;
 import business.dto.PortfolioDTO;
 import business.dto.StockDTO;
 import business.dto.TradeRequestDTO;
-import business.stockmarket.StockMarketUpdateEvent;
 import business.services.interfaces.PortfolioServiceInterface;
 import business.services.interfaces.TradingServiceInterface;
+import business.stockmarket.StockMarketUpdateEvent;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -29,6 +29,8 @@ public class SellStocksViewModel implements StockUpdateReceiver
   private final UserSession userSession;
   private final Logger logger = Logger.getInstance();
 
+  private final UUID portfolioId;
+
   private final ObservableList<OwnedStockDTO> ownedStocks = FXCollections.observableArrayList();
   private final ObjectProperty<OwnedStockDTO> selectedOwnedStock = new SimpleObjectProperty<>();
 
@@ -48,6 +50,7 @@ public class SellStocksViewModel implements StockUpdateReceiver
       "Choose an owned stock and enter shares.");
 
   private final XYChart.Series<Number, Number> selectedStockSeries = new XYChart.Series<>();
+
   private int tickCounter = 0;
   private double currentPriceValue = 0.0;
 
@@ -57,6 +60,7 @@ public class SellStocksViewModel implements StockUpdateReceiver
     this.tradingService   = tradingService;
     this.portfolioService = portfolioService;
     this.userSession      = userSession;
+    this.portfolioId = userSession.getActivePortfolioId();
 
     selectedStockSeries.setName("Selected Stock");
 
@@ -67,8 +71,6 @@ public class SellStocksViewModel implements StockUpdateReceiver
   {
     try
     {
-      UUID portfolioId = userSession.getActivePortfolioId();
-
       if (portfolioId == null)
       {
         balance.set("No active portfolio");
@@ -77,14 +79,15 @@ public class SellStocksViewModel implements StockUpdateReceiver
       }
 
       PortfolioDTO portfolio = portfolioService.getPortfolio(portfolioId);
-      balance.set("$" + portfolio.currentBalance().toPlainString());
-      ownedStocks.setAll(portfolio.ownedStocks());
 
+      balance.set(String.format("$%.2f", portfolio.currentBalance()));
+      ownedStocks.setAll(portfolio.ownedStocks());
     }
     catch (Exception e)
     {
       logger.log("Error",
                  "Failed to load portfolio data in SellStocksViewModel: " + e.getMessage());
+
       balance.set("Error");
       ownedStocks.clear();
     }
@@ -104,7 +107,8 @@ public class SellStocksViewModel implements StockUpdateReceiver
       selectedStockSeries.getData().clear();
       tradePrice.set("-");
       statusDescription.set("-");
-      tickCounter = 0;
+      tickCounter       = 0;
+      currentPriceValue = 0.0;
       return;
     }
 
@@ -120,7 +124,6 @@ public class SellStocksViewModel implements StockUpdateReceiver
     if (matchingStock != null)
     {
       currentPriceValue = matchingStock.currentPrice().doubleValue();
-
       price.set(String.format("$%.2f", currentPriceValue));
       summaryPrice.set(String.format("$%.2f", currentPriceValue));
     }
@@ -139,7 +142,6 @@ public class SellStocksViewModel implements StockUpdateReceiver
 
   @Override public void onStockUpdate(StockMarketUpdateEvent event)
   {
-
     OwnedStockDTO currentSelection = selectedOwnedStock.get();
 
     if (currentSelection == null)
@@ -181,19 +183,10 @@ public class SellStocksViewModel implements StockUpdateReceiver
       }
 
       int parsedShares = Integer.parseInt(shares.get().trim());
-      int owned = Integer.parseInt(ownedShares.get());
-      double parsedPrice = currentPriceValue;
-
-      if (parsedShares > owned)
-      {
-        statusMessage.set("You cannot sell more shares than you own.");
-        return;
-      }
-
-      double total = parsedShares * parsedPrice;
+      double total = parsedShares * currentPriceValue;
 
       summaryShares.set(String.valueOf(parsedShares));
-      summaryPrice.set(String.format("$%.2f", parsedPrice));
+      summaryPrice.set(String.format("$%.2f", currentPriceValue));
       summaryTotal.set(String.format("$%.2f", total));
       statusMessage.set("Estimated sell order is ready.");
     }
@@ -212,7 +205,6 @@ public class SellStocksViewModel implements StockUpdateReceiver
     try
     {
       OwnedStockDTO currentSelection = selectedOwnedStock.get();
-      UUID portfolioId = userSession.getActivePortfolioId();
 
       if (portfolioId == null)
       {
@@ -227,18 +219,9 @@ public class SellStocksViewModel implements StockUpdateReceiver
       }
 
       int parsedShares = Integer.parseInt(shares.get().trim());
-      int owned = Integer.parseInt(ownedShares.get());
-
-      if (parsedShares > owned)
-      {
-        statusMessage.set("You cannot sell more shares than you own.");
-        return;
-      }
-
-      double tradePrice = currentPriceValue;
 
       TradeRequestDTO request = new TradeRequestDTO(portfolioId, currentSelection.stockSymbol(),
-                                                    parsedShares, tradePrice);
+                                                    parsedShares, currentPriceValue);
 
       tradingService.sellStock(request);
 
@@ -249,10 +232,12 @@ public class SellStocksViewModel implements StockUpdateReceiver
           "Sold " + parsedShares + " shares of " + currentSelection.stockSymbol() + ".");
 
       loadPortfolioData();
-      selectOwnedStock(ownedStocks.stream().filter(
-                                      stock -> stock.stockSymbol().equalsIgnoreCase(currentSelection.stockSymbol())).findFirst()
-                                  .orElse(null));
-      estimate();
+
+      OwnedStockDTO updatedSelection = ownedStocks.stream().filter(
+                                                      stock -> stock.stockSymbol().equalsIgnoreCase(currentSelection.stockSymbol())).findFirst()
+                                                  .orElse(null);
+
+      selectOwnedStock(updatedSelection);
     }
     catch (NumberFormatException e)
     {
@@ -268,32 +253,13 @@ public class SellStocksViewModel implements StockUpdateReceiver
 
   public void loadStocks()
   {
-    try
-    {
-      UUID portfolioId = userSession.getActivePortfolioId();
-
-      if (portfolioId == null)
-      {
-        ownedStocks.clear();
-        return;
-      }
-
-      PortfolioDTO portfolio = portfolioService.getPortfolio(portfolioId);
-      ownedStocks.setAll(portfolio.ownedStocks());
-    }
-    catch (Exception e)
-    {
-      logger.log("Error", "Failed to load owned stocks in SellStocksViewModel: ");
-      ownedStocks.clear();
-    }
+    loadPortfolioData();
   }
 
   public void loadBalance()
   {
     try
     {
-      UUID portfolioId = userSession.getActivePortfolioId();
-
       if (portfolioId == null)
       {
         balance.set("No active portfolio");

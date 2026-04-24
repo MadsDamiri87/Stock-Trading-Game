@@ -46,6 +46,7 @@ public class ApplicationContext
   private final Thread marketThread;
 
   private final NotificationService notificationService;
+  private final NavigationService navigationService;
 
   private final UserSession userSession;
 
@@ -80,11 +81,13 @@ public class ApplicationContext
     UUID activePortfolioId = bootstrapService.getOrCreatePortfolioId();
     userSession.setActivePortfolioId(activePortfolioId);
 
-    this.dashboardViewModel    = new DashboardViewModel(gameStateService);
-    this.popUpWelcomeViewModel = new PopUpWelcomeViewModel(dashboardViewModel);
-    this.portfolioViewModel    = new PortfolioViewModel(dashboardViewModel, portfolioService,
+    this.dashboardViewModel = new DashboardViewModel(gameStateService);
+    this.navigationService = new ViewNavigationService(dashboardViewModel);
+
+    this.popUpWelcomeViewModel = new PopUpWelcomeViewModel(navigationService);
+    this.portfolioViewModel    = new PortfolioViewModel(navigationService, portfolioService,
                                                         userSession);
-    this.stockMarketViewModel  = new StockMarketViewModel(dashboardViewModel);
+    this.stockMarketViewModel  = new StockMarketViewModel(navigationService);
     this.buyStocksViewModel    = new BuyStocksViewModel(tradingService, portfolioService,
                                                         userSession);
     this.sellStocksViewModel   = new SellStocksViewModel(tradingService, portfolioService,
@@ -97,6 +100,7 @@ public class ApplicationContext
     stockMarket.addListener(new StockPresentationListener(sellStocksViewModel));
     stockMarket.addListener(new StockPresentationListener(stockMarketViewModel));
     stockMarket.addListener(new StockPresentationListener(buyStocksViewModel));
+    stockMarket.addListener(new StockPresentationListener(portfolioViewModel));
     stockMarket.addListener(new StockListenerService(unitOfWork, stockDAO, stockPriceHistoryDAO));
     stockMarket.addListener(new StockBankruptService(unitOfWork, ownedStockDAO));
 
@@ -144,5 +148,10 @@ public class ApplicationContext
   public NotificationService getNotificationService()
   {
     return notificationService;
+  }
+
+  public NavigationService getNavigationService()
+  {
+    return navigationService;
   }
 }

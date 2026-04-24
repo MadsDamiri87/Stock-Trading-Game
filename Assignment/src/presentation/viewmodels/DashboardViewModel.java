@@ -5,10 +5,8 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import presentation.core.NavigationService;
-import presentation.core.ViewManager;
 
-public class DashboardViewModel implements NavigationService
+public class DashboardViewModel
 {
   private final GameStateServiceInterface gameStateService;
 
@@ -20,6 +18,8 @@ public class DashboardViewModel implements NavigationService
 
   private final StringProperty sidebarTitle = new SimpleStringProperty("Stock Trading");
   private final StringProperty sidebarSubtitle = new SimpleStringProperty("Main Menu");
+
+  private final StringProperty traderName = new SimpleStringProperty("");
 
   private final StringProperty dashboardButtonText = new SimpleStringProperty("Dashboard");
   private final StringProperty portfolioButtonText = new SimpleStringProperty("Portfolio");
@@ -83,20 +83,6 @@ public class DashboardViewModel implements NavigationService
     }
   }
 
-  @Override public void setTraderName(String traderName)
-  {
-    String safeName = traderName == null ? "" : traderName.trim();
-
-    if (safeName.isBlank())
-    {
-      welcomeMessage.set("Welcome back, Trader");
-    }
-    else
-    {
-      welcomeMessage.set("Welcome back, " + safeName);
-    }
-  }
-
   public void toggleSidebar()
   {
     sidebarExpanded.set(!sidebarExpanded.get());
@@ -138,6 +124,21 @@ public class DashboardViewModel implements NavigationService
     return sidebarExpanded.get() ? EXPANDED_WIDTH : COLLAPSED_WIDTH;
   }
 
+  public void setTraderName(String traderName)
+  {
+    String safeName = traderName == null ? "" : traderName.trim();
+
+    if (safeName.isBlank())
+    {
+      welcomeMessageProperty().set("Welcome back, Trader");
+    }
+    else
+    {
+      welcomeMessageProperty().set("Welcome back, " + safeName);
+
+    }
+  }
+
   public boolean isSidebarExpanded()
   {
     return sidebarExpanded.get();
@@ -146,36 +147,6 @@ public class DashboardViewModel implements NavigationService
   public BooleanProperty sidebarExpandedProperty()
   {
     return sidebarExpanded;
-  }
-
-  @Override public void openDashboardHome()
-  {
-    activeView.set("dashboard");
-    ViewManager.showView("DashboardHomeView");
-  }
-
-  @Override public void openPortfolio()
-  {
-    activeView.set("portfolio");
-    ViewManager.showView("PortfolioView");
-  }
-
-  @Override public void buyStocks()
-  {
-    activeView.set("buy");
-    ViewManager.showView("BuyStocksView");
-  }
-
-  @Override public void sellStocks()
-  {
-    activeView.set("sell");
-    ViewManager.showView("SellStocksView");
-  }
-
-  @Override public void openMarket()
-  {
-    activeView.set("market");
-    ViewManager.showView("StockMarketView");
   }
 
   public StringProperty welcomeMessageProperty()
@@ -232,4 +203,5 @@ public class DashboardViewModel implements NavigationService
   {
     return closeAppButtonText;
   }
+
 }

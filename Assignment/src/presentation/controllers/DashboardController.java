@@ -13,9 +13,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import presentation.core.NavigationService;
 import presentation.viewmodels.DashboardViewModel;
 
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable
@@ -36,27 +38,51 @@ public class DashboardController implements Initializable
   @FXML private Button settingsButton;
   @FXML private Button closeAppButton;
 
+  private Map<String, Button> navButtons;
+
   private final DashboardViewModel viewModel;
+  private final NavigationService navigationService;
 
   private double xOffset = 0;
   private double yOffset = 0;
 
-  public DashboardController(DashboardViewModel viewModel)
+  public DashboardController(DashboardViewModel viewModel, NavigationService navigationService)
   {
     this.viewModel = viewModel;
+    this.navigationService = navigationService;
   }
 
   @Override public void initialize(URL location, ResourceBundle resources)
   {
     setupWindowDragging();
+    initializeNavigationButtons();
     setupBindings();
+    setupListeners();
 
-    viewModel.activeViewProperty().addListener((obs, oldValue, newValue) -> updateActiveMenu());
-    viewModel.sidebarExpandedProperty()
-             .addListener((obs, oldValue, newValue) -> updateSidebarPresentation());
-
-    updateActiveMenu();
+    updateActiveMenu(viewModel.activeViewProperty().get());
     updateSidebarPresentation();
+  }
+
+  private void setupListeners()
+  {
+    viewModel.activeViewProperty().addListener(
+        (obs, oldValue, newValue) -> updateActiveMenu(newValue)
+    );
+
+    viewModel.sidebarExpandedProperty().addListener(
+        (obs, oldValue, newValue) -> updateSidebarPresentation()
+    );
+  }
+
+  private void initializeNavigationButtons()
+  {
+    navButtons = Map.of(
+        "dashboard", dashboardButton,
+        "portfolio", portfolioButton,
+        "buy", buyButton,
+        "sell", sellButton,
+        "market", marketButton
+    );
   }
 
   private void setupWindowDragging()
@@ -90,6 +116,56 @@ public class DashboardController implements Initializable
     closeAppButton.textProperty().bind(viewModel.closeAppButtonTextProperty());
   }
 
+  private void updateActiveMenu(String activeView)
+  {
+    resetAllNavigationButtons();
+
+    Button activeButton = navButtons.get(activeView);
+
+    if (activeButton != null)
+    {
+      setActive(activeButton);
+    }
+  }
+
+  private void resetAllNavigationButtons()
+  {
+    for (Button button : navButtons.values())
+    {
+      resetButtonStyle(button);
+    }
+  }
+
+  private void resetButtonStyle(Button button)
+  {
+    if (button == null)
+    {
+      return;
+    }
+
+    button.getStyleClass().remove("menu-button-primary");
+
+    if (!button.getStyleClass().contains("menu-button-secondary"))
+    {
+      button.getStyleClass().add("menu-button-secondary");
+    }
+  }
+
+  private void setActive(Button button)
+  {
+    if (button == null)
+    {
+      return;
+    }
+
+    button.getStyleClass().remove("menu-button-secondary");
+
+    if (!button.getStyleClass().contains("menu-button-primary"))
+    {
+      button.getStyleClass().add("menu-button-primary");
+    }
+  }
+
   @FXML private void handleToggleSidebarAreaClick()
   {
     viewModel.toggleSidebar();
@@ -97,12 +173,10 @@ public class DashboardController implements Initializable
     double targetWidth = viewModel.getTargetSidebarWidth();
 
     Timeline timeline = new Timeline(new KeyFrame(Duration.millis(220),
-                                                  new KeyValue(sidebarContainer.prefWidthProperty(),
-                                                               targetWidth),
-                                                  new KeyValue(sidebarContainer.minWidthProperty(),
-                                                               targetWidth),
-                                                  new KeyValue(sidebarContainer.maxWidthProperty(),
-                                                               targetWidth)));
+                                                  new KeyValue(sidebarContainer.prefWidthProperty(), targetWidth),
+                                                  new KeyValue(sidebarContainer.minWidthProperty(), targetWidth),
+                                                  new KeyValue(sidebarContainer.maxWidthProperty(), targetWidth)));
+
     timeline.play();
   }
 
@@ -118,75 +192,29 @@ public class DashboardController implements Initializable
     }
   }
 
-  private void updateActiveMenu()
-  {
-    resetButtonStyle(dashboardButton);
-    resetButtonStyle(portfolioButton);
-    resetButtonStyle(buyButton);
-    resetButtonStyle(sellButton);
-    resetButtonStyle(marketButton);
-
-    String activeView = viewModel.activeViewProperty().get();
-
-    if ("dashboard".equals(activeView))
-      setActive(dashboardButton);
-    else if ("portfolio".equals(activeView))
-      setActive(portfolioButton);
-    else if ("buy".equals(activeView))
-      setActive(buyButton);
-    else if ("sell".equals(activeView))
-      setActive(sellButton);
-    else if ("market".equals(activeView))
-      setActive(marketButton);
-  }
-
-  private void resetButtonStyle(Button button)
-  {
-    if (button == null)
-      return;
-
-    button.getStyleClass().remove("menu-button-primary");
-    if (!button.getStyleClass().contains("menu-button-secondary"))
-    {
-      button.getStyleClass().add("menu-button-secondary");
-    }
-  }
-
-  private void setActive(Button button)
-  {
-    if (button == null)
-      return;
-
-    button.getStyleClass().remove("menu-button-secondary");
-    if (!button.getStyleClass().contains("menu-button-primary"))
-    {
-      button.getStyleClass().add("menu-button-primary");
-    }
-  }
-
   @FXML private void handleOpenDashboard()
   {
-    viewModel.openDashboardHome();
+    navigationService.openDashboardHome();
   }
 
   @FXML private void handleOpenPortfolio()
   {
-    viewModel.openPortfolio();
+    navigationService.openPortfolio();
   }
 
   @FXML private void handleBuyStocks()
   {
-    viewModel.buyStocks();
+    navigationService.openBuyStocksView();
   }
 
   @FXML private void handleSellStocks()
   {
-    viewModel.sellStocks();
+    navigationService.openSellStocksView();
   }
 
   @FXML private void handleViewMarket()
   {
-    viewModel.openMarket();
+    navigationService.openMarketView();
   }
 
   @FXML private void startStopMarket()

@@ -1,4 +1,4 @@
-package persistence.mocks;
+package test.persistence.mocks;
 
 import entities.Portfolio;
 import persistence.interfaces.PortfolioDAO;

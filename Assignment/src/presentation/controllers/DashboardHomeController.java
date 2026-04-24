@@ -3,6 +3,7 @@ package presentation.controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import presentation.core.NavigationService;
 import presentation.viewmodels.DashboardViewModel;
 
 import java.net.URL;
@@ -12,11 +13,13 @@ public class DashboardHomeController implements Initializable
 {
   @FXML private Label welcomeTitleLabel;
 
+  private final NavigationService navigationService;
   private final DashboardViewModel viewModel;
 
-  public DashboardHomeController(DashboardViewModel viewModel)
+  public DashboardHomeController(NavigationService navigationService, DashboardViewModel viewModel)
   {
-    this.viewModel = viewModel;
+    this.navigationService = navigationService;
+    this.viewModel         = viewModel;
   }
 
   @Override
@@ -28,12 +31,12 @@ public class DashboardHomeController implements Initializable
   @FXML
   private void handleOpenPortfolio()
   {
-    viewModel.openPortfolio();
+    navigationService.openPortfolio();
   }
 
   @FXML
   private void handleViewMarket()
   {
-    viewModel.openMarket();
+    navigationService.openMarketView();
   }
 }
