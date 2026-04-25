@@ -1,9 +1,7 @@
 package presentation.viewmodels;
 
-import business.dto.OwnedStockDTO;
-import business.dto.PortfolioDTO;
-import business.dto.StockDTO;
-import business.dto.TradeRequestDTO;
+import business.dto.*;
+import business.services.interfaces.StockPriceHistoryInterface;
 import business.stockmarket.StockMarketUpdateEvent;
 import business.services.interfaces.PortfolioServiceInterface;
 import business.services.interfaces.TradingServiceInterface;
@@ -18,6 +16,7 @@ import presentation.listeners.StockUpdateReceiver;
 import presentation.state.UserSession;
 import shared.logging.Logger;
 
+import java.util.List;
 import java.util.UUID;
 
 public class BuyStocksViewModel implements StockUpdateReceiver
@@ -26,6 +25,7 @@ public class BuyStocksViewModel implements StockUpdateReceiver
 
   private final TradingServiceInterface tradingService;
   private final PortfolioServiceInterface portfolioService;
+  private final StockPriceHistoryInterface stockPriceHistoryInterface;
   private final UserSession userSession;
   private final Logger logger = Logger.getInstance();
 
@@ -49,11 +49,14 @@ public class BuyStocksViewModel implements StockUpdateReceiver
   private int tickCounter = 0;
 
   public BuyStocksViewModel(TradingServiceInterface tradingService,
-                            PortfolioServiceInterface portfolioService, UserSession userSession)
+                            PortfolioServiceInterface portfolioService,
+                            StockPriceHistoryInterface stockPriceHistoryInterface,
+                            UserSession userSession)
   {
-    this.tradingService   = tradingService;
-    this.portfolioService = portfolioService;
-    this.userSession      = userSession;
+    this.tradingService             = tradingService;
+    this.portfolioService           = portfolioService;
+    this.stockPriceHistoryInterface = stockPriceHistoryInterface;
+    this.userSession                = userSession;
 
     selectedStockSeries.setName("Selected Stock");
 
@@ -88,6 +91,23 @@ public class BuyStocksViewModel implements StockUpdateReceiver
     }
   }
 
+  private void loadHistoryForSelectedStock(String symbol)
+  {
+    selectedStockSeries.getData().clear();
+
+    List<StockPriceHistoryDTO> history = stockPriceHistoryInterface.getHistoryForStock(symbol);
+
+    int index = 1;
+
+    for (StockPriceHistoryDTO point : history)
+    {
+      selectedStockSeries.getData().add(new XYChart.Data<>(index, point.price().doubleValue()));
+
+      index++;
+    }
+    tickCounter = history.size();
+  }
+
   public void selectStock(StockDTO stock)
   {
     selectedStock.set(stock);
@@ -98,8 +118,7 @@ public class BuyStocksViewModel implements StockUpdateReceiver
       price.set("-");
       stockName.set("-");
       summaryPrice.set("-");
-      selectedStockSeries.getData().clear();
-      tickCounter = 0;
+      loadOwnedSharesForSelectedStock();
       return;
     }
 

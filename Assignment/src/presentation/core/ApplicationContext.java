@@ -3,6 +3,7 @@ package presentation.core;
 import business.services.*;
 import business.services.interfaces.GameStateServiceInterface;
 import business.services.interfaces.PortfolioServiceInterface;
+import business.services.interfaces.StockPriceHistoryInterface;
 import business.services.interfaces.TradingServiceInterface;
 import business.services.notifications.StockAlertPublisher;
 import business.stockmarket.MarketTickHandler;
@@ -39,6 +40,7 @@ public class ApplicationContext
   private final TransactionDAO transactionDAO;
   private final StockPriceHistoryDAO stockPriceHistoryDAO;
 
+  private final StockPriceHistoryInterface stockHistoryService;
   private final GameStateServiceInterface gameStateService;
   private final PortfolioServiceInterface portfolioService;
   private final TradingServiceInterface tradingService;
@@ -61,11 +63,13 @@ public class ApplicationContext
     this.transactionDAO       = new TransactionFileDAO(fileUnitOfWork);
     this.stockPriceHistoryDAO = new StockPriceHistoryFileDAO(fileUnitOfWork);
 
+
     this.notificationService = new NotificationServiceImpl();
 
     StockMarket stockMarket = StockMarket.getInstance();
     StockSetupService stockSetupService = new StockSetupService(unitOfWork, stockDAO);
 
+    this.stockHistoryService = new StockPriceHistoryService(stockPriceHistoryDAO);
     this.gameStateService = new GameStateService(stockMarket, stockSetupService, stockDAO, false,
                                                  false);
 
@@ -87,10 +91,10 @@ public class ApplicationContext
     this.popUpWelcomeViewModel = new PopUpWelcomeViewModel(navigationService);
     this.portfolioViewModel    = new PortfolioViewModel(navigationService, portfolioService,
                                                         userSession);
-    this.stockMarketViewModel  = new StockMarketViewModel(navigationService);
-    this.buyStocksViewModel    = new BuyStocksViewModel(tradingService, portfolioService,
+    this.stockMarketViewModel  = new StockMarketViewModel(navigationService, stockHistoryService);
+    this.buyStocksViewModel    = new BuyStocksViewModel(tradingService, portfolioService, stockHistoryService,
                                                         userSession);
-    this.sellStocksViewModel   = new SellStocksViewModel(tradingService, portfolioService,
+    this.sellStocksViewModel   = new SellStocksViewModel(tradingService, portfolioService, stockHistoryService,
                                                          userSession);
 
     StockAlertPublisher alertPublisher = new StockAlertNotificationAdapter(notificationService);

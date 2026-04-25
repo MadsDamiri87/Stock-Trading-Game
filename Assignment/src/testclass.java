@@ -1,6 +1,9 @@
+import business.dto.StockPriceHistoryDTO;
 import business.services.*;
+import business.services.interfaces.StockPriceHistoryInterface;
 import business.stockmarket.StockMarket;
 import entities.Stock;
+import entities.StockPriceHistory;
 import persistence.fileimplementation.FileUnitOfWork;
 import persistence.fileimplementation.OwnedStockFileDAO;
 import persistence.fileimplementation.StockFileDAO;
@@ -15,7 +18,9 @@ import presentation.viewmodels.DashboardViewModel;
 import presentation.viewmodels.StockMarketViewModel;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.Optional;
+import java.util.UUID;
 
 public class testclass
 {
@@ -51,11 +56,15 @@ public class testclass
 
     GameStateService gameStateService = new GameStateService(stockMarket, setupService, stockDAO, true, true);
 
+    StockPriceHistoryDAO stockPriceHistoryDAO = new StockPriceHistoryFileDAO(uow);
+
+    StockPriceHistoryInterface stockPriceHistoryInterface = new StockPriceHistoryService(
+        stockPriceHistoryDAO);
 
     DashboardViewModel DBViewModel = new DashboardViewModel(gameStateService);
     NavigationService navigationService = new ViewNavigationService(DBViewModel);
 
-    StockMarketViewModel STMViewModel = new StockMarketViewModel(navigationService);
+    StockMarketViewModel STMViewModel = new StockMarketViewModel(navigationService, stockPriceHistoryInterface);
     StockPresentationListener uiListener = new StockPresentationListener(STMViewModel);
 
 

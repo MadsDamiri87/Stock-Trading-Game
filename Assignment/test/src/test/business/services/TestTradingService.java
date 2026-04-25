@@ -1,6 +1,7 @@
 package test.business.services;
 
 import business.dto.TradeRequestDTO;
+import business.services.TradingService;
 import entities.OwnedStock;
 import entities.Portfolio;
 import entities.Stock;
@@ -46,7 +47,7 @@ class TestTradingService
 
     Stock stock = new Stock("AAPL", "Apple", BigDecimal.valueOf(100), "Steady");
 
-    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 4);
+    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 4, 19);
 
     //     ACT
     Portfolio updated = portfolioDAO.getById(portfolioId).get();
@@ -71,7 +72,7 @@ class TestTradingService
     Stock stock = new Stock("TSLA", "Tesla", BigDecimal.valueOf(90), "Steady");
     stockDAO.create(stock);
 
-    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "TSLA", 2);
+    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "TSLA", 2, 10);
 
     //    ACT + ASSERT
 
@@ -93,7 +94,7 @@ class TestTradingService
     Stock stock = new Stock("TSLA", "Tesla", BigDecimal.valueOf(90), "Steady");
     stockDAO.create(stock);
 
-    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "TSLA", 2);
+    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "TSLA", 2, 10);
 
     try
     {

@@ -1,5 +1,6 @@
 package presentation.viewmodels;
 
+import business.services.interfaces.StockPriceHistoryInterface;
 import business.stockmarket.StockMarketUpdateEvent;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -19,6 +20,7 @@ public class StockMarketViewModel implements StockUpdateReceiver
   private static final int MAX_DATA_POINTS = 30;
 
   private final NavigationService navigationsService;
+  private final StockPriceHistoryInterface stockPriceHistoryInterface;
 
   private final StringProperty marketStatus = new SimpleStringProperty("Live");
   private final StringProperty symbol = new SimpleStringProperty("-");
@@ -31,9 +33,11 @@ public class StockMarketViewModel implements StockUpdateReceiver
 
   private final IntegerProperty highestTick = new SimpleIntegerProperty(0);
 
-  public StockMarketViewModel(NavigationService navigationService)
+  public StockMarketViewModel(NavigationService navigationService,
+                              StockPriceHistoryInterface stockPriceHistoryInterface)
   {
     this.navigationsService = navigationService;
+    this.stockPriceHistoryInterface = stockPriceHistoryInterface;
   }
 
   public void openPortfolio()

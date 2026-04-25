@@ -1,10 +1,8 @@
 package presentation.viewmodels;
 
-import business.dto.OwnedStockDTO;
-import business.dto.PortfolioDTO;
-import business.dto.StockDTO;
-import business.dto.TradeRequestDTO;
+import business.dto.*;
 import business.services.interfaces.PortfolioServiceInterface;
+import business.services.interfaces.StockPriceHistoryInterface;
 import business.services.interfaces.TradingServiceInterface;
 import business.stockmarket.StockMarketUpdateEvent;
 import javafx.beans.property.ObjectProperty;
@@ -18,6 +16,7 @@ import presentation.listeners.StockUpdateReceiver;
 import presentation.state.UserSession;
 import shared.logging.Logger;
 
+import java.util.List;
 import java.util.UUID;
 
 public class SellStocksViewModel implements StockUpdateReceiver
@@ -26,6 +25,7 @@ public class SellStocksViewModel implements StockUpdateReceiver
 
   private final TradingServiceInterface tradingService;
   private final PortfolioServiceInterface portfolioService;
+  private final StockPriceHistoryInterface stockHistoryService;
   private final UserSession userSession;
   private final Logger logger = Logger.getInstance();
 
@@ -55,12 +55,14 @@ public class SellStocksViewModel implements StockUpdateReceiver
   private double currentPriceValue = 0.0;
 
   public SellStocksViewModel(TradingServiceInterface tradingService,
-                             PortfolioServiceInterface portfolioService, UserSession userSession)
+                             PortfolioServiceInterface portfolioService,
+                             StockPriceHistoryInterface stockPriceHistoryInterface, UserSession userSession)
   {
-    this.tradingService   = tradingService;
-    this.portfolioService = portfolioService;
-    this.userSession      = userSession;
-    this.portfolioId = userSession.getActivePortfolioId();
+    this.tradingService             = tradingService;
+    this.portfolioService    = portfolioService;
+    this.stockHistoryService = stockPriceHistoryInterface;
+    this.userSession         = userSession;
+    this.portfolioId                = userSession.getActivePortfolioId();
 
     selectedStockSeries.setName("Selected Stock");
 
@@ -104,10 +106,9 @@ public class SellStocksViewModel implements StockUpdateReceiver
       price.set("-");
       ownedShares.set("0");
       summaryPrice.set("-");
-      selectedStockSeries.getData().clear();
       tradePrice.set("-");
       statusDescription.set("-");
-      tickCounter       = 0;
+      loadHistoryForSelectedStock(ownedStock.stockSymbol());
       currentPriceValue = 0.0;
       return;
     }
@@ -274,6 +275,26 @@ public class SellStocksViewModel implements StockUpdateReceiver
       logger.log("Error", "Failed to load balance in SellStocksViewModel: " + e.getMessage());
       balance.set("Error");
     }
+  }
+
+  private void loadHistoryForSelectedStock(String symbol)
+  {
+    selectedStockSeries.getData().clear();
+
+    List<StockPriceHistoryDTO> history = stockHistoryService.getHistoryForStock(symbol);
+
+    int index = 1;
+
+    for (StockPriceHistoryDTO point : history)
+    {
+      selectedStockSeries.getData().add(
+          new XYChart.Data<>(index, point.price().doubleValue())
+      );
+
+      index++;
+    }
+
+    tickCounter = history.size();
   }
 
   public ObservableList<OwnedStockDTO> getOwnedStocks()
