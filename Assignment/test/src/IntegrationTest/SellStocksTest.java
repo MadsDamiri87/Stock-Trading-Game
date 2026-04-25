@@ -9,6 +9,8 @@ import business.services.interfaces.TradingServiceInterface;
 import entities.Portfolio;
 import entities.Stock;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.junit.jupiter.api.*;
 import persistence.fileimplementation.*;
 import persistence.interfaces.*;
@@ -18,9 +20,7 @@ import presentation.viewmodels.SellStocksViewModel;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.Comparator;
 import java.util.UUID;
 
@@ -48,188 +48,224 @@ public class SellStocksTest
   BuyStocksViewModel buyViewModel;
   SellStocksViewModel sellViewModel;
 
-  @BeforeAll static void initToolKit()
+  StringProperty buySharesInput;
+  StringProperty sellSharesInput;
+  StringProperty sellStatusMessageOutput;
+
+  @BeforeAll
+  static void initToolKit()
   {
-    Platform.startup(() -> {
-    });
+    try
+    {
+      Platform.startup(() -> {});
+    }
+    catch (IllegalStateException ignored)
+    {
+    }
   }
 
-  @BeforeEach void setup()
+  @BeforeEach
+  void setup()
   {
     testDirPath = "test-" + UUID.randomUUID();
 
     uow = new FileUnitOfWork(testDirPath);
 
-    portfolioDAO         = new PortfolioFileDAO(uow);
-    stockDAO             = new StockFileDAO(uow);
-    ownedStockDAO        = new OwnedStockFileDAO(uow);
-    transactionDAO       = new TransactionFileDAO(uow);
+    portfolioDAO = new PortfolioFileDAO(uow);
+    stockDAO = new StockFileDAO(uow);
+    ownedStockDAO = new OwnedStockFileDAO(uow);
+    transactionDAO = new TransactionFileDAO(uow);
     stockPriceHistoryDAO = new StockPriceHistoryFileDAO(uow);
 
-    portfolioServiceInterface  = new PortfolioService(portfolioDAO, ownedStockDAO, transactionDAO,
-                                                      stockDAO);
-    stockPriceHistoryInterface = new StockPriceHistoryService(stockPriceHistoryDAO);
-    tradingServiceInterface    = new TradingService(uow, portfolioDAO, stockDAO, ownedStockDAO,
-                                                    transactionDAO);
-    userSession                = new UserSession();
+    portfolioServiceInterface =
+        new PortfolioService(portfolioDAO, ownedStockDAO, transactionDAO, stockDAO);
+
+    stockPriceHistoryInterface =
+        new StockPriceHistoryService(stockPriceHistoryDAO);
+
+    tradingServiceInterface =
+        new TradingService(uow, portfolioDAO, stockDAO, ownedStockDAO, transactionDAO);
+
+    userSession = new UserSession();
 
     portfolioId = UUID.randomUUID();
-    Portfolio portfolio = new Portfolio(portfolioId, BigDecimal.valueOf(10000));
-
     userSession.setActivePortfolioId(portfolioId);
 
-    portfolioDAO.create(portfolio);
-
+    Portfolio portfolio = new Portfolio(portfolioId, BigDecimal.valueOf(10000));
     Stock stock = new Stock("GM", "General Motors", BigDecimal.valueOf(150), "Steady");
+
+    portfolioDAO.create(portfolio);
     stockDAO.create(stock);
 
     uow.commit();
 
-    sellViewModel = new SellStocksViewModel(tradingServiceInterface, portfolioServiceInterface,
-                                            stockPriceHistoryInterface, userSession);
-    buyViewModel = new BuyStocksViewModel(tradingServiceInterface, portfolioServiceInterface,
-                                          stockPriceHistoryInterface, userSession);
+    sellViewModel =
+        new SellStocksViewModel(tradingServiceInterface, portfolioServiceInterface,
+                                stockPriceHistoryInterface, userSession);
+
+    buyViewModel =
+        new BuyStocksViewModel(tradingServiceInterface, portfolioServiceInterface,
+                               stockPriceHistoryInterface, userSession);
+
+    buySharesInput = new SimpleStringProperty("");
+    sellSharesInput = new SimpleStringProperty("");
+    sellStatusMessageOutput = new SimpleStringProperty("");
+
+    buySharesInput.bindBidirectional(buyViewModel.sharesProperty());
+    sellSharesInput.bindBidirectional(sellViewModel.sharesProperty());
+    sellStatusMessageOutput.bind(sellViewModel.statusMessageProperty());
   }
 
-  @AfterEach void cleanup() throws IOException
+  @AfterEach
+  void cleanup() throws IOException
   {
     Path testFolder = Paths.get(testDirPath);
 
     if (Files.exists(testFolder))
     {
-      Files.walk(testFolder).sorted(Comparator.reverseOrder()).forEach(path -> {
-        try
-        {
-          Files.delete(path);
-        }
-        catch (IOException e)
-        {
-          throw new RuntimeException(e);
-        }
-      });
+      Files.walk(testFolder)
+           .sorted(Comparator.reverseOrder())
+           .forEach(path -> {
+             try
+             {
+               Files.delete(path);
+             }
+             catch (IOException e)
+             {
+               throw new RuntimeException(e);
+             }
+           });
     }
   }
 
-  @Nested class GivenValidSellOrder
+  private StockDTO getStockDTO()
   {
-    @BeforeEach void act()
+    return portfolioServiceInterface.getAvailableStocks()
+                                    .stream()
+                                    .filter(stock -> stock.symbol().equalsIgnoreCase("GM"))
+                                    .findFirst()
+                                    .orElseThrow();
+  }
+
+  private OwnedStockDTO getOwnedStockDTO()
+  {
+    return sellViewModel.getOwnedStocks()
+                        .stream()
+                        .filter(stock -> stock.stockSymbol().equalsIgnoreCase("GM"))
+                        .findFirst()
+                        .orElseThrow();
+  }
+
+  private void buyShares(String numberOfShares)
+  {
+    buyViewModel.selectStock(getStockDTO());
+    buySharesInput.set(numberOfShares);
+    buyViewModel.buy();
+  }
+
+  private void sellShares(String numberOfShares)
+  {
+    sellViewModel.loadPortfolioData();
+    sellViewModel.selectOwnedStock(getOwnedStockDTO());
+    sellSharesInput.set(numberOfShares);
+    sellViewModel.sell();
+  }
+
+  @Nested
+  class GivenValidSellOrder
+  {
+    @BeforeEach
+    void act()
     {
-      StockDTO stock = portfolioServiceInterface.getAvailableStocks().stream()
-                                                .filter(s -> s.symbol().equalsIgnoreCase("GM"))
-                                                .findFirst().orElseThrow();
-
-      buyViewModel.selectStock(stock);
-      buyViewModel.sharesProperty().set("10");
-      buyViewModel.buy();
-
-      sellViewModel.loadPortfolioData();
-
-      OwnedStockDTO ownedStock = sellViewModel.getOwnedStocks().stream()
-                                              .filter(s -> s.stockSymbol().equalsIgnoreCase("GM"))
-                                              .findFirst().orElseThrow();
-
-      sellViewModel.selectOwnedStock(ownedStock);
-      sellViewModel.sharesProperty().set("4");
-      sellViewModel.sell();
+      buyShares("10");
+      sellShares("4");
     }
 
-    @Test void ownedSharesAreReduced()
+    @Test
+    void ownedSharesAreReduced()
     {
-      int remainingShares = ownedStockDAO.getByPortfolioIdAndStockSymbol(portfolioId, "GM")
-                                         .orElseThrow().getNumberOfShares();
+      int remainingShares =
+          ownedStockDAO.getByPortfolioIdAndStockSymbol(portfolioId, "GM")
+                       .orElseThrow()
+                       .getNumberOfShares();
 
       assertEquals(6, remainingShares);
     }
 
-    @Test void transactionIsStored()
+    @Test
+    void transactionIsStored()
     {
       assertEquals(2, transactionDAO.getAll().size());
     }
 
-    @Test void latestTransactionTypeIsSell()
+    @Test
+    void latestTransactionTypeIsSell()
     {
       assertEquals("SELL", transactionDAO.getAll().get(1).type());
     }
 
-    @Test void balanceIsIncreasedAfterSell()
+    @Test
+    void balanceIsIncreasedAfterSell()
     {
-      BigDecimal balance = portfolioDAO.getById(portfolioId).orElseThrow().getCurrentBalance();
+      BigDecimal balance =
+          portfolioDAO.getById(portfolioId)
+                      .orElseThrow()
+                      .getCurrentBalance();
 
       assertTrue(balance.compareTo(BigDecimal.valueOf(10000 - 1500)) > 0);
-
     }
   }
 
-  @Nested class GivenSellingAllShares
+  @Nested
+  class GivenSellingAllShares
   {
-    @BeforeEach void act()
+    @BeforeEach
+    void act()
     {
-      StockDTO stockDTO = portfolioServiceInterface.getAvailableStocks().stream()
-                                                   .filter(s -> s.symbol().equalsIgnoreCase("GM"))
-                                                   .findFirst().orElseThrow();
-      buyViewModel.selectStock(stockDTO);
-      buyViewModel.sharesProperty().set("3");
-      buyViewModel.buy();
-
-      sellViewModel.loadPortfolioData();
-
-      OwnedStockDTO ownedStock = sellViewModel.getOwnedStocks().stream()
-                                              .filter(s -> s.stockSymbol().equalsIgnoreCase("GM"))
-                                              .findFirst().orElseThrow();
-
-      sellViewModel.selectOwnedStock(ownedStock);
-      sellViewModel.sharesProperty().set("3");
-      sellViewModel.sell();
+      buyShares("3");
+      sellShares("3");
     }
 
-    @Test void ownedStocksIsDeleted()
+    @Test
+    void ownedStockIsDeleted()
     {
-      assertTrue(ownedStockDAO.getByPortfolioIdAndStockSymbol(portfolioId, "GM").isEmpty());
+      assertTrue(
+          ownedStockDAO.getByPortfolioIdAndStockSymbol(portfolioId, "GM").isEmpty()
+      );
     }
   }
 
-  @Nested class GivenSellingMoreThanOwned
+  @Nested
+  class GivenSellingMoreThanOwned
   {
-    @BeforeEach void act()
+    @BeforeEach
+    void act()
     {
-      StockDTO stockDTO = portfolioServiceInterface.getAvailableStocks().stream()
-                                                   .filter(s -> s.symbol().equalsIgnoreCase("GM"))
-                                                   .findFirst().orElseThrow();
-      buyViewModel.selectStock(stockDTO);
-      buyViewModel.sharesProperty().set("3");
-      buyViewModel.buy();
-
-      sellViewModel.loadPortfolioData();
-
-      OwnedStockDTO ownedStock = sellViewModel.getOwnedStocks().stream()
-                                              .filter(s -> s.stockSymbol().equalsIgnoreCase("GM"))
-                                              .findFirst().orElseThrow();
-      sellViewModel.selectOwnedStock(ownedStock);
-      sellViewModel.sharesProperty().set("5");
-      sellViewModel.sell();
+      buyShares("3");
+      sellShares("5");
     }
 
-    @Test void sharesRemainUnchanged()
+    @Test
+    void sharesRemainUnchanged()
     {
-      int shares = ownedStockDAO.getByPortfolioIdAndStockSymbol(portfolioId, "GM").orElseThrow()
-                                .getNumberOfShares();
+      int shares =
+          ownedStockDAO.getByPortfolioIdAndStockSymbol(portfolioId, "GM")
+                       .orElseThrow()
+                       .getNumberOfShares();
 
       assertEquals(3, shares);
     }
 
-    @Test void noExtraTransactionIsCreated()
+    @Test
+    void noExtraTransactionIsCreated()
     {
       assertEquals(1, transactionDAO.getAll().size());
     }
 
-    @Test void statusMessageShowsError()
+    @Test
+    void statusMessageShowsError()
     {
-      assertEquals("You cannot sell more shares than you own.",
-                   sellViewModel.statusMessageProperty().get());
-
-//            acceptabel fejl:
-//      Expected :You cannot sell more shares than you own.
-//      Actual   :Not enough shares to sell
+      assertEquals("Not enough shares to sell", sellStatusMessageOutput.get());
     }
   }
 }

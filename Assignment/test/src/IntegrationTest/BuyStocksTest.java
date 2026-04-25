@@ -10,6 +10,8 @@ import business.services.interfaces.TradingServiceInterface;
 import entities.Portfolio;
 import entities.Stock;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.junit.jupiter.api.*;
 import persistence.fileimplementation.*;
 import persistence.interfaces.*;
@@ -18,9 +20,7 @@ import presentation.viewmodels.BuyStocksViewModel;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.Comparator;
 import java.util.UUID;
 
@@ -48,15 +48,23 @@ public class BuyStocksTest
 
   private BuyStocksViewModel buyViewModel;
 
-
+  private StringProperty sharesInput;
+  private StringProperty statusMessageOutput;
 
   @BeforeAll
   static void initToolKit()
   {
-    Platform.startup(()-> {});
+    try
+    {
+      Platform.startup(() -> {});
+    }
+    catch (IllegalStateException ignored)
+    {
+    }
   }
 
-  @BeforeEach public void setup()
+  @BeforeEach
+  public void setup()
   {
     testDirPath = "test-" + UUID.randomUUID();
 
@@ -68,17 +76,18 @@ public class BuyStocksTest
     transactionDAO = new TransactionFileDAO(uow);
     priceHistoryDAO = new StockPriceHistoryFileDAO(uow);
 
-    tradingServiceInterface = new TradingService(uow, portfolioDAO, stockDAO, ownedStockDAO,
-                                                 transactionDAO);
+    tradingServiceInterface =
+        new TradingService(uow, portfolioDAO, stockDAO, ownedStockDAO, transactionDAO);
 
-    portfolioServiceInterface = new PortfolioService(portfolioDAO, ownedStockDAO, transactionDAO,
-                                                     stockDAO);
-    stockPriceHistoryInterface = new StockPriceHistoryService(priceHistoryDAO);
+    portfolioServiceInterface =
+        new PortfolioService(portfolioDAO, ownedStockDAO, transactionDAO, stockDAO);
+
+    stockPriceHistoryInterface =
+        new StockPriceHistoryService(priceHistoryDAO);
 
     portfolioId = UUID.randomUUID();
 
     portfolioDAO.create(new Portfolio(portfolioId, BigDecimal.valueOf(10000)));
-
     stockDAO.create(new Stock("APPL", "Apple", BigDecimal.valueOf(100), "Stable"));
 
     uow.commit();
@@ -86,29 +95,53 @@ public class BuyStocksTest
     userSession = new UserSession();
     userSession.setActivePortfolioId(portfolioId);
 
-    buyViewModel = new BuyStocksViewModel(tradingServiceInterface, portfolioServiceInterface,
-                                          stockPriceHistoryInterface, userSession);
+    buyViewModel =
+        new BuyStocksViewModel(tradingServiceInterface, portfolioServiceInterface,
+                               stockPriceHistoryInterface, userSession);
 
+    sharesInput = new SimpleStringProperty("");
+    statusMessageOutput = new SimpleStringProperty("");
+
+    sharesInput.bindBidirectional(buyViewModel.sharesProperty());
+    statusMessageOutput.bind(buyViewModel.statusMessageProperty());
   }
 
-  @AfterEach void cleanup() throws IOException
+  @AfterEach
+  void cleanup() throws IOException
   {
     Path testFolder = Paths.get(testDirPath);
 
     if (Files.exists(testFolder))
     {
-      Files.walk(testFolder).sorted(Comparator.reverseOrder())
-          .forEach(path -> {
-            try
-            {
-              Files.delete(path);
-            }
-            catch (IOException e)
-            {
-              throw new RuntimeException(e);
-            }
-          });
+      Files.walk(testFolder)
+           .sorted(Comparator.reverseOrder())
+           .forEach(path -> {
+             try
+             {
+               Files.delete(path);
+             }
+             catch (IOException e)
+             {
+               throw new RuntimeException(e);
+             }
+           });
     }
+  }
+
+  private StockDTO getAppleStock()
+  {
+    return portfolioServiceInterface.getAvailableStocks()
+                                    .stream()
+                                    .filter(stock -> stock.symbol().equalsIgnoreCase("APPL"))
+                                    .findFirst()
+                                    .orElseThrow();
+  }
+
+  private void buyShares(String numberOfShares)
+  {
+    buyViewModel.selectStock(getAppleStock());
+    sharesInput.set(numberOfShares);
+    buyViewModel.buy();
   }
 
   @Nested
@@ -117,15 +150,7 @@ public class BuyStocksTest
     @BeforeEach
     void act()
     {
-      StockDTO stock = portfolioServiceInterface.getAvailableStocks()
-                                       .stream()
-                                       .filter(s -> s.symbol().equalsIgnoreCase("APPL"))
-                                       .findFirst()
-                                       .orElseThrow();
-
-      buyViewModel.selectStock(stock);
-      buyViewModel.sharesProperty().set("5");
-      buyViewModel.buy();
+      buyShares("5");
     }
 
     @Test
@@ -139,10 +164,10 @@ public class BuyStocksTest
     @Test
     void ownedStockHasCorrectQuantity()
     {
-      int quantity = ownedStockDAO
-          .getByPortfolioIdAndStockSymbol(portfolioId, "APPL")
-          .orElseThrow()
-          .getNumberOfShares();
+      int quantity =
+          ownedStockDAO.getByPortfolioIdAndStockSymbol(portfolioId, "APPL")
+                       .orElseThrow()
+                       .getNumberOfShares();
 
       assertEquals(5, quantity);
     }
@@ -162,14 +187,12 @@ public class BuyStocksTest
     @Test
     void balanceIsReduced()
     {
-      BigDecimal balance = portfolioDAO.getById(portfolioId)
-                                       .orElseThrow()
-                                       .getCurrentBalance();
+      BigDecimal balance =
+          portfolioDAO.getById(portfolioId)
+                      .orElseThrow()
+                      .getCurrentBalance();
 
       assertTrue(balance.compareTo(BigDecimal.valueOf(10000)) < 0);
     }
   }
-
 }
-
-
