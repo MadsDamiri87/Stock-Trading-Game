@@ -23,7 +23,6 @@ import presentation.viewmodels.PopUpWelcomeViewModel;
 import presentation.viewmodels.PortfolioViewModel;
 import presentation.viewmodels.SellStocksViewModel;
 import presentation.viewmodels.StockMarketViewModel;
-import provided.FileLogOutputter;
 import shared.logging.FileLogOutputAdapter;
 import shared.logging.Logger;
 
@@ -98,7 +97,7 @@ public class ApplicationContext
     userSession.setActivePortfolioId(activePortfolioId);
 
     this.dashboardViewModel = new DashboardViewModel(gameStateService);
-    this.navigationService  = new ViewNavigationService(dashboardViewModel);
+    this.navigationService  = new NavigationServiceAdapter(dashboardViewModel);
 
     this.popUpWelcomeViewModel = new PopUpWelcomeViewModel(navigationService);
     this.portfolioViewModel    = new PortfolioViewModel(navigationService, portfolioService,

@@ -2,11 +2,11 @@ package presentation.core;
 
 import presentation.viewmodels.DashboardViewModel;
 
-public class ViewNavigationService implements NavigationService
+public class NavigationServiceAdapter implements NavigationService
 {
   private final DashboardViewModel dashboardViewModel;
 
-  public ViewNavigationService(DashboardViewModel dashboardViewModel)
+  public NavigationServiceAdapter(DashboardViewModel dashboardViewModel)
   {
     this.dashboardViewModel = dashboardViewModel;
   }
