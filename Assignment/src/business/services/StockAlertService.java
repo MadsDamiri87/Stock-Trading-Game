@@ -60,40 +60,43 @@ public class StockAlertService implements StockMarketListener
             new StockAlert(StockAlertType.BANKRUPT, symbol, symbol + " has gone bankrupt."));
         bankruptAlerted.add(symbol);
       }
-      if (state.equalsIgnoreCase("Reset"))
-      {
-        logger.log("Alert", "Stock: " + symbol + " er blevet reset og kan købes igen");
-      }
-      if (price > 180)
-      {
-        if (!risingAlerted.contains(symbol))
-        {
-          logger.log("Alert", "Stock: " + symbol + " er meget høj: " + price);
-          alertPublisher.publish(
-              new StockAlert(StockAlertType.RISING, symbol, symbol + " is rising rapidly."));
-          risingAlerted.add(symbol);
-        }
-      }
-      else
-      {
-        risingAlerted.remove(symbol);
-      }
-
-      if (price < 50)
-      {
-        if (!nearBankruptAlerted.contains(symbol))
-        {
-          logger.log("Alert", "Stock " + symbol + " er meget lav: " + price);
-          alertPublisher.publish(new StockAlert(StockAlertType.NEAR_BANKRUPTCY, symbol,
-                                                symbol + " is near bankruptcy."));
-          nearBankruptAlerted.add(symbol);
-        }
-      }
-      else
-      {
-        nearBankruptAlerted.remove(symbol);
-      }
-
+      return;
     }
+    if (state.equalsIgnoreCase("Reset"))
+    {
+      logger.log("Alert", "Stock: " + symbol + " er blevet reset og kan købes igen");
+    }
+
+    if (price > 180)
+    {
+      if (!risingAlerted.contains(symbol))
+      {
+        logger.log("Alert", "Stock: " + symbol + " er meget høj: " + price);
+        alertPublisher.publish(
+            new StockAlert(StockAlertType.RISING, symbol, symbol + " is rising rapidly."));
+        risingAlerted.add(symbol);
+      }
+    }
+    else
+    {
+      risingAlerted.remove(symbol);
+    }
+
+    if (price < 50)
+    {
+      if (!nearBankruptAlerted.contains(symbol))
+      {
+        logger.log("Alert", "Stock " + symbol + " er meget lav: " + price);
+        alertPublisher.publish(new StockAlert(StockAlertType.NEAR_BANKRUPTCY, symbol,
+                                              symbol + " is near bankruptcy."));
+        nearBankruptAlerted.add(symbol);
+      }
+    }
+    else
+    {
+      nearBankruptAlerted.remove(symbol);
+    }
+
   }
 }
+

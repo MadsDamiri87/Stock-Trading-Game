@@ -13,7 +13,6 @@ import business.strategies.fee.PercentageFeeStrategy;
 import persistence.fileimplementation.*;
 import persistence.interfaces.*;
 import presentation.listeners.StockPresentationListener;
-import presentation.notifications.CustomAlertBoxAdapter;
 import presentation.notifications.NotificationService;
 import presentation.notifications.NotificationServiceImpl;
 import presentation.notifications.StockAlertNotificationAdapter;
@@ -72,7 +71,8 @@ public class ApplicationContext
     this.stockPriceHistoryDAO = new StockPriceHistoryFileDAO(fileUnitOfWork);
 
     this.feeCalculationStrategy = new PercentageFeeStrategy(new BigDecimal(0.04));
-    //    det der er importeret fra "troels".
+
+    //    det der er "importeret fra Troels".
     this.notificationService = new NotificationServiceImpl();
     //    this.notificationService = new CustomAlertBoxAdapter();
 
