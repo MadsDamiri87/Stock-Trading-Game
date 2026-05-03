@@ -110,6 +110,7 @@ public class SellStocksViewModel implements StockUpdateReceiver
       statusDescription.set("-");
       loadHistoryForSelectedStock(ownedStock.stockSymbol());
       currentPriceValue = 0.0;
+      tickCounter = 0;
       return;
     }
 

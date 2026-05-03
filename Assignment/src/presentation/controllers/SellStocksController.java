@@ -105,5 +105,6 @@ public class SellStocksController implements Initializable
   @FXML private void handleSell()
   {
     viewModel.sell();
+    sharesField.clear();
   }
 }

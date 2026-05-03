@@ -8,14 +8,12 @@ public class AppConfig
   private static AppConfig instance;
 
   private final int startingBalance;
-  private final BigDecimal transactionFee;
   private final int updateFrequencyInMs;
   private final BigDecimal stockResetValue;
 
   private AppConfig()
   {
     this.startingBalance     = 100;
-    this.transactionFee      = BigDecimal.valueOf(5.0);
     this.updateFrequencyInMs = 1000;
     this.stockResetValue     = BigDecimal.valueOf(100);
   }
@@ -32,11 +30,6 @@ public class AppConfig
   public int getStartingBalance()
   {
     return startingBalance;
-  }
-
-  public BigDecimal getTransactionFee()
-  {
-    return transactionFee;
   }
 
   public int getUpdateFrequencyInMs()

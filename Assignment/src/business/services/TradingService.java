@@ -2,12 +2,12 @@ package business.services;
 
 import business.dto.TradeRequestDTO;
 import business.services.interfaces.TradingServiceInterface;
+import business.strategies.fee.FeeCalculationStrategy;
 import entities.OwnedStock;
 import entities.Portfolio;
 import entities.Stock;
 import entities.Transaction;
 import persistence.interfaces.*;
-import shared.configuration.AppConfig;
 import shared.logging.Logger;
 
 import java.math.BigDecimal;
@@ -22,16 +22,19 @@ public class TradingService implements TradingServiceInterface
   private final StockDAO stockDAO;
   private final OwnedStockDAO ownedStockDAO;
   private final TransactionDAO transactionDAO;
+  private final FeeCalculationStrategy feeCalculationStrategy;
   private final Logger logger = Logger.getInstance();
 
   public TradingService(UnitOfWork uow, PortfolioDAO portfolioDAO, StockDAO stockDAO,
-                        OwnedStockDAO ownedStockDAO, TransactionDAO transactionDAO)
+                        OwnedStockDAO ownedStockDAO, TransactionDAO transactionDAO,
+                        FeeCalculationStrategy feeCalculationStrategy)
   {
-    this.uow            = uow;
-    this.portfolioDAO   = portfolioDAO;
-    this.stockDAO       = stockDAO;
-    this.ownedStockDAO  = ownedStockDAO;
-    this.transactionDAO = transactionDAO;
+    this.uow                    = uow;
+    this.portfolioDAO           = portfolioDAO;
+    this.stockDAO               = stockDAO;
+    this.ownedStockDAO          = ownedStockDAO;
+    this.transactionDAO         = transactionDAO;
+    this.feeCalculationStrategy = feeCalculationStrategy;
   }
 
   @Override public void buyStock(TradeRequestDTO request)
@@ -70,7 +73,7 @@ public class TradingService implements TradingServiceInterface
       BigDecimal pricePerShare = stock.getCurrentPrice();
       BigDecimal totalAmount = pricePerShare.multiply(BigDecimal.valueOf(quantity));
 
-      BigDecimal fee = AppConfig.getInstance().getTransactionFee();
+      BigDecimal fee = feeCalculationStrategy.calculateFee(pricePerShare, quantity);
       BigDecimal totalCost = totalAmount.add(fee);
 
       BigDecimal portfolioBalance = portfolio.getCurrentBalance();
@@ -172,7 +175,7 @@ public class TradingService implements TradingServiceInterface
 
       BigDecimal pricePerShare = stock.getCurrentPrice();
       BigDecimal totalAmount = pricePerShare.multiply(BigDecimal.valueOf(quantity));
-      BigDecimal fee = AppConfig.getInstance().getTransactionFee();
+      BigDecimal fee = feeCalculationStrategy.calculateFee(pricePerShare, quantity)
       ;
       BigDecimal payout = totalAmount.subtract(fee);
 

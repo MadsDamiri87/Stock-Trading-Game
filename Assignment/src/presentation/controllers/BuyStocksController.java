@@ -106,5 +106,6 @@ public class BuyStocksController implements Initializable
   @FXML private void handleBuy()
   {
     viewModel.buy();
+    sharesField.clear();
   }
 }

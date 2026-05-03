@@ -7,6 +7,7 @@ public interface NavigationService
   //      Muligvis implementer interfacet i stedet for at bruge for mange af de samme
   //      metoder på tværs af klasser og lade viewmodels kende hinanden?..
   //      [undersøg hvad der giver mening]
+  //      Svar: Adatper pattern.
 
   void openDashboardHome();
   void openPortfolio();

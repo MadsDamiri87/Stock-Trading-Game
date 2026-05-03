@@ -8,9 +8,12 @@ import business.services.interfaces.TradingServiceInterface;
 import business.services.notifications.StockAlertPublisher;
 import business.stockmarket.MarketTickHandler;
 import business.stockmarket.StockMarket;
+import business.strategies.fee.FeeCalculationStrategy;
+import business.strategies.fee.PercentageFeeStrategy;
 import persistence.fileimplementation.*;
 import persistence.interfaces.*;
 import presentation.listeners.StockPresentationListener;
+import presentation.notifications.CustomAlertBoxAdapter;
 import presentation.notifications.NotificationService;
 import presentation.notifications.NotificationServiceImpl;
 import presentation.notifications.StockAlertNotificationAdapter;
@@ -21,7 +24,11 @@ import presentation.viewmodels.PopUpWelcomeViewModel;
 import presentation.viewmodels.PortfolioViewModel;
 import presentation.viewmodels.SellStocksViewModel;
 import presentation.viewmodels.StockMarketViewModel;
+import provided.FileLogOutputter;
+import shared.logging.FileLogOutputAdapter;
+import shared.logging.Logger;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 public class ApplicationContext
@@ -49,6 +56,7 @@ public class ApplicationContext
 
   private final NotificationService notificationService;
   private final NavigationService navigationService;
+  private final FeeCalculationStrategy feeCalculationStrategy;
 
   private final UserSession userSession;
 
@@ -63,21 +71,25 @@ public class ApplicationContext
     this.transactionDAO       = new TransactionFileDAO(fileUnitOfWork);
     this.stockPriceHistoryDAO = new StockPriceHistoryFileDAO(fileUnitOfWork);
 
-
+    this.feeCalculationStrategy = new PercentageFeeStrategy(new BigDecimal(0.04));
+    //    det der er importeret fra "troels".
     this.notificationService = new NotificationServiceImpl();
+    //    this.notificationService = new CustomAlertBoxAdapter();
 
     StockMarket stockMarket = StockMarket.getInstance();
     StockSetupService stockSetupService = new StockSetupService(unitOfWork, stockDAO);
 
     this.stockHistoryService = new StockPriceHistoryService(stockPriceHistoryDAO);
-    this.gameStateService = new GameStateService(stockMarket, stockSetupService, stockDAO, false,
-                                                 false);
+    this.gameStateService    = new GameStateService(stockMarket, stockSetupService, stockDAO, false,
+                                                    false);
 
     this.portfolioService = new PortfolioService(portfolioDAO, ownedStockDAO, transactionDAO,
                                                  stockDAO);
 
     this.tradingService = new TradingService(unitOfWork, portfolioDAO, stockDAO, ownedStockDAO,
-                                             transactionDAO);
+                                             transactionDAO, feeCalculationStrategy);
+
+    Logger.getInstance().setOutput(new FileLogOutputAdapter("logs/application.log", "INFO"));
 
     this.userSession = new UserSession();
     PortfolioBootstrapService bootstrapService = new PortfolioBootstrapService(unitOfWork,
@@ -86,16 +98,16 @@ public class ApplicationContext
     userSession.setActivePortfolioId(activePortfolioId);
 
     this.dashboardViewModel = new DashboardViewModel(gameStateService);
-    this.navigationService = new ViewNavigationService(dashboardViewModel);
+    this.navigationService  = new ViewNavigationService(dashboardViewModel);
 
     this.popUpWelcomeViewModel = new PopUpWelcomeViewModel(navigationService);
     this.portfolioViewModel    = new PortfolioViewModel(navigationService, portfolioService,
                                                         userSession);
     this.stockMarketViewModel  = new StockMarketViewModel(navigationService, stockHistoryService);
-    this.buyStocksViewModel    = new BuyStocksViewModel(tradingService, portfolioService, stockHistoryService,
-                                                        userSession);
-    this.sellStocksViewModel   = new SellStocksViewModel(tradingService, portfolioService, stockHistoryService,
-                                                         userSession);
+    this.buyStocksViewModel    = new BuyStocksViewModel(tradingService, portfolioService,
+                                                        stockHistoryService, userSession);
+    this.sellStocksViewModel   = new SellStocksViewModel(tradingService, portfolioService,
+                                                         stockHistoryService, userSession);
 
     StockAlertPublisher alertPublisher = new StockAlertNotificationAdapter(notificationService);
     StockAlertService stockAlertService = new StockAlertService(ownedStockDAO, alertPublisher,
