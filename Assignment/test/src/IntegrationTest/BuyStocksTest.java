@@ -77,7 +77,7 @@ public class BuyStocksTest
     priceHistoryDAO = new StockPriceHistoryFileDAO(uow);
 
     tradingServiceInterface =
-        new TradingService(uow, portfolioDAO, stockDAO, ownedStockDAO, transactionDAO);
+        new TradingService(uow, portfolioDAO, stockDAO, ownedStockDAO, transactionDAO, );
 
     portfolioServiceInterface =
         new PortfolioService(portfolioDAO, ownedStockDAO, transactionDAO, stockDAO);
