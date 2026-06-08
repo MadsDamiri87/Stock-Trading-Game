@@ -15,66 +15,95 @@ public class FileLoggerIntegrationTest
 {
   @Test void shouldWriteLogMessageToFile() throws Exception
   {
+//    arrange
     Path logPath = Path.of("logs/test-application.log");
     Files.deleteIfExists(logPath);
 
     Logger logger = Logger.getInstance();
+
+   try
+   {
+//    act
     logger.setOutput(new FileLogOutputAdapter(logPath.toString(), "INFO"));
 
     logger.log("INFO", "Adapter test message");
 
+//    assert
     String content = Files.readString(logPath);
 
     assertTrue(content.contains("Adapter test message"));
     assertTrue(content.contains("INFO"));
-
-    logger.setOutput(new ConsoleLogOutput());
-    Files.deleteIfExists(logPath);
+   }
+   finally
+   {
+     logger.setOutput(new ConsoleLogOutput());
+     Files.deleteIfExists(logPath);
+   }
   }
 
   @Test
   void shouldRespectMinimumLogLevel() throws Exception
   {
+    // arrange + cleanup før test
     Path logPath = Path.of("logs/test-level.log");
     Files.deleteIfExists(logPath);
 
+
     Logger logger = Logger.getInstance();
-    logger.setOutput(new FileLogOutputAdapter(logPath.toString(), "ERROR"));
 
-    logger.log("INFO", "Should not appear");
-    logger.log("ERROR", "Should appear");
+    /* try-block i tilfælde af testen fejler før den bliver nulstillet igen. (så bliver
+    loggeren stående med FileLogOutputAdapter) */
+    try
+    {
+      // act
+      logger.setOutput(new FileLogOutputAdapter(logPath.toString(), "ERROR"));
 
-    String content = Files.readString(logPath);
 
-    assertFalse(content.contains("Should not appear"));
-    assertTrue(content.contains("Should appear"));
+      logger.log("INFO", "Should not appear");
+      logger.log("ERROR", "Should appear");
 
-    logger.setOutput(new ConsoleLogOutput());
-    Files.deleteIfExists(logPath);
+      // assert
+      String content = Files.readString(logPath);
+
+      assertFalse(content.contains("Should not appear"));
+      assertTrue(content.contains("Should appear"));
+    }
+    finally
+    {
+      logger.setOutput(new ConsoleLogOutput());
+      Files.deleteIfExists(logPath);
+    }
   }
 
   @Test
   void shouldWriteLogToFile() throws Exception
   {
+    // arrange + cleanup før test
     Path logPath = Path.of("logs/test-file.log");
-
-    // cleanup før test
     Files.deleteIfExists(logPath);
 
     Logger logger = Logger.getInstance();
-    logger.setOutput(new FileLogOutputAdapter(logPath.toString(), "INFO"));
 
-    // Act
-    logger.log("INFO", "FILE TEST");
+    try
+    {
+      logger.setOutput(new FileLogOutputAdapter(logPath.toString(), "INFO"));
 
-    // Assert
-    assertTrue(Files.exists(logPath), "Log file should be created");
+      // Act
+      logger.log("INFO", "FILE TEST");
 
-    String content = Files.readString(logPath);
-    assertTrue(content.contains("FILE TEST"), "File should contain log message");
+      // Assert
+      assertTrue(Files.exists(logPath), "Log file should be created");
 
-    // cleanup efter test
-    logger.setOutput(new ConsoleLogOutput());
-    Files.deleteIfExists(logPath);
+      String content = Files.readString(logPath);
+      assertTrue(content.contains("FILE TEST"), "File should contain log message");
+
+    }
+    finally
+    {
+      // cleanup efter test
+      logger.setOutput(new ConsoleLogOutput());
+      Files.deleteIfExists(logPath);
+    }
+
   }
 }

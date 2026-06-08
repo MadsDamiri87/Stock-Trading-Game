@@ -6,6 +6,8 @@ import business.services.*;
 import business.services.interfaces.PortfolioServiceInterface;
 import business.services.interfaces.StockPriceHistoryInterface;
 import business.services.interfaces.TradingServiceInterface;
+import business.strategies.fee.FeeCalculationStrategy;
+import business.strategies.fee.PercentageFeeStrategy;
 import entities.Portfolio;
 import entities.Stock;
 import javafx.application.Platform;
@@ -51,6 +53,7 @@ public class SellStocksTest
   StringProperty buySharesInput;
   StringProperty sellSharesInput;
   StringProperty sellStatusMessageOutput;
+  FeeCalculationStrategy feeCalculationStrategy;
 
   @BeforeAll
   static void initToolKit()
@@ -69,6 +72,7 @@ public class SellStocksTest
   {
     testDirPath = "test-" + UUID.randomUUID();
 
+    feeCalculationStrategy = new PercentageFeeStrategy(BigDecimal.valueOf(0.02));
     uow = new FileUnitOfWork(testDirPath);
 
     portfolioDAO = new PortfolioFileDAO(uow);
@@ -84,7 +88,7 @@ public class SellStocksTest
         new StockPriceHistoryService(stockPriceHistoryDAO);
 
     tradingServiceInterface =
-        new TradingService(uow, portfolioDAO, stockDAO, ownedStockDAO, transactionDAO);
+        new TradingService(uow, portfolioDAO, stockDAO, ownedStockDAO, transactionDAO, feeCalculationStrategy);
 
     userSession = new UserSession();
 

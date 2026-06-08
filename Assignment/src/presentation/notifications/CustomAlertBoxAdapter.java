@@ -1,35 +1,51 @@
 package presentation.notifications;
 
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import provided.CustomAlertBox;
 
 public class CustomAlertBoxAdapter implements NotificationService
 {
   private final CustomAlertBox alertBox = new CustomAlertBox();
-
+  private final ObservableList<NotificationMessage> notifications =
+      FXCollections.observableArrayList();
 
   @Override
-
   public void notify(String type, String message)
   {
-    CustomAlertBox.AlertType alertType;
+    Runnable task = () -> {
+      notifications.add(new NotificationMessage(type, message));
 
-    switch (type.toUpperCase())
+      CustomAlertBox.AlertType alertType = switch (type.toUpperCase())
+      {
+        case "ERROR" -> CustomAlertBox.AlertType.ERROR;
+        case "WARNING", "WARN" -> CustomAlertBox.AlertType.WARNING;
+        default -> CustomAlertBox.AlertType.INFO;
+      };
+
+      alertBox.showAlert(message, type, alertType);
+    };
+
+    if (Platform.isFxApplicationThread())
     {
-      case "ERROR" -> alertType = CustomAlertBox.AlertType.ERROR;
-      case "WARNING", "WARN" -> alertType = CustomAlertBox.AlertType.WARNING;
-      default -> alertType = CustomAlertBox.AlertType.INFO;
+      task.run();
     }
-
-    alertBox.showAlert(message, type, alertType);
+    else
+    {
+      Platform.runLater(task);
+    }
   }
 
-  @Override public ObservableList<NotificationMessage> getNotifications()
+  @Override
+  public ObservableList<NotificationMessage> getNotifications()
   {
-    return javafx.collections.FXCollections.observableArrayList();
+    return notifications;
   }
 
-  @Override public void remove(NotificationMessage notification)
+  @Override
+  public void remove(NotificationMessage notification)
   {
+    notifications.remove(notification);
   }
 }

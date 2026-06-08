@@ -45,7 +45,7 @@ public class StockMarketViewModel implements StockUpdateReceiver
     navigationsService.openPortfolio();
   }
 
-  @Override public void onStockUpdate(StockMarketUpdateEvent event)
+  @Override public void onStockUpdateViewModel(StockMarketUpdateEvent event)
   {
     marketStatus.set(event.currentState());
     symbol.set(event.stockSymbol());

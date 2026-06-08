@@ -17,7 +17,7 @@ public class StockPresentationListener implements StockMarketListener
   @Override public void onStockUpdated(StockMarketUpdateEvent event)
   {
     Platform.runLater(() -> {
-      receiver.onStockUpdate(event);
+      receiver.onStockUpdateViewModel(event);
     });
 
     System.out.println(

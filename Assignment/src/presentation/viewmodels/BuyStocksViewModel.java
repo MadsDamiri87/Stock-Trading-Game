@@ -136,7 +136,7 @@ public class BuyStocksViewModel implements StockUpdateReceiver
     estimate();
   }
 
-  @Override public void onStockUpdate(StockMarketUpdateEvent event)
+  @Override public void onStockUpdateViewModel(StockMarketUpdateEvent event)
   {
     StockDTO currentSelection = selectedStock.get();
 

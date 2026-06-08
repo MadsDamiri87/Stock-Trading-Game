@@ -96,7 +96,7 @@ public class PortfolioViewModel implements StockUpdateReceiver
   }
 
   @Override
-  public void onStockUpdate(StockMarketUpdateEvent event)
+  public void onStockUpdateViewModel(StockMarketUpdateEvent event)
   {
     currentPrices.put(event.stockSymbol(), event.currentPrice());
 

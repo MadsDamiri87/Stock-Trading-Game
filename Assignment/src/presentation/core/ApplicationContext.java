@@ -13,6 +13,7 @@ import business.strategies.fee.PercentageFeeStrategy;
 import persistence.fileimplementation.*;
 import persistence.interfaces.*;
 import presentation.listeners.StockPresentationListener;
+import presentation.notifications.CustomAlertBoxAdapter;
 import presentation.notifications.NotificationService;
 import presentation.notifications.NotificationServiceImpl;
 import presentation.notifications.StockAlertNotificationAdapter;
@@ -72,8 +73,9 @@ public class ApplicationContext
     this.feeCalculationStrategy = new PercentageFeeStrategy(new BigDecimal(0.04));
 
     //    det der er "importeret fra Troels".
-    this.notificationService = new NotificationServiceImpl();
     //    this.notificationService = new CustomAlertBoxAdapter();
+    //    Min egen:
+    this.notificationService = new NotificationServiceImpl();
 
     StockMarket stockMarket = StockMarket.getInstance();
     StockSetupService stockSetupService = new StockSetupService(unitOfWork, stockDAO);
@@ -118,7 +120,6 @@ public class ApplicationContext
     stockMarket.addListener(new StockPresentationListener(portfolioViewModel));
     stockMarket.addListener(new StockListenerService(unitOfWork, stockDAO, stockPriceHistoryDAO));
     stockMarket.addListener(new StockBankruptService(unitOfWork, ownedStockDAO));
-
     stockMarket.addListener(stockAlertService);
 
     this.marketTickHandler = new MarketTickHandler(gameStateService);

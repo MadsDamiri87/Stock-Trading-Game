@@ -2,6 +2,8 @@ package test.business.services;
 
 import business.dto.TradeRequestDTO;
 import business.services.TradingService;
+import business.strategies.fee.FeeCalculationStrategy;
+import business.strategies.fee.PercentageFeeStrategy;
 import entities.OwnedStock;
 import entities.Portfolio;
 import entities.Stock;
@@ -25,16 +27,19 @@ class TestTradingService
   private MockOwnedStockDAO ownedStockDAO;
   private MockTransactionDAO transactionDAO;
   private MockUnitOfWork uow;
+  private FeeCalculationStrategy feeCalculationStrategy;
 
   @BeforeEach void setup()
   {
+    feeCalculationStrategy = new PercentageFeeStrategy(BigDecimal.valueOf(0.02));
     uow            = new MockUnitOfWork();
     portfolioDAO   = new MockPortfolioDAO();
     stockDAO       = new MockStockDAO();
     ownedStockDAO  = new MockOwnedStockDAO();
     transactionDAO = new MockTransactionDAO();
 
-    tradingService = new TradingService(uow, portfolioDAO, stockDAO, ownedStockDAO, transactionDAO);
+
+    tradingService = new TradingService(uow, portfolioDAO, stockDAO, ownedStockDAO, transactionDAO,feeCalculationStrategy);
   }
 
   @Test void buyStock_validInput_shouldUpdateBalance()
