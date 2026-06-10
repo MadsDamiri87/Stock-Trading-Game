@@ -2,7 +2,8 @@ package test.business.services;
 
 import business.dto.TradeRequestDTO;
 import business.services.TradingService;
-import business.strategies.fee.FeeCalculationStrategy;
+import business.strategies.fee.FeeStrategyManager;
+import business.strategies.fee.FeeStrategyProvider;
 import business.strategies.fee.PercentageFeeStrategy;
 import entities.OwnedStock;
 import entities.Portfolio;
@@ -27,11 +28,13 @@ class TestTradingService
   private MockOwnedStockDAO ownedStockDAO;
   private MockTransactionDAO transactionDAO;
   private MockUnitOfWork uow;
-  private FeeCalculationStrategy feeCalculationStrategy;
+  private FeeStrategyProvider feeStrategyProvider;
 
   @BeforeEach void setup()
   {
-    feeCalculationStrategy = new PercentageFeeStrategy(BigDecimal.valueOf(0.02));
+    feeStrategyProvider = new FeeStrategyManager(
+        new PercentageFeeStrategy(BigDecimal.valueOf(0.02)));
+
     uow            = new MockUnitOfWork();
     portfolioDAO   = new MockPortfolioDAO();
     stockDAO       = new MockStockDAO();
@@ -39,7 +42,7 @@ class TestTradingService
     transactionDAO = new MockTransactionDAO();
 
 
-    tradingService = new TradingService(uow, portfolioDAO, stockDAO, ownedStockDAO, transactionDAO,feeCalculationStrategy);
+    tradingService = new TradingService(uow, portfolioDAO, stockDAO, ownedStockDAO, transactionDAO, feeStrategyProvider);
   }
 
   @Test void buyStock_validInput_shouldUpdateBalance()
@@ -62,7 +65,7 @@ class TestTradingService
 
     //     ASSERT
 
-    assertEquals(BigDecimal.valueOf(595.0), updated.getCurrentBalance());
+    assertEquals(BigDecimal.valueOf(592.0), updated.getCurrentBalance());
   }
 
   @Test void buyStock_insufficientFunds_shouldThrow()
@@ -291,7 +294,7 @@ class TestTradingService
 
     // ASSERT
     Portfolio updated = portfolioDAO.getById(portfolioId).get();
-    assertEquals(BigDecimal.valueOf(1195.0), updated.getCurrentBalance());
+    assertEquals(BigDecimal.valueOf(1196.00), updated.getCurrentBalance());
   }
 
   @Test void sellStock_shouldReduceOwnedStockQuantity()

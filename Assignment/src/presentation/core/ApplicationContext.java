@@ -8,12 +8,10 @@ import business.services.interfaces.TradingServiceInterface;
 import business.services.notifications.StockAlertPublisher;
 import business.stockmarket.MarketTickHandler;
 import business.stockmarket.StockMarket;
-import business.strategies.fee.FeeCalculationStrategy;
-import business.strategies.fee.PercentageFeeStrategy;
+import business.strategies.fee.*;
 import persistence.fileimplementation.*;
 import persistence.interfaces.*;
 import presentation.listeners.StockPresentationListener;
-import presentation.notifications.CustomAlertBoxAdapter;
 import presentation.notifications.NotificationService;
 import presentation.notifications.NotificationServiceImpl;
 import presentation.notifications.StockAlertNotificationAdapter;
@@ -28,6 +26,8 @@ import shared.logging.FileLogOutputAdapter;
 import shared.logging.Logger;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class ApplicationContext
@@ -53,9 +53,11 @@ public class ApplicationContext
   private final MarketTickHandler marketTickHandler;
   private final Thread marketThread;
 
+  private final FeeStrategyProvider feeStrategyProvider;
+  private final FeeStrategySelector feeStrategySelector;
+
   private final NotificationService notificationService;
   private final NavigationService navigationService;
-  private final FeeCalculationStrategy feeCalculationStrategy;
 
   private final UserSession userSession;
 
@@ -70,7 +72,20 @@ public class ApplicationContext
     this.transactionDAO       = new TransactionFileDAO(fileUnitOfWork);
     this.stockPriceHistoryDAO = new StockPriceHistoryFileDAO(fileUnitOfWork);
 
-    this.feeCalculationStrategy = new PercentageFeeStrategy(new BigDecimal(0.04));
+
+//    Strategy pattern:
+    Map<String, FeeCalculationStrategy> feeStrategies = new HashMap<>();
+
+    feeStrategies.put("Percentage", new PercentageFeeStrategy(BigDecimal.valueOf(0.04)));
+    feeStrategies.put("Flat", new FlatFeeStrategy(BigDecimal.valueOf(10)));
+    feeStrategies.put("Volume", new VolumeBasedFeeStrategy(BigDecimal.valueOf(0.25)));
+
+    this.feeStrategyProvider = new FeeStrategyManager(feeStrategies.get("Percentage"));
+
+    this.feeStrategySelector = new FeeStrategySelector(feeStrategyProvider, feeStrategies);
+
+//    Strategy slut
+
 
     //    det der er "importeret fra Troels".
     //    this.notificationService = new CustomAlertBoxAdapter();
@@ -88,7 +103,7 @@ public class ApplicationContext
                                                  stockDAO);
 
     this.tradingService = new TradingService(unitOfWork, portfolioDAO, stockDAO, ownedStockDAO,
-                                             transactionDAO, feeCalculationStrategy);
+                                             transactionDAO, feeStrategyProvider);
 
     Logger.getInstance().setOutput(new FileLogOutputAdapter("logs/application.log", "INFO"));
 
@@ -106,9 +121,11 @@ public class ApplicationContext
                                                         userSession);
     this.stockMarketViewModel  = new StockMarketViewModel(navigationService, stockHistoryService);
     this.buyStocksViewModel    = new BuyStocksViewModel(tradingService, portfolioService,
-                                                        stockHistoryService, userSession);
-    this.sellStocksViewModel   = new SellStocksViewModel(tradingService, portfolioService,
-                                                         stockHistoryService, userSession);
+                                                        stockHistoryService, userSession,
+                                                        feeStrategySelector);
+
+    this.sellStocksViewModel = new SellStocksViewModel(tradingService, portfolioService,
+                                                       stockHistoryService, userSession);
 
     StockAlertPublisher alertPublisher = new StockAlertNotificationAdapter(notificationService);
     StockAlertService stockAlertService = new StockAlertService(ownedStockDAO, alertPublisher,

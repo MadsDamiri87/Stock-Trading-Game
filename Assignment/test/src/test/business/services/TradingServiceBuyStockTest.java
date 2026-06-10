@@ -2,7 +2,8 @@ package test.business.services;
 
 import business.dto.TradeRequestDTO;
 import business.services.TradingService;
-import business.strategies.fee.FeeCalculationStrategy;
+import business.strategies.fee.FeeStrategyManager;
+import business.strategies.fee.FeeStrategyProvider;
 import business.strategies.fee.PercentageFeeStrategy;
 import entities.OwnedStock;
 import entities.Portfolio;
@@ -28,7 +29,7 @@ class TradingServiceBuyStockTest
   private MockTransactionDAO transactionDAO;
   private SpyUnitOfWork uow;
 
-  private FeeCalculationStrategy feeStrategy;
+  private FeeStrategyProvider feeStrategyProvider;
 
   @BeforeEach
   void setup()
@@ -42,7 +43,7 @@ class TradingServiceBuyStockTest
     uow = new SpyUnitOfWork();
 
     // Default fee er 2%, men enkelte tests ændrer den selv.
-    feeStrategy = new PercentageFeeStrategy(BigDecimal.valueOf(0.02));
+    feeStrategyProvider = new FeeStrategyManager(new PercentageFeeStrategy(BigDecimal.valueOf(0.02)));
 
     tradingService = new TradingService(
         uow,
@@ -50,7 +51,7 @@ class TradingServiceBuyStockTest
         stockDAO,
         ownedStockDAO,
         transactionDAO,
-        feeStrategy
+        feeStrategyProvider
     );
   }
 
@@ -82,7 +83,8 @@ class TradingServiceBuyStockTest
   void buyStock_quantityZero_throwsException()
   {
     // ZOMBIES: Zero
-    // BVA: quantity = 0 ligger lige under mindste gyldige værdi, som er 1.
+    // BVA: grænseværdi = 0.
+    // EP - Ugyldig partition: quantity <= 0
 
     UUID portfolioId = UUID.randomUUID();
 
@@ -170,20 +172,30 @@ class TradingServiceBuyStockTest
   {
     // ZOMBIES: Many
     // EP: gyldigt stort antal aktier.
+    // BVA: Ikke boundary her, men et stort gyldigt input inden for saldoen.
+    // AAA:
+    // Arrange = opret portfolio, stock og request.
+    // Act = kald buyStock().
+    // Assert = kontroller antal owned shares.
 
     UUID portfolioId = UUID.randomUUID();
 
-    portfolioDAO.create(new Portfolio(portfolioId, BigDecimal.valueOf(200000)));
-    stockDAO.create(new Stock("AAPL", "Apple", BigDecimal.valueOf(10), "Steady"));
+    portfolioDAO.create(
+        new Portfolio(portfolioId, BigDecimal.valueOf(200000)));
 
-    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 10000, 1);
+    stockDAO.create(
+        new Stock("AAPL", "Apple", BigDecimal.valueOf(10), "Steady"));
+
+    TradeRequestDTO request =
+        new TradeRequestDTO(portfolioId, "AAPL", 10000, 10);
 
     tradingService.buyStock(request);
 
-    assertEquals(10000, ownedStockDAO
-        .getByPortfolioIdAndStockSymbol(portfolioId, "AAPL")
-        .orElseThrow()
-        .getNumberOfShares());
+    assertEquals(10000,
+                 ownedStockDAO
+                     .getByPortfolioIdAndStockSymbol(portfolioId, "AAPL")
+                     .orElseThrow()
+                     .getNumberOfShares());
   }
 
   @Test
@@ -192,15 +204,16 @@ class TradingServiceBuyStockTest
     // BVA: præcis på grænsen.
     // Pris = 100, quantity = 1, fee = 0, balance = 100.
 
-    feeStrategy = new PercentageFeeStrategy(BigDecimal.valueOf(0.02));
+    feeStrategyProvider = new FeeStrategyManager(new PercentageFeeStrategy(BigDecimal.valueOf(0.02)));
+
 
     tradingService = new TradingService(
-        uow, portfolioDAO, stockDAO, ownedStockDAO, transactionDAO, feeStrategy
+        uow, portfolioDAO, stockDAO, ownedStockDAO, transactionDAO, feeStrategyProvider
     );
 
     UUID portfolioId = UUID.randomUUID();
 
-    portfolioDAO.create(new Portfolio(portfolioId, BigDecimal.valueOf(100)));
+    portfolioDAO.create(new Portfolio(portfolioId, BigDecimal.valueOf(10000)));
     stockDAO.create(new Stock("AAPL", "Apple", BigDecimal.valueOf(100), "Steady"));
 
     TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 1, 1);
@@ -210,6 +223,7 @@ class TradingServiceBuyStockTest
     assertEquals(BigDecimal.valueOf(0), portfolioDAO.getById(portfolioId)
                                                     .orElseThrow()
                                                     .getCurrentBalance());
+
   }
 
   @Test
@@ -218,11 +232,12 @@ class TradingServiceBuyStockTest
     // BVA: lige over grænsen.
     // Balance er 99.99, men totalCost er 100.00.
 
-    feeStrategy = new PercentageFeeStrategy(BigDecimal.valueOf(0.02));
+    feeStrategyProvider = new FeeStrategyManager(new PercentageFeeStrategy(BigDecimal.valueOf(0.02)));
+
 
 
     tradingService = new TradingService(
-        uow, portfolioDAO, stockDAO, ownedStockDAO, transactionDAO, feeStrategy
+        uow, portfolioDAO, stockDAO, ownedStockDAO, transactionDAO, feeStrategyProvider
     );
 
     UUID portfolioId = UUID.randomUUID();
@@ -242,10 +257,11 @@ class TradingServiceBuyStockTest
     // BVA/EP: fee = 0 er en særlig partition.
     // Det er stadig gyldigt, bare gratis handel.
 
-    feeStrategy = new PercentageFeeStrategy(BigDecimal.valueOf(0.02));
+    feeStrategyProvider = new FeeStrategyManager(new PercentageFeeStrategy(BigDecimal.valueOf(0.02)));
+
 
     tradingService = new TradingService(
-        uow, portfolioDAO, stockDAO, ownedStockDAO, transactionDAO, feeStrategy
+        uow, portfolioDAO, stockDAO, ownedStockDAO, transactionDAO, feeStrategyProvider
     );
 
     UUID portfolioId = UUID.randomUUID();
@@ -411,16 +427,16 @@ class TradingServiceBuyStockTest
     // Hvis fee-strategien returnerer negativ fee, bør det ikke være tilladt.
     // Hvis denne test fejler, er det nok fordi service-klassen ikke validerer fee endnu.
 
-    feeStrategy = new PercentageFeeStrategy(BigDecimal.valueOf(0.02));
+    feeStrategyProvider = new FeeStrategyManager(new PercentageFeeStrategy(BigDecimal.valueOf(0.02)));
 
 
     tradingService = new TradingService(
-        uow, portfolioDAO, stockDAO, ownedStockDAO, transactionDAO, feeStrategy
+        uow, portfolioDAO, stockDAO, ownedStockDAO, transactionDAO, feeStrategyProvider
     );
 
     UUID portfolioId = UUID.randomUUID();
 
-    portfolioDAO.create(new Portfolio(portfolioId, BigDecimal.valueOf(1000)));
+    portfolioDAO.create(new Portfolio(portfolioId, BigDecimal.valueOf(-0.02)));
     stockDAO.create(new Stock("AAPL", "Apple", BigDecimal.valueOf(100), "Steady"));
 
     TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 1, 1);

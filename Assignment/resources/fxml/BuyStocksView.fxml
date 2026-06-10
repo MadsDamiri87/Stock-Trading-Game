@@ -53,9 +53,9 @@
 
                         <VBox spacing="10.0" styleClass="summary-mini-box">
                             <HBox spacing="12.0">
-                                <Label styleClass="table-header" text="Estimated Total:" />
+                                <Label styleClass="table-header" text="Fee type:" />
                                 <Region HBox.hgrow="ALWAYS" />
-                                <Label fx:id="summaryTotalLabel" styleClass="table-positive" text="-" />
+                                <Label fx:id="feeType" styleClass="table-positive" text="-" />
                             </HBox>
 
                             <HBox spacing="12.0">
@@ -67,7 +67,7 @@
                         </VBox>
 
                         <HBox spacing="12.0">
-                            <Button onAction="#handleEstimate" styleClass="action-button-secondary" text="Estimate" />
+                            <Button onAction="#changeFeeType" styleClass="action-button-secondary" text="Change fee type" />
 
                             <Button onAction="#handleBuy" styleClass="action-button-primary" text="Buy Stock" />
                         </HBox>

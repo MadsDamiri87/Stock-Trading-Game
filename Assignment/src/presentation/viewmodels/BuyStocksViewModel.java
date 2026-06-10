@@ -5,6 +5,7 @@ import business.services.interfaces.StockPriceHistoryInterface;
 import business.stockmarket.StockMarketUpdateEvent;
 import business.services.interfaces.PortfolioServiceInterface;
 import business.services.interfaces.TradingServiceInterface;
+import business.strategies.fee.FeeStrategySelector;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -27,7 +28,11 @@ public class BuyStocksViewModel implements StockUpdateReceiver
   private final PortfolioServiceInterface portfolioService;
   private final StockPriceHistoryInterface stockPriceHistoryInterface;
   private final UserSession userSession;
+  private final FeeStrategySelector feeStrategySelector;
   private final Logger logger = Logger.getInstance();
+
+  private final String[] feeStrategies = {"Percentage", "Flat", "Volume"};
+  private int currentFeeStrategyIndex = 0;
 
   private final ObservableList<StockDTO> availableStocks = FXCollections.observableArrayList();
   private final ObjectProperty<StockDTO> selectedStock = new SimpleObjectProperty<>();
@@ -44,6 +49,7 @@ public class BuyStocksViewModel implements StockUpdateReceiver
   private final StringProperty summaryTotal = new SimpleStringProperty("-");
   private final StringProperty statusMessage = new SimpleStringProperty(
       "Choose a stock and enter shares.");
+  private final StringProperty feeType = new SimpleStringProperty("-");
 
   private final XYChart.Series<Number, Number> selectedStockSeries = new XYChart.Series<>();
   private int tickCounter = 0;
@@ -51,17 +57,29 @@ public class BuyStocksViewModel implements StockUpdateReceiver
   public BuyStocksViewModel(TradingServiceInterface tradingService,
                             PortfolioServiceInterface portfolioService,
                             StockPriceHistoryInterface stockPriceHistoryInterface,
-                            UserSession userSession)
+                            UserSession userSession, FeeStrategySelector feeStrategySelector)
   {
     this.tradingService             = tradingService;
     this.portfolioService           = portfolioService;
     this.stockPriceHistoryInterface = stockPriceHistoryInterface;
     this.userSession                = userSession;
+    this.feeStrategySelector        = feeStrategySelector;
 
     selectedStockSeries.setName("Selected Stock");
 
     loadStocks();
     loadBalance();
+  }
+
+  public void changeFeeStrategy()
+  {
+    currentFeeStrategyIndex = (currentFeeStrategyIndex + 1) % feeStrategies.length;
+
+    String selectedStrategy = feeStrategies[currentFeeStrategyIndex];
+
+    feeStrategySelector.selectStrategy(selectedStrategy);
+    feeType.set(selectedStrategy);
+    statusMessage.set("Fee strategy changed to: " + selectedStrategy);
   }
 
   public void loadStocks()
@@ -260,7 +278,7 @@ public class BuyStocksViewModel implements StockUpdateReceiver
         return;
       }
 
-      var portfolio = portfolioService.getPortfolio(portfolioId);
+      PortfolioDTO portfolio = portfolioService.getPortfolio(portfolioId);
 
       int sharesOwned = portfolio.ownedStocks().stream().filter(
                                      stock -> stock.stockSymbol().equalsIgnoreCase(currentSymbol))
@@ -297,9 +315,8 @@ public class BuyStocksViewModel implements StockUpdateReceiver
 
       PortfolioDTO portfolio = portfolioService.getPortfolio(portfolioId);
 
-      var owned = portfolio.ownedStocks().stream()
-                           .filter(stock -> stock.stockSymbol().equalsIgnoreCase(currentSymbol))
-                           .findFirst().orElse(null);
+      OwnedStockDTO owned = portfolio.ownedStocks().stream().filter(
+          stock -> stock.stockSymbol().equalsIgnoreCase(currentSymbol)).findFirst().orElse(null);
 
       if (owned != null)
       {
@@ -380,6 +397,11 @@ public class BuyStocksViewModel implements StockUpdateReceiver
   public StringProperty statusMessageProperty()
   {
     return statusMessage;
+  }
+
+  public StringProperty feeTypeProperty()
+  {
+    return feeType;
   }
 
 }

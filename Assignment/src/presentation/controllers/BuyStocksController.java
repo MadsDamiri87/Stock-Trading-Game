@@ -1,6 +1,7 @@
 package presentation.controllers;
 
 import business.dto.StockDTO;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
@@ -16,6 +17,7 @@ import java.util.ResourceBundle;
 
 public class BuyStocksController implements Initializable
 {
+  @FXML private Label feeType;
   @FXML private Label selectedStock;
   @FXML private TextField sharesField;
   @FXML private Label pricePerShare;
@@ -29,7 +31,6 @@ public class BuyStocksController implements Initializable
   @FXML private Label stockName;
   @FXML private Label ownedSharesLabel;
   @FXML private Label summaryPriceLabel;
-  @FXML private Label summaryTotalLabel;
   @FXML private Label statusLabel;
 
   private final BuyStocksViewModel viewModel;
@@ -43,6 +44,7 @@ public class BuyStocksController implements Initializable
   {
     refresh();
 
+    feeType.textProperty().bind(viewModel.feeTypeProperty());
     selectedStock.textProperty().bind(viewModel.symbolProperty());
     sharesField.textProperty().bindBidirectional(viewModel.sharesProperty());
     pricePerShare.textProperty().bind(viewModel.priceProperty());
@@ -51,7 +53,6 @@ public class BuyStocksController implements Initializable
     stockName.textProperty().bind(viewModel.stockNameProperty());
     ownedSharesLabel.textProperty().bindBidirectional(viewModel.summarySharesProperty());
     summaryPriceLabel.textProperty().bind(viewModel.summaryPriceProperty());
-    summaryTotalLabel.textProperty().bind(viewModel.summaryTotalProperty());
     statusLabel.textProperty().bind(viewModel.statusMessageProperty());
 
     stockListView.setItems(viewModel.getAvailableStocks());
@@ -98,14 +99,16 @@ public class BuyStocksController implements Initializable
     viewModel.loadStocks();
   }
 
-  @FXML private void handleEstimate()
-  {
-    viewModel.estimate();
-  }
 
   @FXML private void handleBuy()
   {
     viewModel.buy();
     sharesField.clear();
+  }
+
+  @FXML
+  private void changeFeeType()
+  {
+    viewModel.changeFeeStrategy();
   }
 }

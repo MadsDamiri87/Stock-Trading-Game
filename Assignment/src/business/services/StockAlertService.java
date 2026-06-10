@@ -23,10 +23,6 @@ public class StockAlertService implements StockMarketListener
   private final Set<String> nearBankruptAlerted = new HashSet<>();
   private final Set<String> bankruptAlerted = new HashSet<>();
 
-  public StockAlertService()
-  {
-    this.logger = Logger.getInstance();
-  }
 
   public StockAlertService(OwnedStockDAO ownedStockDAO, StockAlertPublisher alertPublisher,
                            UUID portfolioId)

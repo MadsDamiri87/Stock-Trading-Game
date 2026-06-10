@@ -56,13 +56,14 @@ public class SellStocksViewModel implements StockUpdateReceiver
 
   public SellStocksViewModel(TradingServiceInterface tradingService,
                              PortfolioServiceInterface portfolioService,
-                             StockPriceHistoryInterface stockPriceHistoryInterface, UserSession userSession)
+                             StockPriceHistoryInterface stockPriceHistoryInterface,
+                             UserSession userSession)
   {
-    this.tradingService             = tradingService;
+    this.tradingService      = tradingService;
     this.portfolioService    = portfolioService;
     this.stockHistoryService = stockPriceHistoryInterface;
     this.userSession         = userSession;
-    this.portfolioId                = userSession.getActivePortfolioId();
+    this.portfolioId         = userSession.getActivePortfolioId();
 
     selectedStockSeries.setName("Selected Stock");
 
@@ -110,7 +111,7 @@ public class SellStocksViewModel implements StockUpdateReceiver
       statusDescription.set("-");
       loadHistoryForSelectedStock(ownedStock.stockSymbol());
       currentPriceValue = 0.0;
-      tickCounter = 0;
+      tickCounter       = 0;
       return;
     }
 
@@ -288,9 +289,7 @@ public class SellStocksViewModel implements StockUpdateReceiver
 
     for (StockPriceHistoryDTO point : history)
     {
-      selectedStockSeries.getData().add(
-          new XYChart.Data<>(index, point.price().doubleValue())
-      );
+      selectedStockSeries.getData().add(new XYChart.Data<>(index, point.price().doubleValue()));
 
       index++;
     }

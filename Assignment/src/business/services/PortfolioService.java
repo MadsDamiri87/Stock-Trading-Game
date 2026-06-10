@@ -39,9 +39,27 @@ public class PortfolioService implements PortfolioServiceInterface
     Portfolio portfolio = portfolioDAO.getById(portfolioId).orElseThrow(
         () -> new RuntimeException("Portfolio not found: " + portfolioId));
 
-    List<OwnedStockDTO> ownedStockDTOs = ownedStockDAO.getByPortfolioId(portfolioId).stream()
+    List<OwnedStockDTO> ownedStockDTOs = ownedStockDAO.getByPortfolioId(portfolioId)
+                                                      .stream()
                                                       .map(OwnedStockMapper::toOwnedStockDTO)
                                                       .toList();
+
+//    Vi mapper for at adskille lagene og undgå at sende entities direkte ud af business-laget.
+/* svarer til:
+List<OwnedStock> ownedStocks =
+    ownedStockDAO.getByPortfolioId(portfolioId);
+
+List<OwnedStockDTO> ownedStockDTOs =
+    new ArrayList<>();
+
+for (OwnedStock stock : ownedStocks)
+{
+  ownedStockDTOs.add(
+      OwnedStockMapper.toOwnedStockDTO(stock)
+  );
+}
+ */
+
     return PortfolioMapper.toPortfolioDTO(portfolio, ownedStockDTOs);
   }
 
