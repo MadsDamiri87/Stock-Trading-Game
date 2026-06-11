@@ -11,6 +11,8 @@ import entities.Stock;
 import entities.Transaction;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import test.persistence.mocks.*;
 
 import java.math.BigDecimal;
@@ -55,6 +57,52 @@ class TradingServiceBuyStockTest
     );
   }
 
+  @ParameterizedTest
+  @ValueSource(ints = {-1, 0})
+  void buyStock_quantityAtOrBelowBoundary_throwsException(int quantity)
+  {
+    // BVA:
+    // Grænsen er quantity > 0.
+    // Derfor tester vi værdierne lige omkring grænsen:
+    // -1 og 0 er ugyldige.
+
+    UUID portfolioId = UUID.randomUUID();
+
+    portfolioDAO.create(new Portfolio(portfolioId, BigDecimal.valueOf(10000)));
+    stockDAO.create(new Stock("AAPL", "Apple", BigDecimal.valueOf(10), "Steady"));
+
+    TradeRequestDTO request =
+        new TradeRequestDTO(portfolioId, "AAPL", quantity, 10);
+
+    assertThrows(IllegalArgumentException.class,
+                 () -> tradingService.buyStock(request));
+  }
+
+  @ParameterizedTest
+  @ValueSource(ints = {1, 5, 100})
+  void buyStock_validQuantityPartition_succeeds(int quantity)
+  {
+    // EP:
+    // Alle værdier hvor quantity > 0 tilhører den gyldige partition.
+    // Vi tester flere repræsentanter fra samme gyldige partition.
+
+    UUID portfolioId = UUID.randomUUID();
+
+    portfolioDAO.create(new Portfolio(portfolioId, BigDecimal.valueOf(100000)));
+    stockDAO.create(new Stock("AAPL", "Apple", BigDecimal.valueOf(10), "Steady"));
+
+    TradeRequestDTO request =
+        new TradeRequestDTO(portfolioId, "AAPL", quantity, 10);
+
+    tradingService.buyStock(request);
+
+    assertEquals(quantity,
+                 ownedStockDAO
+                     .getByPortfolioIdAndStockSymbol(portfolioId, "AAPL")
+                     .orElseThrow()
+                     .getNumberOfShares());
+  }
+
   @Test
   void buyStock_quantityOne_affordableStock_succeeds()
   {
@@ -79,41 +127,25 @@ class TradingServiceBuyStockTest
                                  .getNumberOfShares());
   }
 
-  @Test
-  void buyStock_quantityZero_throwsException()
-  {
-    // ZOMBIES: Zero
-    // BVA: grænseværdi = 0.
-    // EP - Ugyldig partition: quantity <= 0
-
-    UUID portfolioId = UUID.randomUUID();
-
-    portfolioDAO.create(new Portfolio(portfolioId, BigDecimal.valueOf(1000)));
-    stockDAO.create(new Stock("AAPL", "Apple", BigDecimal.valueOf(100), "Steady"));
-
-    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", 0, 1);
-
-    assertThrows(RuntimeException.class, () -> tradingService.buyStock(request));
-    assertTrue(uow.rollbackCalled);
-  }
 
   @Test
   void buyStock_negativeQuantity_throwsException()
   {
     // ZOMBIES: Exceptions
     // EP: ugyldige quantities: negative tal.
-
     UUID portfolioId = UUID.randomUUID();
 
     portfolioDAO.create(new Portfolio(portfolioId, BigDecimal.valueOf(1000)));
     stockDAO.create(new Stock("AAPL", "Apple", BigDecimal.valueOf(100), "Steady"));
 
-    TradeRequestDTO request = new TradeRequestDTO(portfolioId, "AAPL", -1, 1);
+    TradeRequestDTO request =
+        new TradeRequestDTO(portfolioId, "AAPL", -1, 1);
 
-    assertThrows(RuntimeException.class, () -> tradingService.buyStock(request));
-    assertTrue(uow.rollbackCalled);
+    assertThrows(IllegalArgumentException.class,
+                 () -> tradingService.buyStock(request));
+
+    assertFalse(uow.rollbackCalled);
   }
-
   @Test
   void buyStock_newStock_createsOwnedStock()
   {
@@ -220,7 +252,7 @@ class TradingServiceBuyStockTest
 
     tradingService.buyStock(request);
 
-    assertEquals(BigDecimal.valueOf(0), portfolioDAO.getById(portfolioId)
+    assertEquals(new BigDecimal("9898.00"), portfolioDAO.getById(portfolioId)
                                                     .orElseThrow()
                                                     .getCurrentBalance());
 
@@ -273,7 +305,7 @@ class TradingServiceBuyStockTest
 
     tradingService.buyStock(request);
 
-    assertEquals(BigDecimal.valueOf(300), portfolioDAO.getById(portfolioId)
+    assertEquals(new BigDecimal("296.00"), portfolioDAO.getById(portfolioId)
                                                       .orElseThrow()
                                                       .getCurrentBalance());
   }

@@ -16,8 +16,7 @@ public class FeeStrategyManager implements FeeStrategyProvider
   }
 
   @Override
-  public void setCurrentStrategy(
-      FeeCalculationStrategy strategy)
+  public void setCurrentStrategy(FeeCalculationStrategy strategy)
   {
     this.currentStrategy = strategy;
   }
