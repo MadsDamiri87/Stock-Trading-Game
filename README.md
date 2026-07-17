@@ -20,6 +20,40 @@ The application includes functionality for:
 - showing notifications and alerts in the JavaFX user interface
 - calculating trading fees with interchangeable fee strategies
 
+## Screenshots
+
+### 1. Starting Page
+
+![Starting Page](docs/screenshots/1-StartingPage.png)
+
+### 2. Dashboard View
+
+![Dashboard View 1](docs/screenshots/2-DashboardView1.png)
+
+### 3. Dashboard View - Updated Market
+
+![Dashboard View 2](docs/screenshots/3-DashboardView2.png)
+
+### 4. Portfolio View
+
+![Portfolio View](docs/screenshots/4-PortfolioView.png)
+
+### 5. Buy Stock View
+
+![Buy Stock View 1](docs/screenshots/5-BuyStockView1.png)
+
+### 6. Buy Stock View - Stock Selection
+
+![Buy Stock View 2](docs/screenshots/6-BuyStockView2.png)
+
+### 7. Buy Stock View - Trade Input
+
+![Buy Stock View 3](docs/screenshots/7-BuyStockView3.png)
+
+### 8. Sell Stock View
+
+![Sell Stock View](docs/screenshots/8-SellStockView1.png)
+
 ## Technologies
 
 The project uses:
@@ -181,3 +215,6 @@ This folder contains analysis and design artifacts, including state machine diag
 - Runtime logs are stored in the `logs/` folder.
 - Compiled output in `out/` is not required for understanding the source code.
 - The project is primarily focused on software design, test techniques and maintainable Java architecture.
+
+
+
