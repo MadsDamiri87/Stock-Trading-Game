@@ -39,14 +39,11 @@ public class LiveStock
 
   void setState(LiveStockState currentState)
   {
-    String oldState =
-        this.currentState == null ? "none" : this.currentState.getStateName();
+    String oldState = this.currentState == null ? "none" : this.currentState.getStateName();
     this.currentState = currentState;
 
-    Logger.getInstance().log("Info",
-                             "LiveStock " + stockSymbol + " changed state from "
-                                 + oldState + " to: "
-                                 + currentState.getStateName());
+    Logger.getInstance().log("Info", "LiveStock " + stockSymbol + " changed state from " + oldState
+        + " to: " + currentState.getStateName());
   }
 
   public String getStockSymbol()
