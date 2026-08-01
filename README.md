@@ -6,6 +6,18 @@ Stock Trading Game is a JavaFX desktop application developed as part of a Softwa
 
 The project focuses on layered architecture, separation of concerns, design patterns, file-based persistence and automated tests for core trading behavior.
 
+## Project Scope
+
+This project was built for Software Design and Test, and should be understood as a learning-focused simulation rather than a complete trading product. The trading domain was mainly used as a concrete frame for working with maintainable application structure, testability and design patterns.
+
+The project includes a JavaFX desktop application with buy/sell flows, portfolio handling, transaction history, local PSV-based persistence, stock price simulation, alerts and market state changes. Around those flows, the project explores a three-layer architecture with a clear separation between presentation, business logic and persistence. The presentation layer is responsible for JavaFX views, controllers, view models and user interaction, the business layer contains trading rules, portfolio logic, fee calculation and market behaviour, while the persistence layer handles storage through DAO interfaces and file-based implementations. This separation of responsibility was a central focus of the course, because it makes the code easier to test, change and reason about without mixing UI concerns with domain logic or data access. The application uses an ApplicationContext, ControllerFactory and ViewManager to keep object creation, dependency wiring and navigation more controlled instead of spreading that responsibility across the UI.
+
+A large part of the project is about applying design principles and patterns in practice. The implementation includes MVVM to reduce controller responsibility, DAO interfaces to separate business logic from file storage, Unit of Work to handle commit/rollback-like behavior, Adapter pattern for logging and UI notifications, Observer pattern for stock market updates and listeners, State pattern for stock price behaviour, and Strategy pattern for interchangeable fee calculation. These choices were not added to make the project look bigger, but to practise SOLID principles such as Single Responsibility, Open/Closed, Dependency Inversion and Dependency Injection in a concrete codebase.
+
+Testing was also a central part of the project. The project includes unit tests, integration tests and scenario-based test documentation. The tests cover important trading behaviour such as buying, selling, invalid quantities, insufficient funds, transaction handling, rollback/commit behaviour and file logger integration. Test design ideas such as boundary value analysis, equivalence partitioning, AAA/FIRST principles, ZOMBIES and scenario testing were used to connect the code to the theory from the course.
+
+The project is therefore not meant to behave like a real trading platform with live markets, users or financial security. Its value is mainly in applying structur, test, patterns and design decisions which is documented through various diagrams, with the soul porpuse of practical-learning.
+
 ## Features
 
 The application includes functionality for:
@@ -63,7 +75,6 @@ The project uses:
 - FXML
 - CSS
 - JUnit 5
-- IntelliJ IDEA project structure
 - PSV files for local persistence
 
 ## Project Structure
@@ -189,7 +200,7 @@ The project uses JUnit 5, and the required JUnit libraries are located in the `l
 The project is set up as an IntelliJ IDEA Java project.
 
 1. Open the `StockTrading` folder in IntelliJ IDEA.
-2. Make sure JavaFX is configured for the project.
+2. Have JavaFX configured for the project.
 3. Make sure the libraries in the `lib/` folder are added if tests need to be run.
 4. Run the main class:
 
@@ -213,7 +224,6 @@ This folder contains analysis and design artifacts, including state machine diag
 
 - The application uses local file-based storage and does not require a database.
 - Runtime logs are stored in the `logs/` folder.
-- Compiled output in `out/` is not required for understanding the source code.
 - The project is primarily focused on software design, test techniques and maintainable Java architecture.
 
 
