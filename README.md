@@ -6,6 +6,18 @@ Stock Trading Game is a JavaFX desktop application developed as part of a Softwa
 
 The project focuses on layered architecture, separation of concerns, design patterns, file-based persistence and automated tests for core trading behavior.
 
+## Project Scope
+
+This project was built for Software Design and Test, and should be understood as a learning-focused simulation rather than a complete trading product. The trading domain was mainly used as a concrete frame for working with maintainable application structure, testability and design patterns.
+
+The project includes a JavaFX desktop application with buy/sell flows, portfolio handling, transaction history, local PSV-based persistence, stock price simulation, alerts and market state changes. Around those flows, the project explores a layered architecture with a clear separation between presentation, business logic and persistence. The application uses an ApplicationContext, ControllerFactory and ViewManager to keep object creation, dependency wiring and navigation more controlled instead of spreading that responsibility across the UI.
+
+A large part of the project is about applying design principles and patterns in practice. The implementation includes MVVM to reduce controller responsibility, DAO interfaces to separate business logic from file storage, Unit of Work to handle commit/rollback-like behavior, Adapter pattern for logging and UI notifications, Observer pattern for stock market updates and listeners, State pattern for stock price behaviour, and Strategy pattern for interchangeable fee calculation. These choices were not added to make the project look bigger, but to practise SOLID principles such as Single Responsibility, Open/Closed, Dependency Inversion and Dependency Injection in a concrete codebase.
+
+Testing was also a central part of the project. The project includes unit tests, integration tests and scenario-based test documentation. The tests cover important trading behaviour such as buying, selling, invalid quantities, insufficient funds, transaction handling, rollback/commit behaviour and file logger integration. Test design ideas such as boundary value analysis, equivalence partitioning, AAA/FIRST principles, ZOMBIES and scenario testing were used to connect the code to the theory from the course.
+
+The project is therefore not meant to behave like a real trading platform with live markets, users or financial security. Its value is mainly that it shows how a non-trivial Java application can be structured, tested, documented and explained through architecture, patterns and design decisions.
+
 ## Features
 
 The application includes functionality for:
