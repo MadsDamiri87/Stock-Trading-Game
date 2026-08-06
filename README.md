@@ -1,5 +1,7 @@
 ﻿### A project in Software Design and Test
 
+https://software.madsdamiri.dk/#/projects/StockTrading-Game
+
 # Stock Trading Game
 
 Stock Trading Game is a JavaFX desktop application developed as part of a Software Design and Test assignment. The application simulates a small stock trading environment where a user can view the market, buy and sell stocks, manage a portfolio and follow stock price changes over time.
@@ -16,7 +18,7 @@ A large part of the project is about applying design principles and patterns in 
 
 Testing was also a central part of the project. The project includes unit tests, integration tests and scenario-based test documentation. The tests cover important trading behaviour such as buying, selling, invalid quantities, insufficient funds, transaction handling, rollback/commit behaviour and file logger integration. Test design ideas such as boundary value analysis, equivalence partitioning, AAA/FIRST principles, ZOMBIES and scenario testing were used to connect the code to the theory from the course.
 
-The project is therefore not meant to behave like a real trading platform with live markets, users or financial security. Its value is mainly in applying structur, test, patterns and design decisions which is documented through various diagrams, with the soul porpuse of practical-learning.
+The project is therefore not meant to behave like a real trading platform with live markets, users or financial security. Its value is therfore mainly in applying structur, test, patterns and design decisions which is documented through various diagrams, with the soul porpuse of practical-learning.
 
 ## Features
 
