@@ -37640,3 +37640,1981 @@
 [2026-07-17 17:51:15] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
 [2026-07-17 17:51:15] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
 [2026-07-17 17:51:15] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:37] INFO: [BuyStocksViewModel] Fetching AvailableStocks
+[2026-08-06 13:32:37] INFO: [BuyStocksViewModel] Fetching portfolio: e6f56e16-0f0a-40d4-a655-b91e689c4dd1
+[2026-08-06 13:32:37] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:37] INFO: [SellStocksViewModel] Fetching portfolio: e6f56e16-0f0a-40d4-a655-b91e689c4dd1
+[2026-08-06 13:32:37] INFO: [GameStateService] Initializing stock market
+[2026-08-06 13:32:37] INFO: [GameStateService] Loading existing stocks into stock market
+[2026-08-06 13:32:37] INFO: [GameStateService] Eksisterende Stock tilføjet som LiveStock: AAPL
+[2026-08-06 13:32:37] INFO: [GameStateService] Eksisterende Stock tilføjet som LiveStock: TSLA
+[2026-08-06 13:32:37] INFO: [GameStateService] Eksisterende Stock tilføjet som LiveStock: NVDA
+[2026-08-06 13:32:37] INFO: [GameStateService] Eksisterende Stock tilføjet som LiveStock: MSFT
+[2026-08-06 13:32:37] INFO: [GameStateService] Eksisterende Stock tilføjet som LiveStock: GOOGL
+[2026-08-06 13:32:37] INFO: [GameStateService] Eksisterende Stock tilføjet som LiveStock: AMZN
+[2026-08-06 13:32:37] INFO: [GameStateService] Eksisterende Stock tilføjet som LiveStock: META
+[2026-08-06 13:32:37] INFO: [GameStateService] Eksisterende Stock tilføjet som LiveStock: GM
+[2026-08-06 13:32:37] INFO: [GameStateService] Stock market initialized
+[2026-08-06 13:32:37] INFO: [ApplicationContext] Game started
+[2026-08-06 13:32:37] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:32:37] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:32:37] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:32:37] INFO: [GameStateService] Stock: AAPL | Price: 327,66 | State: Steady
+[2026-08-06 13:32:37] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:32:37] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:37] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:37] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:37] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:37] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:37] INFO: [StockMarket] Stock: AAPL er meget høj: 327.66324754001835
+[2026-08-06 13:32:37] INFO: [GameStateService] Stock: TSLA | Price: 84,52 | State: Steady
+[2026-08-06 13:32:37] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:32:37] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:37] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:37] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:37] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:37] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:37] INFO: [GameStateService] Stock: NVDA | Price: 79,81 | State: Steady
+[2026-08-06 13:32:37] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:32:37] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:37] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:37] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:37] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:37] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:37] INFO: [GameStateService] Stock: MSFT | Price: 570,55 | State: Steady
+[2026-08-06 13:32:37] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:32:37] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:37] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:37] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:37] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:37] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:37] INFO: [StockMarket] Stock: MSFT er meget høj: 570.553462827457
+[2026-08-06 13:32:37] INFO: [SteadyState] LiveStock GOOGL changed state from Steady to: Declining
+[2026-08-06 13:32:37] INFO: [GameStateService] Stock: GOOGL | Price: 354,92 | State: Declining
+[2026-08-06 13:32:37] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:32:37] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:37] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:37] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:37] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:37] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:37] INFO: [StockMarket] Stock: GOOGL er meget høj: 354.9189360762461
+[2026-08-06 13:32:37] INFO: [GameStateService] Stock: AMZN | Price: 240,30 | State: Steady
+[2026-08-06 13:32:37] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:32:37] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:37] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:37] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:37] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:37] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:37] INFO: [StockMarket] Stock: AMZN er meget høj: 240.3000435176476
+[2026-08-06 13:32:37] INFO: [GameStateService] Stock: META | Price: 520,00 | State: Steady
+[2026-08-06 13:32:37] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:32:37] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:37] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:37] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:37] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:37] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:37] INFO: [StockMarket] Stock: META er meget høj: 520.0044665545983
+[2026-08-06 13:32:37] INFO: [GameStateService] Stock: GM | Price: 201,43 | State: Steady
+[2026-08-06 13:32:37] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:32:37] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:37] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:37] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:37] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:37] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:37] INFO: [StockMarket] Stock: GM er meget høj: 201.43107922171404
+[2026-08-06 13:32:38] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:32:38] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:32:38] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:32:38] INFO: [GameStateService] Stock: AAPL | Price: 327,46 | State: Steady
+[2026-08-06 13:32:38] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:32:38] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:38] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:38] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:38] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:38] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:38] INFO: [GameStateService] Stock: TSLA | Price: 83,95 | State: Steady
+[2026-08-06 13:32:38] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:32:38] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:38] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:38] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:38] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:38] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:38] INFO: [GameStateService] Stock: NVDA | Price: 79,53 | State: Steady
+[2026-08-06 13:32:38] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:32:38] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:38] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:38] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:38] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:38] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:38] INFO: [GameStateService] Stock: MSFT | Price: 569,90 | State: Steady
+[2026-08-06 13:32:38] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:32:38] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:38] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:38] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:38] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:38] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:38] INFO: [DecliningState] LiveStock GOOGL changed state from Declining to: Steady
+[2026-08-06 13:32:38] INFO: [GameStateService] Stock: GOOGL | Price: 354,72 | State: Steady
+[2026-08-06 13:32:38] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:32:38] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:38] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:38] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:38] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:38] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:38] INFO: [SteadyState] LiveStock AMZN changed state from Steady to: Declining
+[2026-08-06 13:32:38] INFO: [GameStateService] Stock: AMZN | Price: 241,28 | State: Declining
+[2026-08-06 13:32:38] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:32:38] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:38] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:38] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:38] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:38] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:38] INFO: [SteadyState] LiveStock META changed state from Steady to: Rising
+[2026-08-06 13:32:38] INFO: [GameStateService] Stock: META | Price: 519,86 | State: Rising
+[2026-08-06 13:32:38] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:32:38] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:38] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:38] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:38] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:38] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:38] INFO: [GameStateService] Stock: GM | Price: 201,02 | State: Steady
+[2026-08-06 13:32:38] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:32:38] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:38] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:38] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:38] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:38] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:39] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:32:39] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:32:39] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:32:39] INFO: [GameStateService] Stock: AAPL | Price: 327,58 | State: Steady
+[2026-08-06 13:32:39] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:32:39] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:39] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:39] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:39] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:39] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:39] INFO: [GameStateService] Stock: TSLA | Price: 84,83 | State: Steady
+[2026-08-06 13:32:39] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:32:39] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:39] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:39] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:39] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:39] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:39] INFO: [SteadyState] LiveStock NVDA changed state from Steady to: Rising
+[2026-08-06 13:32:39] INFO: [GameStateService] Stock: NVDA | Price: 79,78 | State: Rising
+[2026-08-06 13:32:39] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:32:39] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:39] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:39] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:39] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:39] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:39] INFO: [GameStateService] Stock: MSFT | Price: 570,60 | State: Steady
+[2026-08-06 13:32:39] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:32:39] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:39] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:39] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:39] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:39] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:39] INFO: [GameStateService] Stock: GOOGL | Price: 354,38 | State: Steady
+[2026-08-06 13:32:39] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:32:39] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:39] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:39] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:39] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:39] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:39] INFO: [GameStateService] Stock: AMZN | Price: 241,02 | State: Declining
+[2026-08-06 13:32:39] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:32:39] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:39] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:39] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:39] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:39] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:39] INFO: [RisingState] LiveStock META changed state from Rising to: Declining
+[2026-08-06 13:32:39] INFO: [GameStateService] Stock: META | Price: 519,13 | State: Declining
+[2026-08-06 13:32:39] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:32:39] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:39] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:39] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:39] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:39] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:39] INFO: [GameStateService] Stock: GM | Price: 200,71 | State: Steady
+[2026-08-06 13:32:39] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:32:39] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:39] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:39] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:39] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:39] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:40] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:32:40] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:32:40] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:32:40] INFO: [SteadyState] LiveStock AAPL changed state from Steady to: Declining
+[2026-08-06 13:32:40] INFO: [GameStateService] Stock: AAPL | Price: 327,98 | State: Declining
+[2026-08-06 13:32:40] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:32:40] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:40] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:40] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:40] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:40] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:40] INFO: [SteadyState] LiveStock TSLA changed state from Steady to: Declining
+[2026-08-06 13:32:40] INFO: [GameStateService] Stock: TSLA | Price: 85,35 | State: Declining
+[2026-08-06 13:32:40] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:32:40] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:40] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:40] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:40] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:40] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:40] INFO: [GameStateService] Stock: NVDA | Price: 82,13 | State: Rising
+[2026-08-06 13:32:40] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:32:40] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:40] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:40] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:40] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:40] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:40] INFO: [GameStateService] Stock: MSFT | Price: 571,28 | State: Steady
+[2026-08-06 13:32:40] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:32:40] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:40] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:40] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:40] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:40] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:40] INFO: [GameStateService] Stock: GOOGL | Price: 354,43 | State: Steady
+[2026-08-06 13:32:40] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:32:40] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:40] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:40] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:40] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:40] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:40] INFO: [GameStateService] Stock: AMZN | Price: 242,08 | State: Declining
+[2026-08-06 13:32:40] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:32:40] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:40] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:40] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:40] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:40] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:40] INFO: [DecliningState] LiveStock META changed state from Declining to: Steady
+[2026-08-06 13:32:40] INFO: [GameStateService] Stock: META | Price: 514,86 | State: Steady
+[2026-08-06 13:32:40] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:32:40] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:40] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:40] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:40] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:40] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:40] INFO: [GameStateService] Stock: GM | Price: 200,10 | State: Steady
+[2026-08-06 13:32:40] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:32:40] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:40] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:40] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:40] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:40] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:41] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:32:41] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:32:41] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:32:41] INFO: [GameStateService] Stock: AAPL | Price: 323,98 | State: Declining
+[2026-08-06 13:32:41] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:32:41] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:41] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:41] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:41] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:41] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:41] INFO: [GameStateService] Stock: TSLA | Price: 83,22 | State: Declining
+[2026-08-06 13:32:41] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:32:41] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:41] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:41] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:41] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:41] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:41] INFO: [GameStateService] Stock: NVDA | Price: 84,75 | State: Rising
+[2026-08-06 13:32:41] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:32:41] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:41] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:41] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:41] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:41] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:41] INFO: [GameStateService] Stock: MSFT | Price: 570,62 | State: Steady
+[2026-08-06 13:32:41] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:32:41] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:41] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:41] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:41] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:41] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:41] INFO: [GameStateService] Stock: GOOGL | Price: 354,35 | State: Steady
+[2026-08-06 13:32:41] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:32:41] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:41] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:41] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:41] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:41] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:41] INFO: [DecliningState] LiveStock AMZN changed state from Declining to: Steady
+[2026-08-06 13:32:41] INFO: [GameStateService] Stock: AMZN | Price: 240,54 | State: Steady
+[2026-08-06 13:32:41] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:32:41] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:41] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:42] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:42] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:42] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:42] INFO: [GameStateService] Stock: META | Price: 514,39 | State: Steady
+[2026-08-06 13:32:42] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:32:42] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:42] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:42] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:42] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:42] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:42] INFO: [GameStateService] Stock: GM | Price: 200,52 | State: Steady
+[2026-08-06 13:32:42] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:32:42] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:42] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:42] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:42] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:42] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:43] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:32:43] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:32:43] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:32:43] INFO: [DecliningState] LiveStock AAPL changed state from Declining to: Steady
+[2026-08-06 13:32:43] INFO: [GameStateService] Stock: AAPL | Price: 320,11 | State: Steady
+[2026-08-06 13:32:43] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:32:43] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:43] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:43] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:43] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:43] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:43] INFO: [GameStateService] Stock: TSLA | Price: 82,12 | State: Declining
+[2026-08-06 13:32:43] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:32:43] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:43] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:43] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:43] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:43] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:43] INFO: [GameStateService] Stock: NVDA | Price: 89,17 | State: Rising
+[2026-08-06 13:32:43] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:32:43] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:43] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:43] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:43] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:43] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:43] INFO: [GameStateService] Stock: MSFT | Price: 571,19 | State: Steady
+[2026-08-06 13:32:43] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:32:43] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:43] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:43] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:43] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:43] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:43] INFO: [SteadyState] LiveStock GOOGL changed state from Steady to: Rising
+[2026-08-06 13:32:43] INFO: [GameStateService] Stock: GOOGL | Price: 354,94 | State: Rising
+[2026-08-06 13:32:43] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:32:43] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:43] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:43] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:43] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:43] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:43] INFO: [GameStateService] Stock: AMZN | Price: 241,31 | State: Steady
+[2026-08-06 13:32:43] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:32:43] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:43] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:43] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:43] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:43] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:43] INFO: [SteadyState] LiveStock META changed state from Steady to: Rising
+[2026-08-06 13:32:43] INFO: [GameStateService] Stock: META | Price: 514,72 | State: Rising
+[2026-08-06 13:32:43] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:32:43] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:43] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:43] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:43] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:43] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:43] INFO: [GameStateService] Stock: GM | Price: 200,63 | State: Steady
+[2026-08-06 13:32:43] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:32:43] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:43] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:43] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:43] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:43] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:44] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:32:44] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:32:44] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:32:44] INFO: [SteadyState] LiveStock AAPL changed state from Steady to: Declining
+[2026-08-06 13:32:44] INFO: [GameStateService] Stock: AAPL | Price: 320,53 | State: Declining
+[2026-08-06 13:32:44] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:32:44] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:44] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:44] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:44] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:44] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:44] INFO: [GameStateService] Stock: TSLA | Price: 82,25 | State: Declining
+[2026-08-06 13:32:44] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:32:44] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:44] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:44] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:44] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:44] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:44] INFO: [RisingState] LiveStock NVDA changed state from Rising to: Steady
+[2026-08-06 13:32:44] INFO: [GameStateService] Stock: NVDA | Price: 89,11 | State: Steady
+[2026-08-06 13:32:44] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:32:44] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:44] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:44] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:44] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:44] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:44] INFO: [GameStateService] Stock: MSFT | Price: 571,40 | State: Steady
+[2026-08-06 13:32:44] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:32:44] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:44] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:44] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:44] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:44] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:44] INFO: [GameStateService] Stock: GOOGL | Price: 359,49 | State: Rising
+[2026-08-06 13:32:44] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:32:44] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:44] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:44] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:44] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:44] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:44] INFO: [GameStateService] Stock: AMZN | Price: 240,79 | State: Steady
+[2026-08-06 13:32:44] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:32:44] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:44] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:44] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:44] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:44] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:44] INFO: [RisingState] LiveStock META changed state from Rising to: Declining
+[2026-08-06 13:32:44] INFO: [GameStateService] Stock: META | Price: 514,69 | State: Declining
+[2026-08-06 13:32:44] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:32:44] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:44] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:44] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:44] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:44] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:44] INFO: [GameStateService] Stock: GM | Price: 200,25 | State: Steady
+[2026-08-06 13:32:44] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:32:44] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:44] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:44] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:44] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:44] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:45] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:32:45] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:32:45] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:32:45] INFO: [GameStateService] Stock: AAPL | Price: 318,37 | State: Declining
+[2026-08-06 13:32:45] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:32:45] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:45] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:45] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:45] INFO: [GameStateService] Stock: TSLA | Price: 84,09 | State: Declining
+[2026-08-06 13:32:45] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:32:45] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:45] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:45] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:45] INFO: [SteadyState] LiveStock NVDA changed state from Steady to: Declining
+[2026-08-06 13:32:45] INFO: [GameStateService] Stock: NVDA | Price: 88,18 | State: Declining
+[2026-08-06 13:32:45] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:32:45] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:45] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:45] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:45] INFO: [SteadyState] LiveStock MSFT changed state from Steady to: Declining
+[2026-08-06 13:32:45] INFO: [GameStateService] Stock: MSFT | Price: 571,85 | State: Declining
+[2026-08-06 13:32:45] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:32:45] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:45] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:45] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:45] INFO: [GameStateService] Stock: GOOGL | Price: 364,25 | State: Rising
+[2026-08-06 13:32:45] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:32:45] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:45] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:45] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:45] INFO: [GameStateService] Stock: AMZN | Price: 241,35 | State: Steady
+[2026-08-06 13:32:45] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:32:45] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:45] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:45] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:45] INFO: [DecliningState] LiveStock META changed state from Declining to: Rising
+[2026-08-06 13:32:45] INFO: [GameStateService] Stock: META | Price: 512,15 | State: Rising
+[2026-08-06 13:32:45] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:32:45] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:45] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:45] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:45] INFO: [GameStateService] Stock: GM | Price: 199,60 | State: Steady
+[2026-08-06 13:32:45] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:32:45] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:45] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:45] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:45] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:32:45] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:32:45] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:32:45] INFO: [GameStateService] Stock: AAPL | Price: 320,07 | State: Declining
+[2026-08-06 13:32:45] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:32:45] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:45] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:45] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:45] INFO: [GameStateService] Stock: TSLA | Price: 82,90 | State: Declining
+[2026-08-06 13:32:45] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:32:45] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:45] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:45] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:45] INFO: [GameStateService] Stock: NVDA | Price: 88,35 | State: Declining
+[2026-08-06 13:32:45] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:32:45] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:45] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:45] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:45] INFO: [GameStateService] Stock: MSFT | Price: 572,23 | State: Declining
+[2026-08-06 13:32:45] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:32:45] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:45] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:45] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:45] INFO: [GameStateService] Stock: GOOGL | Price: 363,87 | State: Rising
+[2026-08-06 13:32:45] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:32:45] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:45] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:45] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:45] INFO: [GameStateService] Stock: AMZN | Price: 241,23 | State: Steady
+[2026-08-06 13:32:45] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:32:45] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:45] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:45] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:45] INFO: [GameStateService] Stock: META | Price: 513,48 | State: Rising
+[2026-08-06 13:32:45] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:32:45] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:45] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:45] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:45] INFO: [SteadyState] LiveStock GM changed state from Steady to: Rising
+[2026-08-06 13:32:45] INFO: [GameStateService] Stock: GM | Price: 199,56 | State: Rising
+[2026-08-06 13:32:45] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:32:45] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:45] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:45] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:45] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:47] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:32:47] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:32:47] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:32:47] INFO: [GameStateService] Stock: AAPL | Price: 315,37 | State: Declining
+[2026-08-06 13:32:47] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:32:47] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:47] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:47] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:47] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:47] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:47] INFO: [GameStateService] Stock: TSLA | Price: 82,16 | State: Declining
+[2026-08-06 13:32:47] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:32:47] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:47] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:47] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:47] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:47] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:47] INFO: [GameStateService] Stock: NVDA | Price: 85,58 | State: Declining
+[2026-08-06 13:32:47] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:32:47] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:47] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:47] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:47] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:47] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:47] INFO: [GameStateService] Stock: MSFT | Price: 571,59 | State: Declining
+[2026-08-06 13:32:47] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:32:47] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:47] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:47] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:47] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:47] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:47] INFO: [GameStateService] Stock: GOOGL | Price: 368,53 | State: Rising
+[2026-08-06 13:32:47] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:32:47] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:47] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:47] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:47] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:47] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:47] INFO: [GameStateService] Stock: AMZN | Price: 242,18 | State: Steady
+[2026-08-06 13:32:47] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:32:47] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:47] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:47] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:47] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:47] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:47] INFO: [GameStateService] Stock: META | Price: 514,33 | State: Rising
+[2026-08-06 13:32:47] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:32:47] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:47] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:47] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:47] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:47] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:47] INFO: [GameStateService] Stock: GM | Price: 197,66 | State: Rising
+[2026-08-06 13:32:47] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:32:47] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:47] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:47] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:47] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:47] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:48] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:32:48] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:32:48] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:32:48] INFO: [GameStateService] Stock: AAPL | Price: 316,62 | State: Declining
+[2026-08-06 13:32:48] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:32:48] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:48] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:48] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:48] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:48] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:48] INFO: [GameStateService] Stock: TSLA | Price: 80,86 | State: Declining
+[2026-08-06 13:32:48] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:32:48] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:48] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:48] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:48] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:48] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:48] INFO: [GameStateService] Stock: NVDA | Price: 86,93 | State: Declining
+[2026-08-06 13:32:48] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:32:48] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:48] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:48] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:48] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:48] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:48] INFO: [GameStateService] Stock: MSFT | Price: 568,56 | State: Declining
+[2026-08-06 13:32:48] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:32:48] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:48] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:48] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:48] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:48] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:48] INFO: [GameStateService] Stock: GOOGL | Price: 368,21 | State: Rising
+[2026-08-06 13:32:48] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:32:48] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:48] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:48] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:48] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:48] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:48] INFO: [GameStateService] Stock: AMZN | Price: 242,52 | State: Steady
+[2026-08-06 13:32:48] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:32:48] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:48] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:48] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:48] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:48] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:48] INFO: [RisingState] LiveStock META changed state from Rising to: Declining
+[2026-08-06 13:32:48] INFO: [GameStateService] Stock: META | Price: 517,34 | State: Declining
+[2026-08-06 13:32:48] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:32:48] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:48] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:48] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:48] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:48] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:48] INFO: [GameStateService] Stock: GM | Price: 197,85 | State: Rising
+[2026-08-06 13:32:48] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:32:48] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:48] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:48] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:48] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:48] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:49] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:32:49] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:32:49] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:32:49] INFO: [GameStateService] Stock: AAPL | Price: 317,04 | State: Declining
+[2026-08-06 13:32:49] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:32:49] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:49] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:49] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:49] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:49] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:49] INFO: [DecliningState] LiveStock TSLA changed state from Declining to: Steady
+[2026-08-06 13:32:49] INFO: [GameStateService] Stock: TSLA | Price: 77,37 | State: Steady
+[2026-08-06 13:32:49] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:32:49] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:49] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:49] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:49] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:49] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:49] INFO: [GameStateService] Stock: NVDA | Price: 86,95 | State: Declining
+[2026-08-06 13:32:49] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:32:49] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:49] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:49] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:49] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:49] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:49] INFO: [GameStateService] Stock: MSFT | Price: 569,42 | State: Declining
+[2026-08-06 13:32:49] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:32:49] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:49] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:49] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:49] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:49] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:49] INFO: [RisingState] LiveStock GOOGL changed state from Rising to: Declining
+[2026-08-06 13:32:49] INFO: [GameStateService] Stock: GOOGL | Price: 369,21 | State: Declining
+[2026-08-06 13:32:49] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:32:49] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:49] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:49] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:49] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:49] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:49] INFO: [SteadyState] LiveStock AMZN changed state from Steady to: Declining
+[2026-08-06 13:32:49] INFO: [GameStateService] Stock: AMZN | Price: 243,23 | State: Declining
+[2026-08-06 13:32:49] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:32:49] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:49] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:49] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:49] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:49] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:49] INFO: [DecliningState] LiveStock META changed state from Declining to: Rising
+[2026-08-06 13:32:49] INFO: [GameStateService] Stock: META | Price: 513,38 | State: Rising
+[2026-08-06 13:32:49] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:32:49] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:49] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:49] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:49] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:49] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:49] INFO: [GameStateService] Stock: GM | Price: 202,49 | State: Rising
+[2026-08-06 13:32:49] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:32:49] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:49] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:49] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:49] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:49] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:51] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:32:51] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:32:51] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:32:51] INFO: [GameStateService] Stock: AAPL | Price: 313,48 | State: Declining
+[2026-08-06 13:32:51] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:32:51] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:51] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:51] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:51] INFO: [GameStateService] Stock: TSLA | Price: 77,67 | State: Steady
+[2026-08-06 13:32:51] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:32:51] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:51] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:51] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:51] INFO: [GameStateService] Stock: NVDA | Price: 87,58 | State: Declining
+[2026-08-06 13:32:51] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:32:51] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:51] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:51] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:51] INFO: [DecliningState] LiveStock MSFT changed state from Declining to: Steady
+[2026-08-06 13:32:51] INFO: [GameStateService] Stock: MSFT | Price: 568,73 | State: Steady
+[2026-08-06 13:32:51] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:32:51] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:51] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:51] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:51] INFO: [GameStateService] Stock: GOOGL | Price: 369,60 | State: Declining
+[2026-08-06 13:32:51] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:32:51] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:51] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:51] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:51] INFO: [GameStateService] Stock: AMZN | Price: 244,96 | State: Declining
+[2026-08-06 13:32:51] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:32:51] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:51] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:51] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:51] INFO: [RisingState] LiveStock META changed state from Rising to: Steady
+[2026-08-06 13:32:51] INFO: [GameStateService] Stock: META | Price: 512,42 | State: Steady
+[2026-08-06 13:32:51] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:32:51] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:51] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:51] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:51] INFO: [GameStateService] Stock: GM | Price: 204,46 | State: Rising
+[2026-08-06 13:32:51] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:32:51] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:51] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:51] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:51] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:32:51] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:32:51] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:32:51] INFO: [GameStateService] Stock: AAPL | Price: 314,51 | State: Declining
+[2026-08-06 13:32:51] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:32:51] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:51] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:51] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:51] INFO: [GameStateService] Stock: TSLA | Price: 77,64 | State: Steady
+[2026-08-06 13:32:51] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:32:51] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:51] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:51] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:51] INFO: [GameStateService] Stock: NVDA | Price: 89,01 | State: Declining
+[2026-08-06 13:32:51] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:32:51] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:51] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:51] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:51] INFO: [GameStateService] Stock: MSFT | Price: 569,13 | State: Steady
+[2026-08-06 13:32:51] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:32:51] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:51] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:51] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:51] INFO: [DecliningState] LiveStock GOOGL changed state from Declining to: Rising
+[2026-08-06 13:32:51] INFO: [GameStateService] Stock: GOOGL | Price: 367,27 | State: Rising
+[2026-08-06 13:32:51] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:32:51] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:51] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:51] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:51] INFO: [GameStateService] Stock: AMZN | Price: 241,67 | State: Declining
+[2026-08-06 13:32:51] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:32:51] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:51] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:51] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:51] INFO: [GameStateService] Stock: META | Price: 512,09 | State: Steady
+[2026-08-06 13:32:51] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:32:51] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:51] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:51] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:51] INFO: [RisingState] LiveStock GM changed state from Rising to: Steady
+[2026-08-06 13:32:51] INFO: [GameStateService] Stock: GM | Price: 205,34 | State: Steady
+[2026-08-06 13:32:51] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:32:51] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:51] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:51] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:51] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:53] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:32:53] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:32:53] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:32:53] INFO: [GameStateService] Stock: AAPL | Price: 312,56 | State: Declining
+[2026-08-06 13:32:53] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:32:53] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:53] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:53] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:53] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:53] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:53] INFO: [SteadyState] LiveStock TSLA changed state from Steady to: Rising
+[2026-08-06 13:32:53] INFO: [GameStateService] Stock: TSLA | Price: 77,36 | State: Rising
+[2026-08-06 13:32:53] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:32:53] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:53] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:53] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:53] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:53] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:53] INFO: [GameStateService] Stock: NVDA | Price: 89,86 | State: Declining
+[2026-08-06 13:32:53] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:32:53] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:53] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:53] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:53] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:53] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:53] INFO: [GameStateService] Stock: MSFT | Price: 570,11 | State: Steady
+[2026-08-06 13:32:53] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:32:53] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:53] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:53] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:53] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:53] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:53] INFO: [RisingState] LiveStock GOOGL changed state from Rising to: Declining
+[2026-08-06 13:32:53] INFO: [GameStateService] Stock: GOOGL | Price: 370,07 | State: Declining
+[2026-08-06 13:32:53] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:32:53] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:53] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:53] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:53] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:53] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:53] INFO: [GameStateService] Stock: AMZN | Price: 242,89 | State: Declining
+[2026-08-06 13:32:53] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:32:53] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:53] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:53] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:53] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:53] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:53] INFO: [GameStateService] Stock: META | Price: 513,07 | State: Steady
+[2026-08-06 13:32:53] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:32:53] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:53] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:53] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:53] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:53] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:53] INFO: [GameStateService] Stock: GM | Price: 204,88 | State: Steady
+[2026-08-06 13:32:53] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:32:53] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:53] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:53] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:53] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:53] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:54] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:32:54] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:32:54] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:32:54] INFO: [GameStateService] Stock: AAPL | Price: 313,66 | State: Declining
+[2026-08-06 13:32:54] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:32:54] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:54] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:54] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:54] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:54] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:54] INFO: [RisingState] LiveStock TSLA changed state from Rising to: Declining
+[2026-08-06 13:32:54] INFO: [GameStateService] Stock: TSLA | Price: 78,06 | State: Declining
+[2026-08-06 13:32:54] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:32:54] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:54] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:54] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:54] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:54] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:54] INFO: [GameStateService] Stock: NVDA | Price: 86,66 | State: Declining
+[2026-08-06 13:32:54] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:32:54] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:54] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:54] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:54] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:54] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:54] INFO: [SteadyState] LiveStock MSFT changed state from Steady to: Declining
+[2026-08-06 13:32:54] INFO: [GameStateService] Stock: MSFT | Price: 570,19 | State: Declining
+[2026-08-06 13:32:54] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:32:54] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:54] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:54] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:54] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:54] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:54] INFO: [GameStateService] Stock: GOOGL | Price: 371,37 | State: Declining
+[2026-08-06 13:32:54] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:32:54] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:54] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:54] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:54] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:54] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:54] INFO: [DecliningState] LiveStock AMZN changed state from Declining to: Steady
+[2026-08-06 13:32:54] INFO: [GameStateService] Stock: AMZN | Price: 240,07 | State: Steady
+[2026-08-06 13:32:54] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:32:54] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:54] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:54] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:54] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:54] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:54] INFO: [GameStateService] Stock: META | Price: 513,54 | State: Steady
+[2026-08-06 13:32:54] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:32:54] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:54] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:54] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:54] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:54] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:54] INFO: [GameStateService] Stock: GM | Price: 205,02 | State: Steady
+[2026-08-06 13:32:54] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:32:54] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:54] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:54] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:54] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:54] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:55] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:32:55] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:32:55] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:32:55] INFO: [GameStateService] Stock: AAPL | Price: 312,77 | State: Declining
+[2026-08-06 13:32:55] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:32:55] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:55] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:55] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:55] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:55] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:55] INFO: [GameStateService] Stock: TSLA | Price: 75,47 | State: Declining
+[2026-08-06 13:32:55] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:32:55] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:55] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:55] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:55] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:55] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:55] INFO: [GameStateService] Stock: NVDA | Price: 88,39 | State: Declining
+[2026-08-06 13:32:55] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:32:55] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:55] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:55] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:55] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:55] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:55] INFO: [DecliningState] LiveStock MSFT changed state from Declining to: Steady
+[2026-08-06 13:32:55] INFO: [GameStateService] Stock: MSFT | Price: 567,49 | State: Steady
+[2026-08-06 13:32:55] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:32:55] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:55] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:55] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:55] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:55] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:55] INFO: [GameStateService] Stock: GOOGL | Price: 371,67 | State: Declining
+[2026-08-06 13:32:55] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:32:55] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:55] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:55] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:55] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:55] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:55] INFO: [GameStateService] Stock: AMZN | Price: 239,84 | State: Steady
+[2026-08-06 13:32:55] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:32:55] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:55] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:55] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:55] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:55] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:55] INFO: [SteadyState] LiveStock META changed state from Steady to: Rising
+[2026-08-06 13:32:55] INFO: [GameStateService] Stock: META | Price: 514,52 | State: Rising
+[2026-08-06 13:32:55] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:32:55] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:55] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:55] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:55] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:55] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:55] INFO: [GameStateService] Stock: GM | Price: 204,12 | State: Steady
+[2026-08-06 13:32:55] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:32:55] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:55] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:55] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:55] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:55] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:56] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:32:56] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:32:56] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:32:56] INFO: [DecliningState] LiveStock AAPL changed state from Declining to: Steady
+[2026-08-06 13:32:56] INFO: [GameStateService] Stock: AAPL | Price: 311,49 | State: Steady
+[2026-08-06 13:32:56] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:32:56] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:56] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:56] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:56] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:56] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:56] INFO: [GameStateService] Stock: TSLA | Price: 74,72 | State: Declining
+[2026-08-06 13:32:56] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:32:56] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:56] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:56] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:56] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:56] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:56] INFO: [GameStateService] Stock: NVDA | Price: 88,80 | State: Declining
+[2026-08-06 13:32:56] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:32:56] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:56] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:56] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:56] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:56] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:56] INFO: [GameStateService] Stock: MSFT | Price: 567,39 | State: Steady
+[2026-08-06 13:32:56] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:32:56] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:56] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:56] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:56] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:56] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:56] INFO: [GameStateService] Stock: GOOGL | Price: 373,47 | State: Declining
+[2026-08-06 13:32:56] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:32:56] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:56] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:56] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:56] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:56] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:56] INFO: [SteadyState] LiveStock AMZN changed state from Steady to: Rising
+[2026-08-06 13:32:56] INFO: [GameStateService] Stock: AMZN | Price: 240,77 | State: Rising
+[2026-08-06 13:32:56] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:32:56] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:56] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:56] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:56] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:56] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:56] INFO: [RisingState] LiveStock META changed state from Rising to: Steady
+[2026-08-06 13:32:56] INFO: [GameStateService] Stock: META | Price: 515,41 | State: Steady
+[2026-08-06 13:32:56] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:32:56] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:56] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:56] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:56] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:56] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:56] INFO: [GameStateService] Stock: GM | Price: 203,33 | State: Steady
+[2026-08-06 13:32:56] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:32:56] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:56] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:56] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:56] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:56] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:58] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:32:58] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:32:58] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:32:58] INFO: [GameStateService] Stock: AAPL | Price: 311,41 | State: Steady
+[2026-08-06 13:32:58] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:32:58] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:58] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:58] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:58] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:58] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:58] INFO: [GameStateService] Stock: TSLA | Price: 76,58 | State: Declining
+[2026-08-06 13:32:58] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:32:58] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:58] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:58] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:58] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:58] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:58] INFO: [GameStateService] Stock: NVDA | Price: 90,37 | State: Declining
+[2026-08-06 13:32:58] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:32:58] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:58] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:58] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:58] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:58] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:58] INFO: [GameStateService] Stock: MSFT | Price: 567,34 | State: Steady
+[2026-08-06 13:32:58] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:32:58] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:58] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:58] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:58] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:58] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:58] INFO: [DecliningState] LiveStock GOOGL changed state from Declining to: Steady
+[2026-08-06 13:32:58] INFO: [GameStateService] Stock: GOOGL | Price: 371,54 | State: Steady
+[2026-08-06 13:32:58] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:32:58] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:58] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:58] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:58] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:58] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:58] INFO: [GameStateService] Stock: AMZN | Price: 245,26 | State: Rising
+[2026-08-06 13:32:58] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:32:58] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:58] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:58] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:58] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:58] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:58] INFO: [GameStateService] Stock: META | Price: 514,52 | State: Steady
+[2026-08-06 13:32:58] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:32:58] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:58] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:58] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:58] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:58] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:58] INFO: [GameStateService] Stock: GM | Price: 203,53 | State: Steady
+[2026-08-06 13:32:58] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:32:58] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:58] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:58] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:58] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:58] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:58] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:32:58] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:32:58] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:32:58] INFO: [GameStateService] Stock: AAPL | Price: 311,04 | State: Steady
+[2026-08-06 13:32:58] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:32:58] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:58] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:59] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:59] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:59] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:59] INFO: [DecliningState] LiveStock TSLA changed state from Declining to: Rising
+[2026-08-06 13:32:59] INFO: [GameStateService] Stock: TSLA | Price: 74,93 | State: Rising
+[2026-08-06 13:32:59] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:32:59] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:59] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:59] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:59] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:59] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:59] INFO: [GameStateService] Stock: NVDA | Price: 91,37 | State: Declining
+[2026-08-06 13:32:59] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:32:59] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:59] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:59] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:59] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:59] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:59] INFO: [SteadyState] LiveStock MSFT changed state from Steady to: Declining
+[2026-08-06 13:32:59] INFO: [GameStateService] Stock: MSFT | Price: 566,53 | State: Declining
+[2026-08-06 13:32:59] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:32:59] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:59] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:59] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:59] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:59] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:59] INFO: [GameStateService] Stock: GOOGL | Price: 372,19 | State: Steady
+[2026-08-06 13:32:59] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:32:59] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:59] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:59] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:59] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:59] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:59] INFO: [GameStateService] Stock: AMZN | Price: 249,24 | State: Rising
+[2026-08-06 13:32:59] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:32:59] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:59] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:59] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:59] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:59] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:59] INFO: [GameStateService] Stock: META | Price: 515,34 | State: Steady
+[2026-08-06 13:32:59] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:32:59] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:59] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:59] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:59] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:59] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:32:59] INFO: [SteadyState] LiveStock GM changed state from Steady to: Declining
+[2026-08-06 13:32:59] INFO: [GameStateService] Stock: GM | Price: 202,80 | State: Declining
+[2026-08-06 13:32:59] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:32:59] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:32:59] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:32:59] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:32:59] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:32:59] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:00] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:33:00] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:33:00] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:33:00] INFO: [SteadyState] LiveStock AAPL changed state from Steady to: Rising
+[2026-08-06 13:33:00] INFO: [GameStateService] Stock: AAPL | Price: 311,09 | State: Rising
+[2026-08-06 13:33:00] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:33:00] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:00] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:00] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:00] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:00] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:00] INFO: [GameStateService] Stock: TSLA | Price: 76,60 | State: Rising
+[2026-08-06 13:33:00] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:33:00] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:00] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:00] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:00] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:00] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:00] INFO: [GameStateService] Stock: NVDA | Price: 86,72 | State: Declining
+[2026-08-06 13:33:00] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:33:00] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:00] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:00] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:00] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:00] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:00] INFO: [GameStateService] Stock: MSFT | Price: 567,06 | State: Declining
+[2026-08-06 13:33:00] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:33:00] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:00] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:00] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:00] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:00] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:00] INFO: [SteadyState] LiveStock GOOGL changed state from Steady to: Rising
+[2026-08-06 13:33:00] INFO: [GameStateService] Stock: GOOGL | Price: 371,61 | State: Rising
+[2026-08-06 13:33:00] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:33:00] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:00] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:00] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:00] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:00] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:00] INFO: [RisingState] LiveStock AMZN changed state from Rising to: Declining
+[2026-08-06 13:33:00] INFO: [GameStateService] Stock: AMZN | Price: 252,59 | State: Declining
+[2026-08-06 13:33:00] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:33:00] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:00] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:00] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:00] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:00] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:00] INFO: [GameStateService] Stock: META | Price: 516,23 | State: Steady
+[2026-08-06 13:33:00] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:33:00] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:00] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:00] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:00] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:00] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:00] INFO: [DecliningState] LiveStock GM changed state from Declining to: Rising
+[2026-08-06 13:33:00] INFO: [GameStateService] Stock: GM | Price: 201,63 | State: Rising
+[2026-08-06 13:33:00] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:33:00] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:00] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:00] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:00] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:00] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:00] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:33:00] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:33:00] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:33:00] INFO: [GameStateService] Stock: AAPL | Price: 311,01 | State: Rising
+[2026-08-06 13:33:00] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:33:00] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:00] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:00] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:00] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:00] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:00] INFO: [GameStateService] Stock: TSLA | Price: 80,42 | State: Rising
+[2026-08-06 13:33:00] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:33:00] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:00] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:00] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:00] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:00] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:00] INFO: [GameStateService] Stock: NVDA | Price: 87,03 | State: Declining
+[2026-08-06 13:33:00] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:33:00] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:00] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:00] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:00] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:00] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:00] INFO: [GameStateService] Stock: MSFT | Price: 564,98 | State: Declining
+[2026-08-06 13:33:00] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:33:00] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:01] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:01] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:01] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:01] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:01] INFO: [RisingState] LiveStock GOOGL changed state from Rising to: Declining
+[2026-08-06 13:33:01] INFO: [GameStateService] Stock: GOOGL | Price: 375,26 | State: Declining
+[2026-08-06 13:33:01] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:33:01] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:01] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:01] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:01] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:01] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:01] INFO: [GameStateService] Stock: AMZN | Price: 252,94 | State: Declining
+[2026-08-06 13:33:01] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:33:01] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:01] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:01] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:01] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:01] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:01] INFO: [SteadyState] LiveStock META changed state from Steady to: Declining
+[2026-08-06 13:33:01] INFO: [GameStateService] Stock: META | Price: 517,13 | State: Declining
+[2026-08-06 13:33:01] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:33:01] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:01] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:01] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:01] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:01] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:01] INFO: [GameStateService] Stock: GM | Price: 206,63 | State: Rising
+[2026-08-06 13:33:01] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:33:01] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:01] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:01] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:01] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:01] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:01] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:33:01] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:33:01] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:33:01] INFO: [GameStateService] Stock: AAPL | Price: 313,78 | State: Rising
+[2026-08-06 13:33:01] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:33:01] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:02] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:02] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:02] INFO: [GameStateService] Stock: TSLA | Price: 78,92 | State: Rising
+[2026-08-06 13:33:02] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:33:02] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:02] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:02] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:02] INFO: [DecliningState] LiveStock NVDA changed state from Declining to: Steady
+[2026-08-06 13:33:02] INFO: [GameStateService] Stock: NVDA | Price: 82,88 | State: Steady
+[2026-08-06 13:33:02] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:33:02] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:02] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:02] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:02] INFO: [GameStateService] Stock: MSFT | Price: 563,63 | State: Declining
+[2026-08-06 13:33:02] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:33:02] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:02] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:02] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:02] INFO: [GameStateService] Stock: GOOGL | Price: 374,87 | State: Declining
+[2026-08-06 13:33:02] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:33:02] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:02] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:02] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:02] INFO: [GameStateService] Stock: AMZN | Price: 254,13 | State: Declining
+[2026-08-06 13:33:02] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:33:02] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:02] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:02] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:02] INFO: [GameStateService] Stock: META | Price: 518,75 | State: Declining
+[2026-08-06 13:33:02] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:33:02] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:02] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:02] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:02] INFO: [GameStateService] Stock: GM | Price: 207,48 | State: Rising
+[2026-08-06 13:33:02] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:33:02] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:02] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:02] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:02] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:33:02] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:33:02] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:33:02] INFO: [GameStateService] Stock: AAPL | Price: 317,59 | State: Rising
+[2026-08-06 13:33:02] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:33:02] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:02] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:02] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:02] INFO: [RisingState] LiveStock TSLA changed state from Rising to: Declining
+[2026-08-06 13:33:02] INFO: [GameStateService] Stock: TSLA | Price: 78,76 | State: Declining
+[2026-08-06 13:33:02] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:33:02] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:02] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:02] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:02] INFO: [GameStateService] Stock: NVDA | Price: 82,85 | State: Steady
+[2026-08-06 13:33:02] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:33:02] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:02] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:02] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:02] INFO: [GameStateService] Stock: MSFT | Price: 564,60 | State: Declining
+[2026-08-06 13:33:02] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:33:02] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:02] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:02] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:02] INFO: [GameStateService] Stock: GOOGL | Price: 375,38 | State: Declining
+[2026-08-06 13:33:02] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:33:02] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:02] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:02] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:02] INFO: [GameStateService] Stock: AMZN | Price: 250,10 | State: Declining
+[2026-08-06 13:33:02] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:33:02] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:02] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:02] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:02] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:02] INFO: [GameStateService] Stock: META | Price: 520,23 | State: Declining
+[2026-08-06 13:33:02] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:33:02] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:03] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:03] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:03] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:03] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:03] INFO: [GameStateService] Stock: GM | Price: 211,29 | State: Rising
+[2026-08-06 13:33:03] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:33:03] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:03] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:03] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:03] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:03] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:04] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:33:04] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:33:04] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:33:04] INFO: [RisingState] LiveStock AAPL changed state from Rising to: Steady
+[2026-08-06 13:33:04] INFO: [GameStateService] Stock: AAPL | Price: 319,80 | State: Steady
+[2026-08-06 13:33:04] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:33:04] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:04] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:04] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:04] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:04] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:04] INFO: [GameStateService] Stock: TSLA | Price: 80,35 | State: Declining
+[2026-08-06 13:33:04] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:33:04] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:04] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:04] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:04] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:04] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:04] INFO: [GameStateService] Stock: NVDA | Price: 82,75 | State: Steady
+[2026-08-06 13:33:04] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:33:04] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:04] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:04] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:04] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:04] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:04] INFO: [GameStateService] Stock: MSFT | Price: 563,15 | State: Declining
+[2026-08-06 13:33:04] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:33:04] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:04] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:04] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:04] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:04] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:04] INFO: [GameStateService] Stock: GOOGL | Price: 376,19 | State: Declining
+[2026-08-06 13:33:04] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:33:04] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:04] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:04] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:04] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:04] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:04] INFO: [GameStateService] Stock: AMZN | Price: 251,52 | State: Declining
+[2026-08-06 13:33:04] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:33:04] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:04] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:04] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:04] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:04] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:04] INFO: [GameStateService] Stock: META | Price: 521,62 | State: Declining
+[2026-08-06 13:33:04] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:33:04] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:04] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:04] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:04] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:04] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:04] INFO: [GameStateService] Stock: GM | Price: 211,31 | State: Rising
+[2026-08-06 13:33:04] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:33:04] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:04] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:04] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:04] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:04] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:05] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:33:05] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:33:05] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:33:05] INFO: [GameStateService] Stock: AAPL | Price: 319,87 | State: Steady
+[2026-08-06 13:33:05] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:33:05] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:05] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:05] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:05] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:05] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:05] INFO: [GameStateService] Stock: TSLA | Price: 79,10 | State: Declining
+[2026-08-06 13:33:05] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:33:05] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:05] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:05] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:05] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:05] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:05] INFO: [GameStateService] Stock: NVDA | Price: 82,75 | State: Steady
+[2026-08-06 13:33:05] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:33:05] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:05] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:05] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:05] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:05] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:05] INFO: [DecliningState] LiveStock MSFT changed state from Declining to: Steady
+[2026-08-06 13:33:05] INFO: [GameStateService] Stock: MSFT | Price: 559,77 | State: Steady
+[2026-08-06 13:33:05] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:33:05] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:05] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:05] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:05] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:05] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:05] INFO: [GameStateService] Stock: GOOGL | Price: 377,57 | State: Declining
+[2026-08-06 13:33:05] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:33:05] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:05] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:05] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:05] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:05] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:05] INFO: [GameStateService] Stock: AMZN | Price: 252,88 | State: Declining
+[2026-08-06 13:33:05] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:33:05] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:05] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:05] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:05] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:05] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:05] INFO: [GameStateService] Stock: META | Price: 520,88 | State: Declining
+[2026-08-06 13:33:05] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:33:05] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:05] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:05] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:05] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:05] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:05] INFO: [GameStateService] Stock: GM | Price: 212,35 | State: Rising
+[2026-08-06 13:33:05] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:33:05] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:05] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:05] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:05] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:05] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:06] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:33:06] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:33:06] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:33:06] INFO: [SteadyState] LiveStock AAPL changed state from Steady to: Rising
+[2026-08-06 13:33:06] INFO: [GameStateService] Stock: AAPL | Price: 320,03 | State: Rising
+[2026-08-06 13:33:06] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:33:06] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:06] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:06] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:06] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:06] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:06] INFO: [GameStateService] Stock: TSLA | Price: 79,73 | State: Declining
+[2026-08-06 13:33:06] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:33:06] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:06] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:06] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:06] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:06] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:06] INFO: [GameStateService] Stock: NVDA | Price: 82,43 | State: Steady
+[2026-08-06 13:33:06] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:33:06] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:06] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:06] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:06] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:06] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:06] INFO: [GameStateService] Stock: MSFT | Price: 560,08 | State: Steady
+[2026-08-06 13:33:06] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:33:06] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:06] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:06] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:06] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:06] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:06] INFO: [DecliningState] LiveStock GOOGL changed state from Declining to: Rising
+[2026-08-06 13:33:06] INFO: [GameStateService] Stock: GOOGL | Price: 373,49 | State: Rising
+[2026-08-06 13:33:06] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:33:06] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:06] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:06] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:06] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:06] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:06] INFO: [GameStateService] Stock: AMZN | Price: 254,15 | State: Declining
+[2026-08-06 13:33:06] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:33:06] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:06] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:06] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:06] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:06] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:06] INFO: [GameStateService] Stock: META | Price: 521,58 | State: Declining
+[2026-08-06 13:33:06] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:33:06] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:06] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:06] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:06] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:06] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:06] INFO: [GameStateService] Stock: GM | Price: 215,45 | State: Rising
+[2026-08-06 13:33:06] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:33:06] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:06] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:06] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:06] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:06] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:06] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:33:06] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:33:06] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:33:06] INFO: [GameStateService] Stock: AAPL | Price: 324,77 | State: Rising
+[2026-08-06 13:33:06] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:33:06] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:06] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:07] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:07] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:07] INFO: [DecliningState] LiveStock TSLA changed state from Declining to: Rising
+[2026-08-06 13:33:07] INFO: [GameStateService] Stock: TSLA | Price: 78,37 | State: Rising
+[2026-08-06 13:33:07] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:33:07] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:07] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:07] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:07] INFO: [GameStateService] Stock: NVDA | Price: 81,48 | State: Steady
+[2026-08-06 13:33:07] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:33:07] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:07] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:07] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:07] INFO: [GameStateService] Stock: MSFT | Price: 560,82 | State: Steady
+[2026-08-06 13:33:07] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:33:07] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:07] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:07] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:07] INFO: [GameStateService] Stock: GOOGL | Price: 376,56 | State: Rising
+[2026-08-06 13:33:07] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:33:07] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:07] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:07] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:07] INFO: [DecliningState] LiveStock AMZN changed state from Declining to: Steady
+[2026-08-06 13:33:07] INFO: [GameStateService] Stock: AMZN | Price: 251,11 | State: Steady
+[2026-08-06 13:33:07] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:33:07] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:07] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:07] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:07] INFO: [DecliningState] LiveStock META changed state from Declining to: Steady
+[2026-08-06 13:33:07] INFO: [GameStateService] Stock: META | Price: 521,36 | State: Steady
+[2026-08-06 13:33:07] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:33:07] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:07] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:07] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:07] INFO: [GameStateService] Stock: GM | Price: 217,73 | State: Rising
+[2026-08-06 13:33:07] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:33:07] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:07] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:07] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:07] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:33:07] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:33:07] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:33:07] INFO: [GameStateService] Stock: AAPL | Price: 329,29 | State: Rising
+[2026-08-06 13:33:07] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:33:07] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:07] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:07] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:07] INFO: [RisingState] LiveStock TSLA changed state from Rising to: Steady
+[2026-08-06 13:33:07] INFO: [GameStateService] Stock: TSLA | Price: 83,24 | State: Steady
+[2026-08-06 13:33:07] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:33:07] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:07] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:07] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:07] INFO: [SteadyState] LiveStock NVDA changed state from Steady to: Rising
+[2026-08-06 13:33:07] INFO: [GameStateService] Stock: NVDA | Price: 80,73 | State: Rising
+[2026-08-06 13:33:07] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:33:07] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:07] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:07] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:07] INFO: [GameStateService] Stock: MSFT | Price: 560,35 | State: Steady
+[2026-08-06 13:33:07] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:33:07] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:07] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:07] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:07] INFO: [GameStateService] Stock: GOOGL | Price: 377,48 | State: Rising
+[2026-08-06 13:33:07] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:33:07] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:07] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:07] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:07] INFO: [GameStateService] Stock: AMZN | Price: 251,89 | State: Steady
+[2026-08-06 13:33:07] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:33:07] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:07] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:07] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:07] INFO: [GameStateService] Stock: META | Price: 521,02 | State: Steady
+[2026-08-06 13:33:07] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:33:07] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:07] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:07] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:07] INFO: [GameStateService] Stock: GM | Price: 218,62 | State: Rising
+[2026-08-06 13:33:07] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:33:07] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:07] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:07] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:07] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:08] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:33:08] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:33:08] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:33:08] INFO: [GameStateService] Stock: AAPL | Price: 329,31 | State: Rising
+[2026-08-06 13:33:08] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:33:08] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:08] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:08] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:08] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:08] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:08] INFO: [SteadyState] LiveStock TSLA changed state from Steady to: Declining
+[2026-08-06 13:33:08] INFO: [GameStateService] Stock: TSLA | Price: 83,18 | State: Declining
+[2026-08-06 13:33:08] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:33:08] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:08] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:08] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:08] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:08] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:08] INFO: [RisingState] LiveStock NVDA changed state from Rising to: Declining
+[2026-08-06 13:33:08] INFO: [GameStateService] Stock: NVDA | Price: 85,29 | State: Declining
+[2026-08-06 13:33:08] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:33:08] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:08] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:08] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:08] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:08] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:08] INFO: [GameStateService] Stock: MSFT | Price: 560,18 | State: Steady
+[2026-08-06 13:33:08] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:33:08] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:08] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:08] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:08] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:08] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:08] INFO: [GameStateService] Stock: GOOGL | Price: 382,13 | State: Rising
+[2026-08-06 13:33:08] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:33:08] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:08] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:08] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:08] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:08] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:08] INFO: [SteadyState] LiveStock AMZN changed state from Steady to: Rising
+[2026-08-06 13:33:08] INFO: [GameStateService] Stock: AMZN | Price: 251,75 | State: Rising
+[2026-08-06 13:33:08] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:33:08] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:08] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:08] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:08] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:08] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:08] INFO: [SteadyState] LiveStock META changed state from Steady to: Rising
+[2026-08-06 13:33:08] INFO: [GameStateService] Stock: META | Price: 520,47 | State: Rising
+[2026-08-06 13:33:08] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:33:08] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:08] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:08] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:08] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:08] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:08] INFO: [GameStateService] Stock: GM | Price: 221,04 | State: Rising
+[2026-08-06 13:33:08] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:33:08] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:08] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:08] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:08] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:08] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:09] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:33:09] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:33:09] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:33:09] INFO: [GameStateService] Stock: AAPL | Price: 327,89 | State: Rising
+[2026-08-06 13:33:09] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:33:09] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:09] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:09] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:09] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:09] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:09] INFO: [GameStateService] Stock: TSLA | Price: 82,96 | State: Declining
+[2026-08-06 13:33:09] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:33:09] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:09] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:09] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:09] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:09] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:09] INFO: [GameStateService] Stock: NVDA | Price: 86,35 | State: Declining
+[2026-08-06 13:33:09] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:33:09] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:09] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:09] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:09] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:09] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:09] INFO: [GameStateService] Stock: MSFT | Price: 560,90 | State: Steady
+[2026-08-06 13:33:09] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:33:09] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:09] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:09] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:09] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:09] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:09] INFO: [GameStateService] Stock: GOOGL | Price: 381,68 | State: Rising
+[2026-08-06 13:33:09] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:33:09] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:09] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:09] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:09] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:09] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:09] INFO: [RisingState] LiveStock AMZN changed state from Rising to: Declining
+[2026-08-06 13:33:09] INFO: [GameStateService] Stock: AMZN | Price: 256,59 | State: Declining
+[2026-08-06 13:33:09] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:33:09] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:09] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:09] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:09] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:09] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:09] INFO: [GameStateService] Stock: META | Price: 524,80 | State: Rising
+[2026-08-06 13:33:09] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:33:09] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:09] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:09] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:09] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:09] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:09] INFO: [RisingState] LiveStock GM changed state from Rising to: Declining
+[2026-08-06 13:33:09] INFO: [GameStateService] Stock: GM | Price: 222,92 | State: Declining
+[2026-08-06 13:33:09] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:33:09] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:09] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:09] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:09] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:09] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:10] INFO: [MarketTickHandler] Game started
+[2026-08-06 13:33:10] INFO: [Thread] Markedet blev opdateret
+[2026-08-06 13:33:10] INFO: [MarketTickHandler] Updating stock market
+[2026-08-06 13:33:10] INFO: [GameStateService] Stock: AAPL | Price: 331,66 | State: Rising
+[2026-08-06 13:33:10] INFO: [StockMarket] StockListenerService modtog update for: AAPL
+[2026-08-06 13:33:10] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:10] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:10] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:10] INFO: [StockMarket] Stock AAPL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:10] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:10] INFO: [GameStateService] Stock: TSLA | Price: 78,04 | State: Declining
+[2026-08-06 13:33:10] INFO: [StockMarket] StockListenerService modtog update for: TSLA
+[2026-08-06 13:33:10] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:10] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:10] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:10] INFO: [StockMarket] Stock TSLA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:10] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:10] INFO: [GameStateService] Stock: NVDA | Price: 88,28 | State: Declining
+[2026-08-06 13:33:10] INFO: [StockMarket] StockListenerService modtog update for: NVDA
+[2026-08-06 13:33:10] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:10] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:10] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:10] INFO: [StockMarket] Stock NVDA blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:10] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:10] INFO: [SteadyState] LiveStock MSFT changed state from Steady to: Rising
+[2026-08-06 13:33:10] INFO: [GameStateService] Stock: MSFT | Price: 561,63 | State: Rising
+[2026-08-06 13:33:10] INFO: [StockMarket] StockListenerService modtog update for: MSFT
+[2026-08-06 13:33:10] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:10] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:10] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:10] INFO: [StockMarket] Stock MSFT blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:10] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:10] INFO: [GameStateService] Stock: GOOGL | Price: 383,72 | State: Rising
+[2026-08-06 13:33:10] INFO: [StockMarket] StockListenerService modtog update for: GOOGL
+[2026-08-06 13:33:10] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:10] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:10] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:10] INFO: [StockMarket] Stock GOOGL blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:10] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:10] INFO: [GameStateService] Stock: AMZN | Price: 252,20 | State: Declining
+[2026-08-06 13:33:10] INFO: [StockMarket] StockListenerService modtog update for: AMZN
+[2026-08-06 13:33:10] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:10] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:10] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:10] INFO: [StockMarket] Stock AMZN blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:10] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:10] INFO: [RisingState] LiveStock META changed state from Rising to: Steady
+[2026-08-06 13:33:10] INFO: [GameStateService] Stock: META | Price: 526,06 | State: Steady
+[2026-08-06 13:33:10] INFO: [StockMarket] StockListenerService modtog update for: META
+[2026-08-06 13:33:10] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:10] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:10] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:10] INFO: [StockMarket] Stock META blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:10] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
+[2026-08-06 13:33:10] INFO: [GameStateService] Stock: GM | Price: 223,13 | State: Declining
+[2026-08-06 13:33:10] INFO: [StockMarket] StockListenerService modtog update for: GM
+[2026-08-06 13:33:10] INFO: [StockListenerService] Transaction started
+[2026-08-06 13:33:10] INFO: [FileUnitOfWork] Stock blev skrevet til fil data\stocks.psv
+[2026-08-06 13:33:10] INFO: [FileUnitOfWork] StockPriceHistories blev skrevet til fil data\stock_price_history.psv
+[2026-08-06 13:33:10] INFO: [StockMarket] Stock GM blev opdateret og pricehistory blev gemt
+[2026-08-06 13:33:10] INFO: [OwnedStockFileDAO] Ownedstocks blev indlæst fra fil
